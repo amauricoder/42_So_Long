@@ -6,7 +6,7 @@
 #    By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/24 16:10:12 by aconceic          #+#    #+#              #
-#    Updated: 2024/01/27 07:48:19 by aconceic         ###   ########.fr        #
+#    Updated: 2024/01/27 08:18:03 by aconceic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ else
 endif
 ##FLAGS FOR MLX HAVING IN CONSIDERATION THE OS
 ifeq ($(shell uname), Linux)
-	MLXFLAGS = -L $(MLX_DIR) -lm -lmlx -Ilmlx -lXext -lX11
+	MLXFLAGS = -DLINUX -L $(MLX_DIR) -lm -lmlx -Ilmlx -lXext -lX11
 else
 	MLXFLAGS = -Lmlx -lmlx -L/usr/X11/lib -lXext -lX11 -framework OpenGL -framework AppKit
 endif

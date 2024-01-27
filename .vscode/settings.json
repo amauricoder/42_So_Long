@@ -2,6 +2,8 @@
     "files.associations": {
         "libft.h": "c",
         "ft_printf.h": "c",
-        "so_long.h": "c"
+        "so_long.h": "c",
+        "mlx_int.h": "c",
+        "mlx.h": "c"
     }
 }

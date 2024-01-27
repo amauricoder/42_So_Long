@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:24 by aconceic          #+#    #+#             */
-/*   Updated: 2024/01/25 09:56:17 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/01/27 08:20:11 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,17 @@
 /*           IMPORTED FILE            */
 /* ********************************** */
 # include "../library/libft/libft.h"
-# include "../library/minilibx-linux/mlx.h"
-# include "../library/minilibx-linux/mlx_int.h"
+
+#ifdef LINUX
+    # include "../library/minilibx-linux/mlx.h"
+    # include "../library/minilibx-linux/mlx_int.h"
+#else
+    # include "../library/minilibx-opengl/mlx.h"
+    # include "../library/minilibx-opengl/mlx_int.h"
+    # include "../library/minilibx-opengl/mlx_new_window.h"
+    # include "../library/minilibx-opengl/mlx_opengl.h"
+    # include "../library/minilibx-opengl/mlx_png.h"
+#endif
 /* ********************************** */
 /*               MAIN                 */
 /* ********************************** */
