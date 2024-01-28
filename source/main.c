@@ -6,16 +6,18 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:21 by aconceic          #+#    #+#             */
-/*   Updated: 2024/01/25 13:00:11 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/01/28 18:19:18 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int main(int argc, char **argv)
+int main(void)
 {
-	ft_printf("WORKED YAHU");
-	(void)argc;
-	(void)argv;
+	//check input
+	//if input is valid
+		//run game
+	//else
+		//error and stop
 	return (0);
 }

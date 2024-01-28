@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:24 by aconceic          #+#    #+#             */
-/*   Updated: 2024/01/27 08:20:11 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/01/28 18:13:31 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,19 @@
 # define WHITE   "\033[37m"
 
 /* ********************************** */
+/*            KEYBOARD CODES          */
+/* ********************************** */
+# define KB_W 119
+# define KB_S 115
+# define KB_A 97
+# define KB_D 100
+# define KB_ESC 65307
+# define KB_AUP 65362
+# define KB_ADOWN 65364
+# define KB_ALEFT 65361
+# define KB_ARIGHT 65363
+
+/* ********************************** */
 /*           EXTERNAL LIBS            */
 /* ********************************** */
 #include <stdlib.h> //malloc(), free(), exit()
@@ -33,24 +46,17 @@
 #include <unistd.h> //read(), write()
 #include <stdio.h> //perror()
 #include <string.h> //strerror()
+
 /* ********************************** */
 /*           IMPORTED FILE            */
 /* ********************************** */
 # include "../library/libft/libft.h"
+# include "../library/minilibx-linux/mlx.h"
+# include "../library/minilibx-linux/mlx_int.h"
 
-#ifdef LINUX
-    # include "../library/minilibx-linux/mlx.h"
-    # include "../library/minilibx-linux/mlx_int.h"
-#else
-    # include "../library/minilibx-opengl/mlx.h"
-    # include "../library/minilibx-opengl/mlx_int.h"
-    # include "../library/minilibx-opengl/mlx_new_window.h"
-    # include "../library/minilibx-opengl/mlx_opengl.h"
-    # include "../library/minilibx-opengl/mlx_png.h"
-#endif
 /* ********************************** */
 /*               MAIN                 */
 /* ********************************** */
-int	main(int argc, char **argv);
+int	main(void);
 
 #endif
