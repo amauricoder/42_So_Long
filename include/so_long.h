@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:24 by aconceic          #+#    #+#             */
-/*   Updated: 2024/01/28 18:13:31 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/01/29 15:53:48 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,46 @@
 # include "../library/minilibx-linux/mlx_int.h"
 
 /* ********************************** */
+/*              STRUCTS               */
+/* ********************************** */
+//For Map
+typedef struct s_map
+{
+	char 	**map;
+	int		map_lines;
+
+}   t_map;
+//For Mlx
+typedef struct s_mlx_data
+{
+	void    *mlx_connection;
+	void    *mlx_window;
+}   t_mlx_data;
+/* ********************************** */
 /*               MAIN                 */
 /* ********************************** */
-int	main(void);
+int		main(int argv, char **argc);
+void	error_message(int flag);
+/* ********************************** */
+/*                MAP                 */
+/*         source/map_validation.c    */
+/* ********************************** */
+char    **map_read(char *file_path);
+int		map_lines_counter(char *file_path);
+/* ********************************** */
+/*               FT UTILS             */
+/*           source/ft_utils.c        */
+/* ********************************** */
+int 	ft_check_extention(char *file_name);
+void	ft_free_dp_char(char **dp_char);
+/* ********************************** */
+/*              GAME UTILS            */
+/*          source/game_utils.c       */
+/* ********************************** */
 
+/* ********************************** */
+/*            RENDER UTILS            */
+/*         source/render_utils.c      */
+/* ********************************** */
+void    render_window(void);
 #endif

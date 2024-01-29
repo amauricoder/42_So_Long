@@ -10,6 +10,8 @@ RM = rm -rf
 #SRCS = Variable that store the sources.
 PRINTFDIR = ft_printf/
 PRINTFLIB = ft_printf/libftprintf.a
+GNL_DIR = get_next_line/
+GNL_LIB = get_next_line/gnl.a
 
 SRCS = 	ft_atoi.c \
 		ft_bzero.c \
@@ -44,7 +46,7 @@ SRCS = 	ft_atoi.c \
 		ft_putstr_fd.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c \
-		ft_split.c
+		ft_split.c \
 
 BONUSSRC = 	ft_lstnew.c \
 			ft_lstadd_front.c \
@@ -63,9 +65,10 @@ NAME = libft.a
 
 all: $(NAME)
 
-$(NAME) : $(OBJS) $(PRINTFLIB)
+$(NAME) : $(OBJS) $(PRINTFLIB) $(GNL_LIB)
 #	$(CC) $(CFLAGS) main.c $(OBJS) -o $(NAME)
 	@cp $(PRINTFLIB) $(NAME)
+	@cp  $(GNL_LIB) $(NAME)
 	@ar rc $(NAME) $(OBJS)
 
 #BONUS =======>>> needs to check
@@ -76,10 +79,12 @@ bonus: $(OBJS) $(OBJSBONUS) $(PRINTFLIB)
 clean:
 	$(RM) $(OBJS) $(OBJSBONUS)
 	make clean -C $(PRINTFDIR)
+	make fclean -C $(GNL_DIR)
 
 fclean: clean
 	$(RM) $(NAME)
 	make fclean -C $(PRINTFDIR)
+	make fclean -C $(GNL_DIR)
 
 re: fclean all
 
@@ -87,6 +92,9 @@ re: fclean all
 $(PRINTFLIB) : $(PRINTFDIR)
 	make -C $(PRINTFDIR)
 
+#create lib for gnl
+$(GNL_LIB) : $(GNL_DIR)
+	make -C $(GNL_DIR)
 #$< gives the name of the first prerequisite.
 #$@ represents the name fo the target being built in the current rule.
 #$^ prints the name of all the prerequisites

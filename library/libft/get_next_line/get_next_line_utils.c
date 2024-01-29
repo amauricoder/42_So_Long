@@ -6,13 +6,13 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:50:04 by aconceic          #+#    #+#             */
-/*   Updated: 2023/11/09 14:56:07 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/01/29 13:40:45 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	*ft_calloc_gnl(size_t nmemb, size_t size)
 {
 	size_t		total_size;
 	char		*ptr;
@@ -31,7 +31,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	return ((void *)ptr);
 }
 
-int	ft_strlen(char *s)
+int	ft_strlen_gnl(char *s)
 {
 	int	i;
 
@@ -43,16 +43,16 @@ int	ft_strlen(char *s)
 	return (i);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin_gnl(char *s1, char *s2)
 {
 	char	*new_str;
 	size_t	i;
 	size_t	j;
 
 	if (!s1)
-		s1 = ft_calloc(sizeof(char), 1);
-	new_str = (char *)ft_calloc(sizeof(char),
-			(ft_strlen(s1) + ft_strlen(s2) + 1));
+		s1 = ft_calloc_gnl(sizeof(char), 1);
+	new_str = (char *)ft_calloc_gnl(sizeof(char),
+			(ft_strlen_gnl(s1) + ft_strlen_gnl(s2) + 1));
 	if (!new_str)
 	{
 		free(s1);
@@ -70,7 +70,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (new_str);
 }
 
-char	*ft_strchr(char *s, int c)
+char	*ft_strchr_gnl(char *s, int c)
 {
 	size_t	i;
 

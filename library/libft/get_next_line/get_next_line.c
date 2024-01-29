@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:49:08 by aconceic          #+#    #+#             */
-/*   Updated: 2023/11/21 09:11:15 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/01/29 13:39:46 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ char	*read_line(int fd, char *stash)
 	char	*buffer;
 
 	bytes_read = 1;
-	while (bytes_read != 0 && !ft_strchr(stash, '\n'))
+	while (bytes_read != 0 && !ft_strchr_gnl(stash, '\n'))
 	{
-		buffer = ft_calloc(sizeof(char), BUFFER_SIZE + 1);
+		buffer = ft_calloc_gnl(sizeof(char), BUFFER_SIZE + 1);
 		if (!buffer)
 		{
 			if (stash)
@@ -34,7 +34,7 @@ char	*read_line(int fd, char *stash)
 			free(stash);
 			return (NULL);
 		}
-		stash = ft_strjoin(stash, buffer);
+		stash = ft_strjoin_gnl(stash, buffer);
 	}
 	return (stash);
 }
@@ -49,9 +49,9 @@ char	*extract_excedent(char *stash)
 		return (NULL);
 	while (stash[i] != '\n' && stash[i] != '\0')
 		i ++;
-	if (ft_strchr(stash, '\n'))
+	if (ft_strchr_gnl(stash, '\n'))
 		i ++;
-	extract_line = ft_calloc(sizeof(char), i + 1);
+	extract_line = ft_calloc_gnl(sizeof(char), i + 1);
 	if (!extract_line)
 		return (NULL);
 	i = 0;
@@ -76,13 +76,13 @@ char	*update_stash(char *old_stash)
 	i = 0;
 	while (old_stash[i] != '\0' && old_stash[i] != '\n')
 		i++;
-	if (!old_stash || !ft_strchr(old_stash, '\n'))
+	if (!old_stash || !ft_strchr_gnl(old_stash, '\n'))
 	{
 		free(old_stash);
 		return (NULL);
 	}
-	len = ft_strlen(&old_stash[i] + 1);
-	stash_update = ft_calloc(sizeof(char), len + 1);
+	len = ft_strlen_gnl(&old_stash[i] + 1);
+	stash_update = ft_calloc_gnl(sizeof(char), len + 1);
 	if (!stash_update)
 		return (NULL);
 	j = 0;

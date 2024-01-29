@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 14:43:21 by aconceic          #+#    #+#             */
-/*   Updated: 2023/12/13 22:42:09 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/01/29 14:26:54 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 //include printf path
 # include "ft_printf/ft_printf.h"
+# include "./get_next_line/get_next_line.h"
 
 /* Checkers */
 int		ft_isalpha(int c);

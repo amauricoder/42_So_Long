@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:50:02 by aconceic          #+#    #+#             */
-/*   Updated: 2023/11/21 09:11:28 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/01/29 11:33:24 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@
 //                                 Functions                                  //
 //****************************************************************************//
 char	*get_next_line(int fd);
-char	*ft_strchr(char *s, int c);
-char	*ft_strjoin(char *s1, char *s2);
-int		ft_strlen(char *s);
-void	*ft_calloc(size_t nmemb, size_t size);
+char	*ft_strchr_gnl(char *s, int c);
+char	*ft_strjoin_gnl(char *s1, char *s2);
+int		ft_strlen_gnl(char *s);
+void	*ft_calloc_gnl(size_t nmemb, size_t size);
 
 #endif

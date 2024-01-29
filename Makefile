@@ -6,7 +6,7 @@
 #    By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/24 16:10:12 by aconceic          #+#    #+#              #
-#    Updated: 2024/01/27 13:01:38 by aconceic         ###   ########.fr        #
+#    Updated: 2024/01/29 14:39:28 by aconceic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,12 +32,16 @@ RM = rm -rf
 LIBFT_DIR = library/libft/
 LIBFT_LIB = $(LIBFT_DIR)libft.a
 PRINTF_DIR = $(LIBFT_DIR)/ft_printf
+GNL_DIR = $(LIBFT_DIR)get_next_line/
+GNL_LIB = $(GNL_DIR)gnl.a
+
 #Project
 NAME = so_long
-OBJ_DIR = ./objs
+OBJ_DIR = ./objs/
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 SRC_DIR = ./source/
-SRC = $(filter-out main.c, $(wildcard *.c))
+SRC = map_validation.c ft_utils.c game_utils.c \
+	  render_utils.c \
 ##############################################
 #                  MiniLibX                  #
 ##############################################
@@ -68,10 +72,10 @@ $(OBJ_DIR) :
 
 $(NAME) : $(OBJ) $(LIBFT_LIB)
 	@echo "$(ORANGE)[!]$(RESET) Working on project ... "
-	$(CC) $(CFLAGS) $(OBJ) $(SRC_DIR)main.c $(LIBFT_LIB) $(MLXFLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(SRC_DIR)main.c $(LIBFT_LIB) $(GNL_LIB) $(MLXFLAGS) -o $(NAME)
 	@echo "$(GREEN)[✔]$(RESET) $(BLUE)Ok!$(RESET) "
 
-$(OBJ_DIR)%.o: %.c | $(OBJ_DIR) main.c
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJ_DIR)
 	@echo "$(ORANGE)[!]$(RESET) Creating objects ..."
 	$(CC) $(CFLAGS) -c $< -o $@
 	@echo "$(GREEN)[✔]$(RESET) $(BLUE)Objects Ok!$(RESET) "
@@ -80,6 +84,7 @@ $(LIBFT_LIB) : $(LIBFT_DIR)
 	@echo "$(ORANGE)[!]$(RESET) Working on LIBFT_LIB ..."
 	$(MAKEC) $(LIBFT_DIR) bonus
 	$(MAKEC) $(PRINTF_DIR)
+	$(MAKEC) $(GNL_DIR)
 	@echo "$(GREEN)[✔]$(RESET) $(BLUE)LIBFT Ok!$(RESET)"
 
 clean :
