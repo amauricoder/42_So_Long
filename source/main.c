@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:21 by aconceic          #+#    #+#             */
-/*   Updated: 2024/01/29 17:50:14 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/01/31 17:18:00 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,21 @@
 
 int main(int argc, char **argv)
 {
-	//check input
-	//if input is valid
-		//run game
-	//else
-		//error and stop
-	char **test;
+	t_map 		*map;
+	t_mlx_data 	*render;
 
 	if (argc == 2 && ft_check_extention(argv[1]) == 1)
 	{
-		test = map_read(argv[1]);
-		ft_free_dp_char(test);
+		map = map_init(argv[1]);
+		render = NULL;
+		if (map_valid_allrequisites(map))
+		{
+			ft_printf("Here start the game\n");
+			game_init(render, map);
+			//ft_printf("dont forget to clean the render");
+		}
+		free_map_struct(map);
+		free(render);
 	}
 	else
 		error_message(1);
@@ -39,4 +43,18 @@ void	error_message(int flag)
 		write(2, "Error\nCouldn't open map file.\n", 29);
 	if (flag == 2)
 		write(2, "Error\nInvalid Map.\n", 19);
+	if (flag == 3)
+		write(2, "Error\nInvalid Map init.\n", 24);
+	if (flag == 4)
+		write(2, "Error\nInvalid Map line.\n", 24);
+	if (flag == 5)
+		write(2, "Error\nInvalid Map - invalid char on map.\n", 41);
+	if (flag == 6)
+		write(2, "Error\nInvalid Map - Map not closed.\n", 37);
+	if (flag == 7)
+		write(2, "Error\nInvalid Map - No collectables.\n", 37);
+	if (flag == 8)
+		write(2, "Error\nInvalid Map - Only 1 Player/Exit.\n", 41);
+	if (flag == 9)
+		write(2, "Error\nInvalid Map - Invalid Map Size\n", 41);
 }

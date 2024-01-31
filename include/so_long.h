@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:24 by aconceic          #+#    #+#             */
-/*   Updated: 2024/01/29 15:53:48 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/01/31 17:26:37 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,41 +60,73 @@
 //For Map
 typedef struct s_map
 {
-	char 	**map;
-	int		map_lines;
-
+	char 	**map_skeleton;
+	int		qt_lines;
+	int		qt_chars_lines;
+	int		qt_player;
+	int		qt_collect;
+	int		qt_exit;
 }   t_map;
+
 //For Mlx
 typedef struct s_mlx_data
 {
-	void    *mlx_connection;
-	void    *mlx_window;
+	void    *connect;
+	void    *window;
 }   t_mlx_data;
+
+//general struct
+typedef struct s_game
+{
+	t_map		*map;
+	t_mlx_data	*mlx;
+}	t_game;
 /* ********************************** */
 /*               MAIN                 */
 /* ********************************** */
 int		main(int argv, char **argc);
 void	error_message(int flag);
+
 /* ********************************** */
-/*                MAP                 */
+/*              MAP INIT              */
+/*          source/map_init.c         */
+/* ********************************** */
+char	**map_read(char *file_path);
+int		map_lines_counter(char *file_path);
+t_map	*map_init(char *file_path);
+int		map_char_counter(char *file_path);
+
+/* ********************************** */
+/*            MAP VALIDATION          */
 /*         source/map_validation.c    */
 /* ********************************** */
-char    **map_read(char *file_path);
-int		map_lines_counter(char *file_path);
+int		map_valid_allrequisites(t_map *map);
+int		map_valid_characters(t_map *map);
+int		map_valid_isclosed(t_map *map);
+int		map_valid_mustchar(t_map *map);
+int		map_valid_minsize(t_map *map);
+
 /* ********************************** */
 /*               FT UTILS             */
 /*           source/ft_utils.c        */
 /* ********************************** */
 int 	ft_check_extention(char *file_name);
-void	ft_free_dp_char(char **dp_char);
+int		ft_countchar(char *str);
+
+/* ********************************** */
+/*              GAME INIT             */
+/*          source/game_init.c        */
+/* ********************************** */
+t_mlx_data	*game_init(t_mlx_data *render, t_map *map);
 /* ********************************** */
 /*              GAME UTILS            */
 /*          source/game_utils.c       */
 /* ********************************** */
 
 /* ********************************** */
-/*            RENDER UTILS            */
-/*         source/render_utils.c      */
+/*            FREE FUNCTIONS          */
+/*           source/ft_free.c         */
 /* ********************************** */
-void    render_window(void);
+void	free_dp_char(char **dp_char);
+void	free_map_struct(t_map *map_struct);
 #endif
