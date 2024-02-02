@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:24 by aconceic          #+#    #+#             */
-/*   Updated: 2024/01/31 17:26:37 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/01/31 17:31:18 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,6 @@ typedef struct s_mlx_data
 	void    *connect;
 	void    *window;
 }   t_mlx_data;
-
-//general struct
-typedef struct s_game
-{
-	t_map		*map;
-	t_mlx_data	*mlx;
-}	t_game;
 /* ********************************** */
 /*               MAIN                 */
 /* ********************************** */

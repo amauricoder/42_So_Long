@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:27:56 by aconceic          #+#    #+#             */
-/*   Updated: 2024/01/31 17:18:20 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/01/31 17:36:15 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,5 @@ t_mlx_data	*game_init(t_mlx_data *render, t_map *map)
 	render->connect = mlx_init();
 	render->window = mlx_new_window(render->connect, height, width, "So Long");
 
-	mlx_loop(render->connect);
 	return (render);
 }

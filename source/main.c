@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:21 by aconceic          #+#    #+#             */
-/*   Updated: 2024/01/31 17:18:00 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/01/31 17:41:56 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ int main(int argc, char **argv)
 		render = NULL;
 		if (map_valid_allrequisites(map))
 		{
-			ft_printf("Here start the game\n");
-			game_init(render, map);
+			//Here I need to start and render the images as well
+			render = game_init(render, map);
+			//Here I need to hook.
+			mlx_loop(render->connect);
 			//ft_printf("dont forget to clean the render");
 		}
 		free_map_struct(map);
