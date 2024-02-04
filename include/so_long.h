@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:24 by aconceic          #+#    #+#             */
-/*   Updated: 2024/01/31 17:31:18 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/02/03 17:55:28 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ t_mlx_data	*game_init(t_mlx_data *render, t_map *map);
 /*              GAME UTILS            */
 /*          source/game_utils.c       */
 /* ********************************** */
+int	game_keypress(int keypressed, t_mlx_data *render);
 
 /* ********************************** */
 /*            FREE FUNCTIONS          */
