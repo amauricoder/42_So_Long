@@ -3,27 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   game_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:27:56 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/03 18:08:10 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/02/07 13:43:56 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-t_mlx_data	*game_init(t_mlx_data *render, t_map *map)
+void	game_init(t_game *game)
 {
+
 	int height;
 	int width;
 
-	height = map->qt_lines * 32;
-	width = map->qt_chars_lines * 32;
+	height = game->map->qt_lines * 32;
+	width = game->map->qt_chars_lines * 32;
 
-	render = ft_calloc(sizeof(t_mlx_data), 1);
-	if (!render)
-		return (NULL);
-	render->connect = mlx_init();
-	render->window = mlx_new_window(render->connect, height, width, "So Long");
-	return (render);
+	game->mlx_data->connect = mlx_init();
+	game->mlx_data->window = mlx_new_window(game->mlx_data->connect, height, width, "So Long");
 }

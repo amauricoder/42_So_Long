@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:12:30 by aconceic          #+#    #+#             */
-/*   Updated: 2024/01/31 14:16:22 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/02/07 13:49:17 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,22 +100,28 @@ int     map_char_counter(char *file_path)
 //init the map structure with values
 //that we took from other functions
 //returns the map structure filled with values.
-t_map	*map_init(char *file_path)
+t_game	*map_init(char *file_path)
 {
-	t_map *map;
-	
+	t_game 		*game;
+	t_map		*map;
+	t_mlx_data *data_mlx;
+
+	game = malloc(sizeof(t_game) * 1);
 	map = malloc(sizeof(t_map) * 1);
-	if(!map)
+	data_mlx = malloc(sizeof(t_mlx_data) * 1);
+	if(!game || !map || !data_mlx)
 	{
 		error_message(3);
 		return (NULL);
 	}
-	map->map_skeleton = map_read(file_path);
-	map->qt_lines = map_lines_counter(file_path);
-	map->qt_chars_lines = map_char_counter(file_path);
-	map->qt_player = 0;
-	map->qt_collect = 0;
-	map->qt_exit = 0;
+	game->map = map;
+	game->map->map_skeleton = map_read(file_path);
+	game->map->qt_lines = map_lines_counter(file_path);
+	game->map->qt_chars_lines = map_char_counter(file_path);
+	game->map->qt_player = 0;
+	game->map->qt_collect = 0;
+	game->map->qt_exit = 0;
+	game->data_mlx = data_mlx;
 	
-	return (map);
+	return (game);
 }

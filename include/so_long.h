@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:24 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/03 17:55:28 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/02/07 13:53:13 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,14 @@ typedef struct s_mlx_data
 	void    *connect;
 	void    *window;
 }   t_mlx_data;
+
+//Game main structure
+typedef struct s_game
+{
+	t_map *map;
+	t_mlx_data *data_mlx;
+}	t_game;
+
 /* ********************************** */
 /*               MAIN                 */
 /* ********************************** */
@@ -86,7 +94,7 @@ void	error_message(int flag);
 /* ********************************** */
 char	**map_read(char *file_path);
 int		map_lines_counter(char *file_path);
-t_map	*map_init(char *file_path);
+t_game	*map_init(char *file_path);
 int		map_char_counter(char *file_path);
 
 /* ********************************** */
@@ -110,17 +118,24 @@ int		ft_countchar(char *str);
 /*              GAME INIT             */
 /*          source/game_init.c        */
 /* ********************************** */
-t_mlx_data	*game_init(t_mlx_data *render, t_map *map);
+void	game_init(t_game *game);
 /* ********************************** */
 /*              GAME UTILS            */
 /*          source/game_utils.c       */
 /* ********************************** */
-int	game_keypress(int keypressed, t_mlx_data *render);
+void	game_close(t_game *game);
+
+/* ********************************** */
+/*            GAME COMMANDS           */
+/*        source/game_commands.c      */
+/* ********************************** */
+int		game_commands(t_game *game);
+int		game_keypress(int keypressed, t_game *game);
 
 /* ********************************** */
 /*            FREE FUNCTIONS          */
 /*           source/ft_free.c         */
 /* ********************************** */
 void	free_dp_char(char **dp_char);
-void	free_map_struct(t_map *map_struct);
+void	free_game_struct(t_game *game);
 #endif

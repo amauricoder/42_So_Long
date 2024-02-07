@@ -3,24 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   game_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 10:27:46 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/04 13:44:02 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/02/07 13:51:55 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int	game_keypress(int keypressed, t_mlx_data *render)
+void	game_close(t_game *game)
 {
-	if (keypressed == KB_ESC)
-	{
-		mlx_destroy_window(render->connect, render->window);
-		mlx_destroy_display(render->connect);
-		free(render);
-		exit(0);
-	}
-	ft_printf("Key pressed number %i\n", keypressed);
-	return (0);
+	mlx_destroy_window(game->data_mlx->connect, game->data_mlx->window);
+	mlx_destroy_display(game->data_mlx->connect);
+	free_dp_char(game->map->map_skeleton);
+	free(game->map);
+	free(game->data_mlx);
+	free(game);
+	exit(0);
 }
