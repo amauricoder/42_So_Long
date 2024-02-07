@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:21 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/07 13:56:44 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/07 16:38:57 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,6 @@ void	error_message(int flag)
 		write(2, "Error\nInvalid Map - Only 1 Player/Exit.\n", 41);
 	if (flag == 9)
 		write(2, "Error\nInvalid Map - Invalid Map Size\n", 38);
+	if (flag == 10)
+		write(2, "Error\nError importing map image\n", 33);
 }

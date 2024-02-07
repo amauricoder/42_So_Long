@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 09:21:48 by aconceic          #+#    #+#             */
-/*   Updated: 2024/01/30 10:33:00 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/02/07 16:31:17 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,25 @@ int	ft_countchar(char *str)
 	while (str[i] != '\0' && str[i] != '\n')
 		i ++;
 	return (i);
+}
+
+void	ft_alloc_img(t_game *game)
+{
+	game->map->img_murr = malloc(sizeof(void *));
+	game->map->img_wallbl = malloc(sizeof(void *));
+	game->map->img_wallbr = malloc(sizeof(void *));
+	game->map->img_wallc = malloc(sizeof(void *));
+	game->map->img_walll = malloc(sizeof(void *));
+	game->map->img_wallml = malloc(sizeof(void *));
+	game->map->img_wallmr = malloc(sizeof(void *));
+	game->map->img_wallr = malloc(sizeof(void *));
+	game->map->img_wallbc = malloc(sizeof(void *));
+
+	if (!game->map->img_murr || !game->map->img_wallbl || !game->map->img_wallbr
+		|| !game->map->img_wallc || !game->map->img_walll || !game->map->img_wallml
+		|| !game->map->img_wallmr  || !game->map->img_wallr || !game->map->img_wallbc)
+	{
+		error_message(10);
+		return ;
+	}
 }

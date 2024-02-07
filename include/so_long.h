@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:24 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/07 13:53:13 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/07 16:33:49 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,20 @@
 # define KB_ARIGHT 65363
 
 /* ********************************** */
+/*              SPRITES               */
+/* ********************************** */
+# define GROUND "../assets/sheets/tiles/ground.xpm"
+# define MURR "../assets/sheets/tiles/murr.xpm"
+# define WALL_BL "../assets/sheets/tiles/wall_bl.xpm"
+# define WALL_BR "../assets/sheets/tiles/wall_br.xpm"
+# define WALL_C "../assets/sheets/tiles/wall_c.xpm"
+# define WALL_L "../assets/sheets/tiles/wall_l.xpm"
+# define WALL_ML "../assets/sheets/tiles/wall_ml.xpm"
+# define WALL_MR "../assets/sheets/tiles/wall_mr.xpm"
+# define WALL_R "../assets/sheets/tiles/wall_r.xpm"
+# define WALL_BC "../assets/sheets/tiles/wall_bc.xpm"
+
+/* ********************************** */
 /*           EXTERNAL LIBS            */
 /* ********************************** */
 #include <stdlib.h> //malloc(), free(), exit()
@@ -66,6 +80,15 @@ typedef struct s_map
 	int		qt_player;
 	int		qt_collect;
 	int		qt_exit;
+	void	*img_murr;
+	void	*img_wallbl;
+	void	*img_wallbr;
+	void	*img_wallc;
+	void	*img_walll;
+	void	*img_wallml;
+	void	*img_wallmr;
+	void	*img_wallr;
+	void	*img_wallbc;
 }   t_map;
 
 //For Mlx
@@ -113,12 +136,15 @@ int		map_valid_minsize(t_map *map);
 /* ********************************** */
 int 	ft_check_extention(char *file_name);
 int		ft_countchar(char *str);
+void	ft_alloc_img(t_game *game);
 
 /* ********************************** */
 /*              GAME INIT             */
 /*          source/game_init.c        */
 /* ********************************** */
 void	game_init(t_game *game);
+void	game_get_img(t_game *game);
+
 /* ********************************** */
 /*              GAME UTILS            */
 /*          source/game_utils.c       */
