@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 09:43:32 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/08 17:55:21 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/08 18:14:40 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,15 +117,20 @@ int	draw_mapsides(t_game *game)
 		render_height = render_height + 32;
 		i ++;
 	}
-	line_width = game->map->qt_chars_lines - 2;
+	line_width = game->map->qt_chars_lines - 1;
 	render_height = 32;
 	i = 0;
 	while(map_skeleton[i])
 	{
 		if (map_skeleton[i][line_width] == '1')
-			mlx_put_image_to_window(game->data_mlx->connect, game->data_mlx->window, game->map->img_wallmr, line_width * 32, render_height);
+		{
+			mlx_put_image_to_window(game->data_mlx->connect, game->data_mlx->window, game->map->img_wallmr, (line_width - 1) * 32, render_height);
+		}
+		if (i == game->map->qt_lines - 3)
+			break;
 		render_height = render_height + 32;
 		i ++;
 	}
+	//dont forget to clent this double pointer char
 	return (0);
 }
