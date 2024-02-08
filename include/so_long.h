@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:24 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/07 16:33:49 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/08 11:46:40 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,16 @@
 /* ********************************** */
 /*              SPRITES               */
 /* ********************************** */
-# define GROUND "../assets/sheets/tiles/ground.xpm"
-# define MURR "../assets/sheets/tiles/murr.xpm"
-# define WALL_BL "../assets/sheets/tiles/wall_bl.xpm"
-# define WALL_BR "../assets/sheets/tiles/wall_br.xpm"
-# define WALL_C "../assets/sheets/tiles/wall_c.xpm"
-# define WALL_L "../assets/sheets/tiles/wall_l.xpm"
-# define WALL_ML "../assets/sheets/tiles/wall_ml.xpm"
-# define WALL_MR "../assets/sheets/tiles/wall_mr.xpm"
-# define WALL_R "../assets/sheets/tiles/wall_r.xpm"
-# define WALL_BC "../assets/sheets/tiles/wall_bc.xpm"
+# define GROUND "assets/sheets/tiles/ground.xpm"
+# define MURR "assets/sheets/tiles/murr.xpm"
+# define WALL_BL "assets/sheets/tiles/wall_bl.xpm"
+# define WALL_BR "assets/sheets/tiles/wall_br.xpm"
+# define WALL_C "assets/sheets/tiles/wall_c.xpm"
+# define WALL_L "assets/sheets/tiles/wall_l.xpm"
+# define WALL_ML "assets/sheets/tiles/wall_ml.xpm"
+# define WALL_MR "assets/sheets/tiles/wall_mr.xpm"
+# define WALL_R "assets/sheets/tiles/wall_r.xpm"
+# define WALL_BC "assets/sheets/tiles/wall_bc.xpm"
 
 /* ********************************** */
 /*           EXTERNAL LIBS            */
@@ -103,6 +103,8 @@ typedef struct s_game
 {
 	t_map *map;
 	t_mlx_data *data_mlx;
+	int	img_h;
+	int img_w;
 }	t_game;
 
 /* ********************************** */
@@ -150,6 +152,12 @@ void	game_get_img(t_game *game);
 /*          source/game_utils.c       */
 /* ********************************** */
 void	game_close(t_game *game);
+
+/* ********************************** */
+/*             GAME RENDER            */
+/*         source/game_render.c       */
+/* ********************************** */
+int game_drawmap(t_game *game);
 
 /* ********************************** */
 /*            GAME COMMANDS           */

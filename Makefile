@@ -6,7 +6,7 @@
 #    By: murilo <murilo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/24 16:10:12 by aconceic          #+#    #+#              #
-#    Updated: 2024/02/07 12:39:42 by murilo           ###   ########.fr        #
+#    Updated: 2024/02/08 09:44:38 by murilo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,8 +40,9 @@ NAME = so_long
 OBJ_DIR = ./objs/
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 SRC_DIR = ./source/
-SRC = map_validation.c ft_utils.c game_utils.c \
-	  game_init.c game_commands.c ft_free.c map_init.c \
+SRC = 	map_validation.c ft_utils.c game_utils.c \
+		game_init.c game_commands.c ft_free.c map_init.c \
+		game_render.c \
 
 ##############################################
 #                  MiniLibX                  #

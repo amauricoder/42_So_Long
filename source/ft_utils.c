@@ -6,18 +6,26 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 09:21:48 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/07 16:31:17 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/07 17:21:21 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
 //Check if the ARGV have the .ber at the end.
-//Return 1 if ok, -1 in case of error.
+//Return 1 if ok, 0 in case dont.
 int	ft_check_extention(char *file_name)
 {
+	int	name_size;
+
+	name_size = ft_strlen(file_name);
+	if (name_size <= 4)
+		return (0);
 	if (ft_strncmp(file_name + ft_strlen(file_name) - 4, ".ber", 4) != 0)
-		return (-1);
+		return (0);
+	if (name_size == 5 && file_name[0] == '/')
+		return (0);
+	
 	return (1);
 }
 

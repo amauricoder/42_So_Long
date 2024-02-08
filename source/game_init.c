@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:27:56 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/07 16:39:53 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/08 14:00:19 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,32 +17,33 @@ void	game_init(t_game *game)
 	int height;
 	int width;
 
-	height = game->map->qt_lines * 32;
-	width = game->map->qt_chars_lines * 32;
+	width = (game->map->qt_lines - 1) * 32;
+	height = (game->map->qt_chars_lines - 1) * 32;
 
+	ft_printf("MAP WIDTH %i\n", width);
+	ft_printf("MAP HEIGHT %i\n", height);
 	game->data_mlx->connect = mlx_init();
 	game->data_mlx->window = mlx_new_window(game->data_mlx->connect, height, width, "So Long");
 	game_get_img(game);
+	game_drawmap(game);
 }
 
 void	game_get_img(t_game *game)
 {
-	int	img_h;
-	int	img_w;
-
-	img_h = 32;
-	img_w = 27;
-
+	
 	ft_alloc_img(game);
-	game->map->img_murr = mlx_xpm_file_to_image(game->data_mlx->connect, MURR, &img_h, &img_w);
-	game->map->img_wallbl = mlx_xpm_file_to_image(game->data_mlx->connect, WALL_BL, &img_h, &img_w);
-	game->map->img_wallbr = mlx_xpm_file_to_image(game->data_mlx->connect, WALL_BR, &img_h, &img_w);
-	game->map->img_wallc = mlx_xpm_file_to_image(game->data_mlx->connect, WALL_C, &img_h, &img_w);
-	game->map->img_walll = mlx_xpm_file_to_image(game->data_mlx->connect, WALL_L, &img_h, &img_w);
-	game->map->img_wallml = mlx_xpm_file_to_image(game->data_mlx->connect, WALL_ML, &img_h, &img_w);
-	game->map->img_wallmr = mlx_xpm_file_to_image(game->data_mlx->connect, WALL_MR, &img_h, &img_w);
-	game->map->img_wallr = mlx_xpm_file_to_image(game->data_mlx->connect, WALL_R, &img_h, &img_w);
-	game->map->img_wallbc = mlx_xpm_file_to_image(game->data_mlx->connect, WALL_BC, &img_h, &img_w);
+	game->map->img_murr = mlx_xpm_file_to_image(game->data_mlx->connect, MURR, &game->img_h, &game->img_w);
+	game->map->img_wallbl = mlx_xpm_file_to_image(game->data_mlx->connect, WALL_BL, &game->img_h, &game->img_w);
+	game->map->img_wallbr = mlx_xpm_file_to_image(game->data_mlx->connect, WALL_BR, &game->img_h, &game->img_w);
+	game->map->img_wallc = mlx_xpm_file_to_image(game->data_mlx->connect, WALL_C, &game->img_h, &game->img_w);
+	game->map->img_walll = mlx_xpm_file_to_image(game->data_mlx->connect, WALL_L, &game->img_h, &game->img_w);
+	game->map->img_wallml = mlx_xpm_file_to_image(game->data_mlx->connect, WALL_ML, &game->img_h, &game->img_w);
+	game->map->img_wallmr = mlx_xpm_file_to_image(game->data_mlx->connect, WALL_MR, &game->img_h, &game->img_w);
+	game->map->img_wallr = mlx_xpm_file_to_image(game->data_mlx->connect, WALL_R, &game->img_h, &game->img_w);
+	game->map->img_wallbc = mlx_xpm_file_to_image(game->data_mlx->connect, WALL_BC, &game->img_h, &game->img_w);
 
+	//ft_printf("%s\n", WALL_L);
+	if(game->map->img_wallr == NULL)
+		ft_printf("IMAGE IS NULL!! AT GAME_GET_IMG\n");
 	//ft_printf("Dont forget to clean this pointerss")
 }

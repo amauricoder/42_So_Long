@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:21 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/07 16:38:57 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/07 17:18:19 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	error_message(int flag)
 	if (flag == 0)
 		write(2, "Error\nInvalid Sintax\n", 22);
 	if (flag == 1)
-		write(2, "Error\nCouldn't open map file.\n", 29);
+		write(2, "Error\nCouldn't open map file.\n", 30);
 	if (flag == 2)
 		write(2, "Error\nInvalid Map.\n", 19);
 	if (flag == 3)
