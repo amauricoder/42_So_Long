@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:27:56 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/08 17:55:42 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/08 20:11:41 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	game_init(t_game *game)
 void	game_get_img(t_game *game)
 {
 	
-	ft_alloc_img(game);
+	//ft_alloc_img(game);
 	game->map->img_murr = mlx_xpm_file_to_image(game->data_mlx->connect, MURR, &game->img_h, &game->img_w);
 	game->map->img_wallbl = mlx_xpm_file_to_image(game->data_mlx->connect, WALL_BL, &game->img_h, &game->img_w);
 	game->map->img_wallbr = mlx_xpm_file_to_image(game->data_mlx->connect, WALL_BR, &game->img_h, &game->img_w);

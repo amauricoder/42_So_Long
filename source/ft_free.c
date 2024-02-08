@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 08:52:12 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/07 13:55:11 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/08 20:22:27 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,3 +37,26 @@ void	free_game_struct(t_game *game)
 	free(game->data_mlx);
 	free(game);
 }
+
+void	free_map_imgptr(t_game *game)
+{
+	mlx_destroy_image(game->data_mlx->connect, game->map->img_murr);
+	mlx_destroy_image(game->data_mlx->connect, game->map->img_wallbc);
+	mlx_destroy_image(game->data_mlx->connect, game->map->img_wallbl);
+	mlx_destroy_image(game->data_mlx->connect, game->map->img_wallbr);
+	mlx_destroy_image(game->data_mlx->connect, game->map->img_wallc);
+	mlx_destroy_image(game->data_mlx->connect, game->map->img_walll);
+	mlx_destroy_image(game->data_mlx->connect, game->map->img_wallml);
+	mlx_destroy_image(game->data_mlx->connect, game->map->img_wallmr);
+	mlx_destroy_image(game->data_mlx->connect, game->map->img_wallr);
+	/* free(game->map->img_murr);
+	free(game->map->img_wallbc);
+	free(game->map->img_wallbl);
+	free(game->map->img_wallbr);
+	free(game->map->img_wallc);
+	free(game->map->img_walll);
+	free(game->map->img_wallml);
+	free(game->map->img_wallmr);
+	free(game->map->img_wallr);
+	*/
+} 

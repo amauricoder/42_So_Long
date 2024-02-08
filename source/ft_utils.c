@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 09:21:48 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/07 17:21:21 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/08 19:51:32 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,19 @@
 //Return 1 if ok, 0 in case dont.
 int	ft_check_extention(char *file_name)
 {
-	int	name_size;
+	int	fd;
 
-	name_size = ft_strlen(file_name);
-	if (name_size <= 4)
+	fd = open(file_name, O_RDONLY);
+	if (fd < 0)
+	{
+		close(fd);
 		return (0);
+	}
+
 	if (ft_strncmp(file_name + ft_strlen(file_name) - 4, ".ber", 4) != 0)
 		return (0);
-	if (name_size == 5 && file_name[0] == '/')
-		return (0);
-	
+
+	close(fd);
 	return (1);
 }
 

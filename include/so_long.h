@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:24 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/08 16:48:28 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/08 19:58:14 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@
 /* ********************************** */
 /*              SPRITES               */
 /* ********************************** */
+//walls
 # define GROUND "assets/sheets/tiles/ground.xpm"
 # define MURR "assets/sheets/tiles/murr.xpm"
 # define WALL_BL "assets/sheets/tiles/wall_bl.xpm"
@@ -51,6 +52,19 @@
 # define WALL_MR "assets/sheets/tiles/wall_mr.xpm"
 # define WALL_R "assets/sheets/tiles/wall_r.xpm"
 # define WALL_BC "assets/sheets/tiles/wall_bc.xpm"
+//character
+# define SFRONT "assets/sheets/bilu/stop_front.xpm"
+# define SBACK "assets/sheets/bilu/stop_back.xpm"
+# define SLEFT "assets/sheets/bilu/stop_left.xpm"
+# define SRIGHT "assets/sheets/bilu/stop_right.xpm"
+# define WBACK "assets/sheets/bilu/walking_back.xpm"
+# define WBACK2 "assets/sheets/bilu/walking_back2.xpm"
+# define WFRONT "assets/sheets/bilu/walking_front.xpm"
+# define WFRONT2 "assets/sheets/bilu/walking_front2.xpm"
+# define WLEFT "assets/sheets/bilu/walking_left.xpm"
+# define WLEFT2 "assets/sheets/bilu/walking_left2.xpm"
+# define WRIGHT "assets/sheets/bilu/walking_right.xpm"
+# define WRIGHT2 "assets/sheets/bilu/walking_right2.xpm"
 
 /* ********************************** */
 /*           EXTERNAL LIBS            */
@@ -176,4 +190,5 @@ int		game_keypress(int keypressed, t_game *game);
 /* ********************************** */
 void	free_dp_char(char **dp_char);
 void	free_game_struct(t_game *game);
+void	free_map_imgptr(t_game *game);
 #endif
