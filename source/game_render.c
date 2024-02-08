@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 09:43:32 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/08 14:16:07 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/08 17:55:21 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,118 @@
 
 int game_drawmap(t_game *game)
 {
-    ft_printf("Entrou em game_drawmap\n");
-    //int x;
-    //int y;
-    //charlines = width
-    //lines = heig
-    
-    char **map_skeleton;
-    int render_width;
-    int render_height;
-    int qt_tiles_height;
-    int qt_tiles_width;
-    
-    render_height = (game->map->qt_lines - 2) * 32;
-    render_width = (game->map->qt_chars_lines - 2) * 32;
-    qt_tiles_height = game->map->qt_lines - 1;
-    qt_tiles_width = game->map->qt_chars_lines - 1;
-    
-    ft_printf("VALOR RENDER HEIGHT %i \n", render_height);
-    ft_printf("VALOR RENDER WIDTH %i \n", render_width);
-    ft_printf("QT TILES HEIGHT %i\n", qt_tiles_height);
-    ft_printf("QT TILES WIDTH %i\n", qt_tiles_width);
-    
-    map_skeleton = game->map->map_skeleton;
-    //ft_printf("VALOR QT_TILES %i\n", qt_tiles);
-    if(map_skeleton[0][0] == '1')
-        mlx_put_image_to_window(game->data_mlx->connect, game->data_mlx->window, game->map->img_walll, 0, 0);
-    if (map_skeleton[0][qt_tiles_width] == '1')
-        mlx_put_image_to_window(game->data_mlx->connect, game->data_mlx->window, game->map->img_wallr, render_width, 0);   
-    if (map_skeleton[qt_tiles_height][0] == '1')
-       mlx_put_image_to_window(game->data_mlx->connect, game->data_mlx->window, game->map->img_wallbl, 0, render_height);
-    if (map_skeleton[qt_tiles_height][qt_tiles_width] == '1')
-       mlx_put_image_to_window(game->data_mlx->connect, game->data_mlx->window, game->map->img_wallbr, render_width, render_height);
-    return (0);
+	ft_printf("Entrou em game_drawmap\n");
+	draw_mapcorners(game);
+	draw_mapwallup(game);
+	draw_mapwallbottom(game);
+	draw_mapsides(game);
+	return (0);
+}
+//Draw the corners tiles of the map
+int draw_mapcorners(t_game *game)
+{
+	char **map_skeleton;
+	int render_width;
+	int render_height;
+	int qt_tiles_height;
+	int qt_tiles_width;
+	
+	render_height = (game->map->qt_lines - 1) * 32;
+	render_width = (game->map->qt_chars_lines - 2) * 32;
+	qt_tiles_height = game->map->qt_lines - 1;
+	qt_tiles_width = game->map->qt_chars_lines - 1;
+	map_skeleton = game->map->map_skeleton;
+	if(map_skeleton[0][0] == '1')
+		mlx_put_image_to_window(game->data_mlx->connect, game->data_mlx->window, game->map->img_walll, 0, 0);
+	if (map_skeleton[0][qt_tiles_width] == '1')
+		mlx_put_image_to_window(game->data_mlx->connect, game->data_mlx->window, game->map->img_wallr, render_width, 0);   
+	if (map_skeleton[qt_tiles_height][0] == '1')
+	   mlx_put_image_to_window(game->data_mlx->connect, game->data_mlx->window, game->map->img_wallbl, 0, render_height);
+	if (map_skeleton[qt_tiles_height][qt_tiles_width] == '1')
+	   mlx_put_image_to_window(game->data_mlx->connect, game->data_mlx->window, game->map->img_wallbr, render_width, render_height);
+	//dont forget to clen this map skeleton double pointer char
+	return (0);
+}
+//Draw the center tiles from the upside (expect the corners)
+int draw_mapwallup(t_game *game)
+{
+	char **map_skeleton;
+	int	i;
+	int render_pos;
+	int tiles_width;
+
+	tiles_width = game->map->qt_chars_lines - 1;
+	map_skeleton = game->map->map_skeleton;
+	render_pos = 32;
+	i = 2;
+	while (i < tiles_width)
+	{
+		if (map_skeleton[0][i] == '1')
+		{
+			mlx_put_image_to_window(game->data_mlx->connect, game->data_mlx->window, game->map->img_wallc, render_pos, 0);
+			render_pos = render_pos + 32;
+		}
+		i ++;
+	}
+	return (0);
+}
+//Draw the center tiles from the bottomside (expect the corners)
+int draw_mapwallbottom(t_game *game)
+{
+	char **map_skeleton;
+	int	i;
+	int render_pos;
+	int render_height;
+	int tiles_width;
+	int	last_line;
+
+	tiles_width = game->map->qt_chars_lines - 1;
+	map_skeleton = game->map->map_skeleton;
+	render_pos = 32;
+	last_line = game->map->qt_lines - 1;
+	i = 2;
+	render_height = last_line* 32;
+	while (i < tiles_width)
+	{
+		if (map_skeleton[last_line][i] == '1')
+		{
+			mlx_put_image_to_window(game->data_mlx->connect, game->data_mlx->window, game->map->img_wallbc, render_pos, render_height);
+			render_pos = render_pos + 32;
+		}
+		i ++;
+	}
+	//dont forget to clean the double pointer char here
+	return (0);
+}
+////Draw the center tiles from the both sides (expect the corners)
+int	draw_mapsides(t_game *game)
+{
+	int i;
+	int render_height;
+	int line_width;
+	char	**map_skeleton;
+
+	map_skeleton = game->map->map_skeleton;
+	i = 0;
+	render_height = 32;
+	while(map_skeleton[i])
+	{
+		if (i == game->map->qt_lines - 2)
+			break;
+		if (map_skeleton[i][0] == '1')
+			mlx_put_image_to_window(game->data_mlx->connect, game->data_mlx->window, game->map->img_wallml, 0, render_height);
+		render_height = render_height + 32;
+		i ++;
+	}
+	line_width = game->map->qt_chars_lines - 2;
+	render_height = 32;
+	i = 0;
+	while(map_skeleton[i])
+	{
+		if (map_skeleton[i][line_width] == '1')
+			mlx_put_image_to_window(game->data_mlx->connect, game->data_mlx->window, game->map->img_wallmr, line_width * 32, render_height);
+		render_height = render_height + 32;
+		i ++;
+	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:27:56 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/08 14:00:19 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/08 17:55:42 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,10 @@ void	game_init(t_game *game)
 	int height;
 	int width;
 
-	width = (game->map->qt_lines - 1) * 32;
-	height = (game->map->qt_chars_lines - 1) * 32;
-
-	ft_printf("MAP WIDTH %i\n", width);
-	ft_printf("MAP HEIGHT %i\n", height);
+	height = (game->map->qt_lines) * 32;
+	width = (game->map->qt_chars_lines - 1) * 32;
 	game->data_mlx->connect = mlx_init();
-	game->data_mlx->window = mlx_new_window(game->data_mlx->connect, height, width, "So Long");
+	game->data_mlx->window = mlx_new_window(game->data_mlx->connect, width, height, "So Long");
 	game_get_img(game);
 	game_drawmap(game);
 }

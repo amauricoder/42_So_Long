@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:24 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/08 11:46:40 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/08 16:48:28 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,10 @@ void	game_close(t_game *game);
 /*         source/game_render.c       */
 /* ********************************** */
 int game_drawmap(t_game *game);
+int draw_mapcorners(t_game *game);
+int draw_mapwallup(t_game *game);
+int draw_mapwallbottom(t_game *game);
+int	draw_mapsides(t_game *game);
 
 /* ********************************** */
 /*            GAME COMMANDS           */
