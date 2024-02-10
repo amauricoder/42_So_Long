@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:24 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/10 13:10:25 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/10 13:19:38 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,6 +177,7 @@ int draw_mapcorners(t_game *game);
 int draw_mapwallup(t_game *game);
 int draw_mapwallbottom(t_game *game);
 int	draw_mapsides(t_game *game);
+int	draw_mapcenter(t_game *game);
 
 /* ********************************** */
 /*            GAME COMMANDS           */

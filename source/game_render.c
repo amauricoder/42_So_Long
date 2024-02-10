@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 09:43:32 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/08 20:09:13 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/10 13:47:16 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int game_drawmap(t_game *game)
 	draw_mapwallup(game);
 	draw_mapwallbottom(game);
 	draw_mapsides(game);
+	draw_mapcenter(game);
 	return (0);
 }
 //Draw the corners tiles of the map
@@ -132,5 +133,37 @@ int	draw_mapsides(t_game *game)
 		i ++;
 	}
 	//dont forget to clent this double pointer char
+	return (0);
+}
+
+int	draw_mapcenter(t_game *game)
+{
+	char **map_skeleton;
+	int i;
+	int j;
+	
+	map_skeleton = game->map->map_skeleton;
+	i = 1;
+	while (map_skeleton[i])
+	{
+		j = 1;
+		while (map_skeleton[i][j] != '\0')
+		{
+			if (map_skeleton[i][j] == '1' && map_skeleton[i][j + 2] == '\n')
+			{
+				j ++;
+			}
+			if (map_skeleton[i][j] == '0')
+			{
+				mlx_put_image_to_window(game->data_mlx->connect, game->data_mlx->window, game->map->img_floor, 32 * j, 32 * i);
+			}
+			if (map_skeleton[i][j] == '1')
+			{
+				mlx_put_image_to_window(game->data_mlx->connect, game->data_mlx->window, game->map->img_murr, 32 * j, 32 * i);
+			}
+			j ++;
+		}
+		i ++;
+	}
 	return (0);
 }
