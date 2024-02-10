@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:24 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/08 19:58:14 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/10 13:10:25 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@
 /*              SPRITES               */
 /* ********************************** */
 //walls
-# define GROUND "assets/sheets/tiles/ground.xpm"
+# define FLOOR "assets/sheets/tiles/ground2.xpm"
 # define MURR "assets/sheets/tiles/murr.xpm"
 # define WALL_BL "assets/sheets/tiles/wall_bl.xpm"
 # define WALL_BR "assets/sheets/tiles/wall_br.xpm"
@@ -94,6 +94,7 @@ typedef struct s_map
 	int		qt_player;
 	int		qt_collect;
 	int		qt_exit;
+	void	*img_floor;
 	void	*img_murr;
 	void	*img_wallbl;
 	void	*img_wallbr;

@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 08:52:12 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/08 20:22:27 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/10 13:16:18 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	free_game_struct(t_game *game)
 
 void	free_map_imgptr(t_game *game)
 {
+	mlx_destroy_image(game->data_mlx->connect, game->map->img_floor);
 	mlx_destroy_image(game->data_mlx->connect, game->map->img_murr);
 	mlx_destroy_image(game->data_mlx->connect, game->map->img_wallbc);
 	mlx_destroy_image(game->data_mlx->connect, game->map->img_wallbl);
