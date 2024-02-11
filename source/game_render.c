@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 09:43:32 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/11 15:26:32 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/11 16:58:15 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,10 @@ int	draw_mapcenter(t_game *game)
 			if (map_skeleton[i][j] == '1' && j < qt_chars)
 			{
 				mlx_put_image_to_window(game->data_mlx->connect, game->data_mlx->window, game->map->img_murr, 32 * j, 32 * i);
+			}
+			if (map_skeleton[i][j] == 'P' && j < qt_chars)
+			{
+				mlx_put_image_to_window(game->data_mlx->connect, game->data_mlx->window, game->player->img_sfront, 32 * j, 32 * i);
 			}
 			j ++;
 		}

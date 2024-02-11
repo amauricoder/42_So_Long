@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:24 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/11 16:04:24 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/11 17:08:15 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,10 +107,22 @@ typedef struct s_map
 }   t_map;
 
 //for Player
-/* typedef struct s_player
+typedef struct s_player
 {
-	void	*img
-}	t_player; */
+	void	*img_sfront;
+	void	*img_sback;
+	void	*img_sleft;
+	void	*img_sright;
+	void	*img_wback;
+	void	*img_wback2;
+	void	*img_wfront;
+	void	*img_wfront2;
+	void	*img_wleft;
+	void	*img_wleft2;
+	void	*img_wright;
+	void	*img_wright2;
+}	t_player;
+
 //For Mlx
 typedef struct s_mlx_data
 {
@@ -121,10 +133,11 @@ typedef struct s_mlx_data
 //Game main structure
 typedef struct s_game
 {
-	t_map *map;
-	t_mlx_data *data_mlx;
-	int	img_h;
-	int img_w;
+	t_map		*map;
+	t_mlx_data	*data_mlx;
+	t_player	*player;
+	int			img_h;
+	int			img_w;
 }	t_game;
 
 /* ********************************** */
@@ -167,6 +180,7 @@ void	ft_alloc_img(t_game *game);
 void	game_init(t_game *game);
 t_game	*game_structs_init(t_game *game);
 void	game_get_mapimg(t_game *game);
+void	game_get_playerimg(t_game *game);
 
 /* ********************************** */
 /*              GAME UTILS            */
@@ -199,4 +213,6 @@ int		game_keypress(int keypressed, t_game *game);
 void	free_dp_char(char **dp_char);
 void	free_game_struct(t_game *game);
 void	free_map_imgptr(t_game *game);
+void	free_player_imgptr(t_game *game);
+
 #endif

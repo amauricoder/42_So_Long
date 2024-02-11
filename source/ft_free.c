@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 08:52:12 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/10 13:16:18 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/11 17:13:07 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,20 @@ void	free_map_imgptr(t_game *game)
 	mlx_destroy_image(game->data_mlx->connect, game->map->img_wallml);
 	mlx_destroy_image(game->data_mlx->connect, game->map->img_wallmr);
 	mlx_destroy_image(game->data_mlx->connect, game->map->img_wallr);
-	/* free(game->map->img_murr);
-	free(game->map->img_wallbc);
-	free(game->map->img_wallbl);
-	free(game->map->img_wallbr);
-	free(game->map->img_wallc);
-	free(game->map->img_walll);
-	free(game->map->img_wallml);
-	free(game->map->img_wallmr);
-	free(game->map->img_wallr);
-	*/
-} 
+}
+
+void	free_player_imgptr(t_game *game)
+{
+	mlx_destroy_image(game->data_mlx->connect, game->player->img_sback);
+	mlx_destroy_image(game->data_mlx->connect, game->player->img_sfront);
+	mlx_destroy_image(game->data_mlx->connect, game->player->img_sleft);
+	mlx_destroy_image(game->data_mlx->connect, game->player->img_sright);
+	mlx_destroy_image(game->data_mlx->connect, game->player->img_wback);
+	mlx_destroy_image(game->data_mlx->connect, game->player->img_wback2);
+	mlx_destroy_image(game->data_mlx->connect, game->player->img_wfront);
+	mlx_destroy_image(game->data_mlx->connect, game->player->img_wfront2);
+	mlx_destroy_image(game->data_mlx->connect, game->player->img_wright);
+	mlx_destroy_image(game->data_mlx->connect, game->player->img_wright2);
+	mlx_destroy_image(game->data_mlx->connect, game->player->img_wleft);
+	mlx_destroy_image(game->data_mlx->connect, game->player->img_wleft2);
+}
