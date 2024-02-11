@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 09:43:32 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/10 13:47:16 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/11 15:03:50 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int game_drawmap(t_game *game)
 	draw_mapwallup(game);
 	draw_mapwallbottom(game);
 	draw_mapsides(game);
-	draw_mapcenter(game);
+	//draw_mapcenter(game);
 	return (0);
 }
 //Draw the corners tiles of the map
