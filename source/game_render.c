@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 09:43:32 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/11 15:03:50 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/11 15:26:32 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int game_drawmap(t_game *game)
 	draw_mapwallup(game);
 	draw_mapwallbottom(game);
 	draw_mapsides(game);
-	//draw_mapcenter(game);
+	draw_mapcenter(game);
 	return (0);
 }
 //Draw the corners tiles of the map
@@ -32,7 +32,7 @@ int draw_mapcorners(t_game *game)
 	int qt_tiles_width;
 	
 	render_height = (game->map->qt_lines - 1) * 32;
-	render_width = (game->map->qt_chars_lines - 2) * 32;
+	render_width = (game->map->qt_chars_lines - 1) * 32;
 	qt_tiles_height = game->map->qt_lines - 1;
 	qt_tiles_width = game->map->qt_chars_lines - 1;
 	map_skeleton = game->map->map_skeleton;
@@ -55,7 +55,7 @@ int draw_mapwallup(t_game *game)
 	int render_pos;
 	int tiles_width;
 
-	tiles_width = game->map->qt_chars_lines - 1;
+	tiles_width = game->map->qt_chars_lines;
 	map_skeleton = game->map->map_skeleton;
 	render_pos = 32;
 	i = 2;
@@ -80,7 +80,7 @@ int draw_mapwallbottom(t_game *game)
 	int tiles_width;
 	int	last_line;
 
-	tiles_width = game->map->qt_chars_lines - 1;
+	tiles_width = game->map->qt_chars_lines;
 	map_skeleton = game->map->map_skeleton;
 	render_pos = 32;
 	last_line = game->map->qt_lines - 1;
@@ -125,7 +125,7 @@ int	draw_mapsides(t_game *game)
 	{
 		if (map_skeleton[i][line_width] == '1')
 		{
-			mlx_put_image_to_window(game->data_mlx->connect, game->data_mlx->window, game->map->img_wallmr, (line_width - 1) * 32, render_height);
+			mlx_put_image_to_window(game->data_mlx->connect, game->data_mlx->window, game->map->img_wallmr, (line_width) * 32, render_height);
 		}
 		if (i == game->map->qt_lines - 3)
 			break;
@@ -136,33 +136,34 @@ int	draw_mapsides(t_game *game)
 	return (0);
 }
 
+//draw the center tiles of the map
 int	draw_mapcenter(t_game *game)
 {
 	char **map_skeleton;
+	int qt_chars;
 	int i;
 	int j;
 	
 	map_skeleton = game->map->map_skeleton;
+	qt_chars = game->map->qt_chars_lines - 1;
 	i = 1;
 	while (map_skeleton[i])
 	{
 		j = 1;
 		while (map_skeleton[i][j] != '\0')
 		{
-			if (map_skeleton[i][j] == '1' && map_skeleton[i][j + 2] == '\n')
-			{
-				j ++;
-			}
-			if (map_skeleton[i][j] == '0')
+			if (map_skeleton[i][j] == '0' && j < qt_chars)
 			{
 				mlx_put_image_to_window(game->data_mlx->connect, game->data_mlx->window, game->map->img_floor, 32 * j, 32 * i);
 			}
-			if (map_skeleton[i][j] == '1')
+			if (map_skeleton[i][j] == '1' && j < qt_chars)
 			{
 				mlx_put_image_to_window(game->data_mlx->connect, game->data_mlx->window, game->map->img_murr, 32 * j, 32 * i);
 			}
 			j ++;
 		}
+		if (i == game->map->qt_lines - 2)
+			break;
 		i ++;
 	}
 	return (0);
