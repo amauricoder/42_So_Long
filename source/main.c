@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:21 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/07 17:18:19 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/11 15:53:21 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,6 @@ void	error_message(int flag)
 		write(2, "Error\nInvalid Map - Invalid Map Size\n", 38);
 	if (flag == 10)
 		write(2, "Error\nError importing map image\n", 33);
+	if (flag == 11)
+		write(2, "Error\nError Initializing Structs\n", 33);
 }

@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:12:30 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/08 10:55:26 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/11 15:51:08 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,12 +104,10 @@ t_game	*map_init(char *file_path)
 {
 	t_game 		*game;
 	t_map		*map;
-	t_mlx_data *data_mlx;
 
 	game = malloc(sizeof(t_game) * 1);
 	map = malloc(sizeof(t_map) * 1);
-	data_mlx = malloc(sizeof(t_mlx_data) * 1);
-	if(!game || !map || !data_mlx)
+	if(!game || !map)
 	{
 		error_message(3);
 		return (NULL);
@@ -121,7 +119,6 @@ t_game	*map_init(char *file_path)
 	game->map->qt_player = 0;
 	game->map->qt_collect = 0;
 	game->map->qt_exit = 0;
-	game->data_mlx = data_mlx;
 	
 	return (game);
 }

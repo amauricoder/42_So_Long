@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:24 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/10 13:19:38 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/11 16:04:24 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,11 @@ typedef struct s_map
 	void	*img_wallbc;
 }   t_map;
 
+//for Player
+/* typedef struct s_player
+{
+	void	*img
+}	t_player; */
 //For Mlx
 typedef struct s_mlx_data
 {
@@ -160,7 +165,8 @@ void	ft_alloc_img(t_game *game);
 /*          source/game_init.c        */
 /* ********************************** */
 void	game_init(t_game *game);
-void	game_get_img(t_game *game);
+t_game	*game_structs_init(t_game *game);
+void	game_get_mapimg(t_game *game);
 
 /* ********************************** */
 /*              GAME UTILS            */
