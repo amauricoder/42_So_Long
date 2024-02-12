@@ -6,13 +6,13 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 09:21:48 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/08 19:51:32 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/12 10:19:25 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-//Check if the ARGV have the .ber at the end.
+//Check if the ARGV have the .ber at the end and if its a valid file.
 //Return 1 if ok, 0 in case dont.
 int	ft_check_extention(char *file_name)
 {
@@ -44,25 +44,4 @@ int	ft_countchar(char *str)
 	while (str[i] != '\0' && str[i] != '\n')
 		i ++;
 	return (i);
-}
-
-void	ft_alloc_img(t_game *game)
-{
-	game->map->img_murr = malloc(sizeof(void *));
-	game->map->img_wallbl = malloc(sizeof(void *));
-	game->map->img_wallbr = malloc(sizeof(void *));
-	game->map->img_wallc = malloc(sizeof(void *));
-	game->map->img_walll = malloc(sizeof(void *));
-	game->map->img_wallml = malloc(sizeof(void *));
-	game->map->img_wallmr = malloc(sizeof(void *));
-	game->map->img_wallr = malloc(sizeof(void *));
-	game->map->img_wallbc = malloc(sizeof(void *));
-
-	if (!game->map->img_murr || !game->map->img_wallbl || !game->map->img_wallbr
-		|| !game->map->img_wallc || !game->map->img_walll || !game->map->img_wallml
-		|| !game->map->img_wallmr  || !game->map->img_wallr || !game->map->img_wallbc)
-	{
-		error_message(10);
-		return ;
-	}
 }

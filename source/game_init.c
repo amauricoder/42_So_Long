@@ -6,22 +6,26 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:27:56 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/12 09:55:25 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/12 11:32:35 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
+//Inits all the structures and elements necessary
+//for the game. Ps. 32 is related to the size of the images.
 void	game_init(t_game *game)
 {
-	int window_height;
-	int window_width;
-
-	window_height = (game->map->qt_lines) * 32;
-	window_width = (game->map->qt_chars_lines) * 32;
+	int wnd_h;
+	int wnd_w;
+	t_mlx_data *conn;
+	
+	wnd_h = (game->map->qt_lines) * 32;
+	wnd_w = (game->map->qt_chars_lines) * 32;
 	game = game_structs_init(game);
 	game->data_mlx->connect = mlx_init();
-	game->data_mlx->window = mlx_new_window(game->data_mlx->connect, window_width, window_height, "So Long");
+	conn = game->data_mlx->connect;
+	game->data_mlx->window = mlx_new_window(conn, wnd_w, wnd_h, "So Long");
 	game_get_mapimg(game);
 	game_get_playerimg(game);
 	game_get_coinimg(game);
@@ -49,56 +53,63 @@ t_game	*game_structs_init(t_game *game)
 	game->coin = coin;
 	return (game);
 }
+//Get the xpm images to the void pointers into he map structure
+//check for null values after to mischeck error
 void	game_get_mapimg(t_game *game)
 {
 	t_map *mp;
-	t_mlx_data *dp;
+	t_mlx_data *conn;
+	int gih;
+	int giw;
 	
 	mp = game->map;
-	dp = game->data_mlx->connect;
-	mp->img_floor = mlx_xpm_file_to_image(dp, FLOOR, &game->img_h, &game->img_w);
-	mp->img_murr = mlx_xpm_file_to_image(dp, MURR, &game->img_h, &game->img_w);
-	mp->img_wallbl = mlx_xpm_file_to_image(dp, WALL_BL, &game->img_h, &game->img_w);
-	mp->img_wallbr = mlx_xpm_file_to_image(dp, WALL_BR, &game->img_h, &game->img_w);
-	mp->img_wallc = mlx_xpm_file_to_image(dp, WALL_C, &game->img_h, &game->img_w);
-	mp->img_walll = mlx_xpm_file_to_image(dp, WALL_L, &game->img_h, &game->img_w);
-	mp->img_wallml = mlx_xpm_file_to_image(dp, WALL_ML, &game->img_h, &game->img_w);
-	mp->img_wallmr = mlx_xpm_file_to_image(dp, WALL_MR, &game->img_h, &game->img_w);
-	mp->img_wallr = mlx_xpm_file_to_image(dp, WALL_R, &game->img_h, &game->img_w);
-	mp->img_wallbc = mlx_xpm_file_to_image(dp, WALL_BC, &game->img_h, &game->img_w);
-	if(game->map->img_floor == NULL || game->map->img_murr == NULL || game->map->img_wallbl == NULL ||
-		game->map->img_wallbr == NULL || game->map->img_wallc == NULL || game->map->img_walll == NULL ||
-		game->map->img_wallml == NULL || game->map->img_wallmr == NULL || game->map->img_wallr == NULL
-		|| game->map->img_wallbc == NULL)
-		ft_printf("ERROR IN SOME IMAGE!!! SOME IMAGE IS NULL!! AT GAME_GET_MAPIMG\n");
+	conn = game->data_mlx->connect;
+	gih = game->img_h;
+	giw = game->img_w;
+	mp->img_floor = mlx_xpm_file_to_image(conn, FLOOR, &gih, &giw);
+	mp->img_murr = mlx_xpm_file_to_image(conn, MURR, &gih, &giw);
+	mp->img_wallbl = mlx_xpm_file_to_image(conn, WALL_BL, &gih, &giw);
+	mp->img_wallbr = mlx_xpm_file_to_image(conn, WALL_BR, &gih, &giw);
+	mp->img_wallc = mlx_xpm_file_to_image(conn, WALL_C, &gih, &giw);
+	mp->img_walll = mlx_xpm_file_to_image(conn, WALL_L, &gih, &giw);
+	mp->img_wallml = mlx_xpm_file_to_image(conn, WALL_ML, &gih, &giw);
+	mp->img_wallmr = mlx_xpm_file_to_image(conn, WALL_MR, &gih, &giw);
+	mp->img_wallr = mlx_xpm_file_to_image(conn, WALL_R, &gih, &giw);
+	mp->img_wallbc = mlx_xpm_file_to_image(conn, WALL_BC, &gih, &giw);
+	check_nullvalues_m(game, 'm');
 }
 
+//Get the xpm images to the void pointers into the player structure
+//check for null values after to mischeck error
 void	game_get_playerimg(t_game *game)
 {
-	game->player->img_sfront = mlx_xpm_file_to_image(game->data_mlx->connect, SFRONT, &game->img_h, &game->img_w);
- 	game->player->img_sback = mlx_xpm_file_to_image(game->data_mlx->connect, SBACK, &game->img_h, &game->img_w);
-	game->player->img_sleft = mlx_xpm_file_to_image(game->data_mlx->connect, SLEFT, &game->img_h, &game->img_w);
-	game->player->img_sright = mlx_xpm_file_to_image(game->data_mlx->connect, SRIGHT, &game->img_h, &game->img_w);
-	game->player->img_wback = mlx_xpm_file_to_image(game->data_mlx->connect, WBACK, &game->img_h, &game->img_w);
-	game->player->img_wback2 = mlx_xpm_file_to_image(game->data_mlx->connect, WBACK2, &game->img_h, &game->img_w);
-	game->player->img_wfront = mlx_xpm_file_to_image(game->data_mlx->connect, WFRONT, &game->img_h, &game->img_w);
-	game->player->img_wfront2 = mlx_xpm_file_to_image(game->data_mlx->connect, WFRONT2, &game->img_h, &game->img_w);
-	game->player->img_wleft = mlx_xpm_file_to_image(game->data_mlx->connect, WLEFT, &game->img_h, &game->img_w);
-	game->player->img_wleft2 = mlx_xpm_file_to_image(game->data_mlx->connect, WLEFT2, &game->img_h, &game->img_w);
-	game->player->img_wright = mlx_xpm_file_to_image(game->data_mlx->connect, WRIGHT, &game->img_h, &game->img_w);
-	game->player->img_wright2 = mlx_xpm_file_to_image(game->data_mlx->connect, WRIGHT2, &game->img_h, &game->img_w);
-	
-	if (game->player->img_sback == NULL || game->player->img_sfront == NULL || game->player->img_sleft == NULL
-		|| game->player->img_sright == NULL || game->player->img_wback == NULL || game->player->img_wback2 == NULL
-		|| game->player->img_wfront == NULL || game->player->img_wfront2 == NULL || game->player->img_wleft == NULL
-		|| game->player->img_wleft2 == NULL || game->player->img_wright == NULL || game->player->img_wright2 == NULL)
-		ft_printf("ERROR IN SOME PLAYER IMAGE!!! SOME IMAGE IS NULL!! AT GAME_GET_PLAYERIMG\n");
-}
+	t_player *gp;
+	t_mlx_data *conn;
+	int	gih;
+	int giw;
 
+	gp = game->player;
+	conn = game->data_mlx->connect;
+	gih = game->img_h;
+	giw = game->img_w;
+	gp->img_sfront = mlx_xpm_file_to_image(conn, SFRONT, &gih, &giw);
+ 	gp->img_sback = mlx_xpm_file_to_image(conn, SBACK, &gih, &giw);
+	gp->img_sleft = mlx_xpm_file_to_image(conn, SLEFT, &gih, &giw);
+	gp->img_sright = mlx_xpm_file_to_image(conn, SRIGHT, &gih, &giw);
+	gp->img_wback = mlx_xpm_file_to_image(conn, WBACK, &gih, &giw);
+	gp->img_wback2 = mlx_xpm_file_to_image(conn, WBACK2, &gih, &giw);
+	gp->img_wfront = mlx_xpm_file_to_image(conn, WFRONT, &gih, &giw);
+	gp->img_wfront2 = mlx_xpm_file_to_image(conn, WFRONT2, &gih, &giw);
+	gp->img_wleft = mlx_xpm_file_to_image(conn, WLEFT, &gih, &giw);
+	gp->img_wleft2 = mlx_xpm_file_to_image(conn, WLEFT2, &gih, &giw);
+	gp->img_wright = mlx_xpm_file_to_image(conn, WRIGHT, &gih, &giw);
+	gp->img_wright2 = mlx_xpm_file_to_image(conn, WRIGHT2, &gih, &giw);
+	check_nullvalues_pc(game, 'p');
+}
+//Get the xpm images to the void pointers into the coin structure
+//check for null values after to mischeck error
 void	game_get_coinimg(t_game *game)
 {
-	ft_printf("entrou em coinimg\n");
-	
 	t_mlx_data *conn;
 	t_coin	*coin;
 	int		h;
@@ -114,8 +125,51 @@ void	game_get_coinimg(t_game *game)
 	coin->img_c4 = mlx_xpm_file_to_image(conn, COIN4, &h, &w);
 	coin->img_c5 = mlx_xpm_file_to_image(conn, COIN5, &h, &w);
 	coin->img_c6 = mlx_xpm_file_to_image(conn, COIN6, &h, &w);
+	check_nullvalues_pc(game, 'c');
+}
+//check for image null values on the player and coin structures
+//function just for debug, because if there is something NULL
+//It will lead to seg fault
+void	check_nullvalues_pc(t_game *game, char pointers)
+{
+	t_player *gp;
+	t_coin	*clb;
+	
+	gp = game->player;
+	clb = game->coin;
+	if (pointers == 'p')
+	{
+		if (gp->img_sback == NULL || gp->img_sfront == NULL 
+			|| gp->img_sleft == NULL || gp->img_sright == NULL
+			|| gp->img_wback == NULL || gp->img_wback2 == NULL
+			|| gp->img_wfront == NULL || gp->img_wfront2 == NULL
+			|| gp->img_wleft == NULL || gp->img_wleft2 == NULL
+			|| gp->img_wright == NULL || gp->img_wright2 == NULL)
+		ft_printf("ERROR AT GAME_GET_PLAYERIMG\n");
+	}
+	if (pointers == 'c')
+	{
+		if (clb->img_c1 == NULL || clb->img_c2 == NULL || clb->img_c3 == NULL
+		|| clb->img_c4 == NULL || clb->img_c5 == NULL || clb->img_c6 == NULL)
+		ft_printf("ERROR AT GAME_GET_COINIMG");
+	}
+}
 
-	if (coin->img_c1 == NULL || coin->img_c2 == NULL || coin->img_c3 == NULL 
-		|| coin->img_c4 == NULL || coin->img_c5 == NULL || coin->img_c6 == NULL)
-		ft_printf("ERROR IN SOME COIN IMAGE!!! SOME COIN IMG IS NULL|| AT GAME_GET_COINIMG");
+//check for image null values on the map structure
+//function just for debug, because if there is something NULL
+//It will lead to seg fault
+void	check_nullvalues_m(t_game *game, char pointers)
+{
+	t_map *map;
+
+	map = game->map;
+	if (pointers == 'm')
+	{
+		if(map->img_floor == NULL || map->img_murr == NULL 
+			|| map->img_wallbl == NULL || map->img_wallbr == NULL
+			|| map->img_wallc == NULL || map->img_walll == NULL
+			|| map->img_wallml == NULL || map->img_wallmr == NULL 
+			|| map->img_wallr == NULL || game->map->img_wallbc == NULL)
+		ft_printf("ERROR AT GAME_GET_MAPIMG\n");		
+	}
 }

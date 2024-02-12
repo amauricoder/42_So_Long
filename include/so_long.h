@@ -6,24 +6,12 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:24 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/12 09:44:05 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/12 13:56:45 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-
-/* ********************************** */
-/*               COLORS               */
-/* ********************************** */
-# define RESET   "\033[0m"
-# define RED     "\033[31m"
-# define GREEN   "\033[32m"
-# define YELLOW  "\033[33m"
-# define BLUE    "\033[34m"
-# define MAGENTA "\033[35m"
-# define CYAN    "\033[36m"
-# define WHITE   "\033[37m"
 
 /* ********************************** */
 /*            KEYBOARD CODES          */
@@ -65,7 +53,6 @@
 # define WLEFT2 "assets/sheets/bilu/walking_left2.xpm"
 # define WRIGHT "assets/sheets/bilu/walking_right.xpm"
 # define WRIGHT2 "assets/sheets/bilu/walking_right2.xpm"
-
 //Collectable (coin)
 # define COIN1 "assets/sheets/coin/c1.xpm"
 # define COIN2 "assets/sheets/coin/c2.xpm"
@@ -84,7 +71,7 @@
 #include <string.h> //strerror()
 
 /* ********************************** */
-/*           IMPORTED FILE            */
+/*           IMPORTED FILES           */
 /* ********************************** */
 # include "../library/libft/libft.h"
 # include "../library/minilibx-linux/mlx.h"
@@ -191,7 +178,6 @@ int		map_valid_minsize(t_map *map);
 /* ********************************** */
 int 	ft_check_extention(char *file_name);
 int		ft_countchar(char *str);
-void	ft_alloc_img(t_game *game);
 
 /* ********************************** */
 /*              GAME INIT             */
@@ -202,6 +188,8 @@ t_game	*game_structs_init(t_game *game);
 void	game_get_mapimg(t_game *game);
 void	game_get_playerimg(t_game *game);
 void	game_get_coinimg(t_game *game);
+void	check_nullvalues_pc(t_game *game, char pointers);
+void	check_nullvalues_m(t_game *game, char pointers);
 
 /* ********************************** */
 /*              GAME UTILS            */
@@ -213,12 +201,14 @@ void	game_close(t_game *game);
 /*             GAME RENDER            */
 /*         source/game_render.c       */
 /* ********************************** */
-int game_drawmap(t_game *game);
-int draw_mapcorners(t_game *game);
-int draw_mapwallup(t_game *game);
-int draw_mapwallbottom(t_game *game);
-int	draw_mapsides(t_game *game);
-int	draw_mapcenter(t_game *game);
+int 	game_drawmap(t_game *game);
+void 	draw_mapcorners(t_game *game);
+void 	draw_mapwallup(t_game *game);
+void 	draw_mapwallbottom(t_game *game);
+void	draw_mapwall_left(t_game *game);
+void	draw_mapwall_right(t_game *game);
+void	draw_mapcenter(t_game *game);
+void	render_element(t_game *game, void *img, int width, int height);
 
 /* ********************************** */
 /*            GAME COMMANDS           */
