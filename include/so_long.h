@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:24 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/11 17:08:15 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/12 09:44:05 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@
 # define WALL_MR "assets/sheets/tiles/wall_mr.xpm"
 # define WALL_R "assets/sheets/tiles/wall_r.xpm"
 # define WALL_BC "assets/sheets/tiles/wall_bc.xpm"
-//character
+//Player
 # define SFRONT "assets/sheets/bilu/stop_front.xpm"
 # define SBACK "assets/sheets/bilu/stop_back.xpm"
 # define SLEFT "assets/sheets/bilu/stop_left.xpm"
@@ -65,6 +65,14 @@
 # define WLEFT2 "assets/sheets/bilu/walking_left2.xpm"
 # define WRIGHT "assets/sheets/bilu/walking_right.xpm"
 # define WRIGHT2 "assets/sheets/bilu/walking_right2.xpm"
+
+//Collectable (coin)
+# define COIN1 "assets/sheets/coin/c1.xpm"
+# define COIN2 "assets/sheets/coin/c2.xpm"
+# define COIN3 "assets/sheets/coin/c3.xpm"
+# define COIN4 "assets/sheets/coin/c4.xpm"
+# define COIN5 "assets/sheets/coin/c5.xpm"
+# define COIN6 "assets/sheets/coin/c6.xpm"
 
 /* ********************************** */
 /*           EXTERNAL LIBS            */
@@ -106,7 +114,7 @@ typedef struct s_map
 	void	*img_wallbc;
 }   t_map;
 
-//for Player
+//For Player
 typedef struct s_player
 {
 	void	*img_sfront;
@@ -123,6 +131,17 @@ typedef struct s_player
 	void	*img_wright2;
 }	t_player;
 
+//For Collectable (Coin)
+typedef struct s_coin
+{
+	void	*img_c1;
+	void	*img_c2;
+	void	*img_c3;
+	void	*img_c4;
+	void	*img_c5;
+	void	*img_c6;
+}	t_coin;
+
 //For Mlx
 typedef struct s_mlx_data
 {
@@ -136,6 +155,7 @@ typedef struct s_game
 	t_map		*map;
 	t_mlx_data	*data_mlx;
 	t_player	*player;
+	t_coin		*coin;
 	int			img_h;
 	int			img_w;
 }	t_game;
@@ -181,6 +201,7 @@ void	game_init(t_game *game);
 t_game	*game_structs_init(t_game *game);
 void	game_get_mapimg(t_game *game);
 void	game_get_playerimg(t_game *game);
+void	game_get_coinimg(t_game *game);
 
 /* ********************************** */
 /*              GAME UTILS            */
@@ -214,5 +235,6 @@ void	free_dp_char(char **dp_char);
 void	free_game_struct(t_game *game);
 void	free_map_imgptr(t_game *game);
 void	free_player_imgptr(t_game *game);
+void	free_coin_imgptr(t_game *game);
 
 #endif

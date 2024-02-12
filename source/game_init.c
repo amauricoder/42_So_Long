@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:27:56 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/11 17:24:05 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/12 09:55:25 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	game_init(t_game *game)
 	game->data_mlx->window = mlx_new_window(game->data_mlx->connect, window_width, window_height, "So Long");
 	game_get_mapimg(game);
 	game_get_playerimg(game);
+	game_get_coinimg(game);
 	game_drawmap(game);
 }
 //Initialize the structures for the game
@@ -33,16 +34,19 @@ t_game	*game_structs_init(t_game *game)
 {
 	t_mlx_data *data_mlx;
 	t_player	*player;
-
+	t_coin		*coin;
+	
 	data_mlx = malloc(sizeof(t_mlx_data));
 	player = malloc(sizeof(t_player));
-	if (!data_mlx || !player)
+	coin = malloc(sizeof(t_coin));
+	if (!data_mlx || !player || !coin)
 	{
 		error_message(11);
 		return (NULL);
 	}
 	game->data_mlx = data_mlx;
 	game->player = player;
+	game->coin = coin;
 	return (game);
 }
 void	game_get_mapimg(t_game *game)
@@ -89,4 +93,29 @@ void	game_get_playerimg(t_game *game)
 		|| game->player->img_wfront == NULL || game->player->img_wfront2 == NULL || game->player->img_wleft == NULL
 		|| game->player->img_wleft2 == NULL || game->player->img_wright == NULL || game->player->img_wright2 == NULL)
 		ft_printf("ERROR IN SOME PLAYER IMAGE!!! SOME IMAGE IS NULL!! AT GAME_GET_PLAYERIMG\n");
+}
+
+void	game_get_coinimg(t_game *game)
+{
+	ft_printf("entrou em coinimg\n");
+	
+	t_mlx_data *conn;
+	t_coin	*coin;
+	int		h;
+	int		w;
+
+	conn = game->data_mlx->connect;
+	coin = game->coin;
+	h = game->img_h;
+	w = game->img_w;
+	coin->img_c1 = mlx_xpm_file_to_image(conn, COIN1, &h, &w);
+	coin->img_c2 = mlx_xpm_file_to_image(conn, COIN2, &h, &w);
+	coin->img_c3 = mlx_xpm_file_to_image(conn, COIN3, &h, &w);
+	coin->img_c4 = mlx_xpm_file_to_image(conn, COIN4, &h, &w);
+	coin->img_c5 = mlx_xpm_file_to_image(conn, COIN5, &h, &w);
+	coin->img_c6 = mlx_xpm_file_to_image(conn, COIN6, &h, &w);
+
+	if (coin->img_c1 == NULL || coin->img_c2 == NULL || coin->img_c3 == NULL 
+		|| coin->img_c4 == NULL || coin->img_c5 == NULL || coin->img_c6 == NULL)
+		ft_printf("ERROR IN SOME COIN IMAGE!!! SOME COIN IMG IS NULL|| AT GAME_GET_COINIMG");
 }
