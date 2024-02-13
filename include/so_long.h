@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:24 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/13 13:33:34 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/13 18:33:44 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,7 +192,7 @@ void	check_nullvalues_m(t_game *game, char pointers);
 /*              GAME UTILS            */
 /*          source/game_utils.c       */
 /* ********************************** */
-void	game_close(t_game *game);
+int		game_close(t_game *game);
 
 /* ********************************** */
 /*             GAME RENDER            */

@@ -6,15 +6,14 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 10:27:46 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/12 09:54:53 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/13 18:33:32 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	game_close(t_game *game)
+int	game_close(t_game *game)
 {
-	
 	free_dp_char(game->map->map_skeleton);
 	free_map_imgptr(game);
 	free_player_imgptr(game);
@@ -28,4 +27,5 @@ void	game_close(t_game *game)
 	free(game->data_mlx);
 	free(game);
 	exit(0);
+	return (0);
 }
