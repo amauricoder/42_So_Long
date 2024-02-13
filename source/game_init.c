@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:27:56 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/12 11:32:35 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/13 13:38:01 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ t_game	*game_structs_init(t_game *game)
 	game->data_mlx = data_mlx;
 	game->player = player;
 	game->coin = coin;
+	game->coin->coin_pos = 0;
+	game->coin->coin_loop = 0;
 	return (game);
 }
 //Get the xpm images to the void pointers into he map structure
@@ -119,12 +121,14 @@ void	game_get_coinimg(t_game *game)
 	coin = game->coin;
 	h = game->img_h;
 	w = game->img_w;
-	coin->img_c1 = mlx_xpm_file_to_image(conn, COIN1, &h, &w);
-	coin->img_c2 = mlx_xpm_file_to_image(conn, COIN2, &h, &w);
-	coin->img_c3 = mlx_xpm_file_to_image(conn, COIN3, &h, &w);
-	coin->img_c4 = mlx_xpm_file_to_image(conn, COIN4, &h, &w);
-	coin->img_c5 = mlx_xpm_file_to_image(conn, COIN5, &h, &w);
-	coin->img_c6 = mlx_xpm_file_to_image(conn, COIN6, &h, &w);
+	
+	coin->c_imgs[0] = mlx_xpm_file_to_image(conn, COIN1, &h, &w);
+	coin->c_imgs[1] = mlx_xpm_file_to_image(conn, COIN2, &h, &w);
+	coin->c_imgs[2] = mlx_xpm_file_to_image(conn, COIN3, &h, &w);
+	coin->c_imgs[3] = mlx_xpm_file_to_image(conn, COIN4, &h, &w);
+	coin->c_imgs[4] = mlx_xpm_file_to_image(conn, COIN5, &h, &w);
+	coin->c_imgs[5] = mlx_xpm_file_to_image(conn, COIN6, &h, &w);
+
 	check_nullvalues_pc(game, 'c');
 }
 //check for image null values on the player and coin structures
@@ -133,10 +137,10 @@ void	game_get_coinimg(t_game *game)
 void	check_nullvalues_pc(t_game *game, char pointers)
 {
 	t_player *gp;
-	t_coin	*clb;
+	//t_coin	*clb;
 	
 	gp = game->player;
-	clb = game->coin;
+	//clb = game->coin;
 	if (pointers == 'p')
 	{
 		if (gp->img_sback == NULL || gp->img_sfront == NULL 
@@ -147,12 +151,14 @@ void	check_nullvalues_pc(t_game *game, char pointers)
 			|| gp->img_wright == NULL || gp->img_wright2 == NULL)
 		ft_printf("ERROR AT GAME_GET_PLAYERIMG\n");
 	}
-	if (pointers == 'c')
-	{
-		if (clb->img_c1 == NULL || clb->img_c2 == NULL || clb->img_c3 == NULL
-		|| clb->img_c4 == NULL || clb->img_c5 == NULL || clb->img_c6 == NULL)
-		ft_printf("ERROR AT GAME_GET_COINIMG");
-	}
+	 if (pointers == 'c')
+	 {
+		if (game->coin->c_imgs[5] == NULL)
+		{
+			ft_printf("ERROR AT GAME_GET_COINIMG\n");
+		}
+	 }
+	 //	ft_printf("c pointers are not being checked\n");
 }
 
 //check for image null values on the map structure

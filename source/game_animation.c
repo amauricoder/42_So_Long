@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_commands.c                                    :+:      :+:    :+:   */
+/*   game_animation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/07 12:39:09 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/13 11:13:51 by murilo           ###   ########.fr       */
+/*   Created: 2024/02/13 10:48:49 by murilo            #+#    #+#             */
+/*   Updated: 2024/02/13 13:24:29 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-
-int	game_commands(t_game *game)
+int	coin_animation(t_game *game)
 {
-    mlx_key_hook(game->data_mlx->window, game_keypress, game);
-	mlx_loop_hook(game->data_mlx->connect, coin_animation, game);
-    return (0);
-}
-
-int	game_keypress(int keypressed, t_game *game)
-{
-	if (keypressed == KB_ESC)
+	if (game->coin->coin_loop < 2000)
 	{
-        game_close(game);
+		game->coin->coin_loop++;
+		return (0);
 	}
-	ft_printf("Key pressed number %i\n", keypressed);
+	game->coin->coin_loop = 0;
+
+    if (game->coin->coin_pos >= 6 || game->coin->coin_pos <= 0) {
+        game->coin->coin_pos = 0;
+    }
+	draw_mapcoins(game);
+	game->coin->coin_pos++;
 	return (0);
 }

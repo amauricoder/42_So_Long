@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:24 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/12 13:56:45 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/13 13:33:34 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,12 +121,9 @@ typedef struct s_player
 //For Collectable (Coin)
 typedef struct s_coin
 {
-	void	*img_c1;
-	void	*img_c2;
-	void	*img_c3;
-	void	*img_c4;
-	void	*img_c5;
-	void	*img_c6;
+	void	*c_imgs[6];
+	int		coin_pos;
+	int		coin_loop;
 }	t_coin;
 
 //For Mlx
@@ -209,6 +206,8 @@ void	draw_mapwall_left(t_game *game);
 void	draw_mapwall_right(t_game *game);
 void	draw_mapcenter(t_game *game);
 void	render_element(t_game *game, void *img, int width, int height);
+void	render_coin(t_game *game, int width, int height);
+void	draw_mapcoins(t_game *game);
 
 /* ********************************** */
 /*            GAME COMMANDS           */
@@ -216,6 +215,12 @@ void	render_element(t_game *game, void *img, int width, int height);
 /* ********************************** */
 int		game_commands(t_game *game);
 int		game_keypress(int keypressed, t_game *game);
+
+/* ********************************** */
+/*            GAME COMMANDS           */
+/*        source/game_commands.c      */
+/* ********************************** */
+int		coin_animation(t_game *game);
 
 /* ********************************** */
 /*            FREE FUNCTIONS          */

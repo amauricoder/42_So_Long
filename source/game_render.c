@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 09:43:32 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/12 14:13:35 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/13 14:01:39 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@
 int game_drawmap(t_game *game)
 {
 	ft_printf("Entrou em game_drawmap\n");
+	//ft_printf("number of coins %i\n", game->map->qt_collect);
 	draw_mapcorners(game);
 	draw_mapwallup(game);
 	draw_mapwallbottom(game);
 	draw_mapwall_left(game);
 	draw_mapwall_right(game);
 	draw_mapcenter(game);
+	draw_mapcoins(game);
 	return (0);
 }
 
@@ -158,12 +160,31 @@ void	draw_mapcenter(t_game *game)
 				render_element(game, game->map->img_murr, 32 * j, 32 * i);
 			if (game->map->map_skeleton[i][j] == 'P' && j < qt_chars)
 				render_element(game, game->player->img_sfront, 32 * j, 32 * i);
-			if (game->map->map_skeleton[i][j] == 'C' && j < qt_chars)
-				render_element(game, game->coin->img_c1, 32 * j, 32 * i);
 		}
 	}
 }
 
+//Check position ok coins
+void	draw_mapcoins(t_game *game)
+{
+	int qt_chars;
+	int i;
+	int j;
+
+	qt_chars = game->map->qt_chars_lines - 1;
+	i = 0;
+	while (game->map->map_skeleton[++i])
+	{
+		j = 0;
+		while (game->map->map_skeleton[i][++j] != '\0' 
+			&& i < game->map->qt_lines - 1)
+		{
+			if (game->map->map_skeleton[i][j] == 'C' && j < qt_chars)
+				render_coin(game, 32 * j, 32 * i);
+		}
+	}
+}
+//Render the elements tiles
 void	render_element(t_game *game, void *img, int width, int height)
 {
 	t_mlx_data *conn;
@@ -173,4 +194,35 @@ void	render_element(t_game *game, void *img, int width, int height)
 	wnd = game->data_mlx->window;
 
 	mlx_put_image_to_window(conn, wnd, img, width, height);
+}
+
+//render the element coin according to the position
+//coint is separate from general render_elements() because
+//it has animation
+void	render_coin(t_game *game, int width, int height)
+{
+	t_mlx_data *conn;
+	t_mlx_data *wnd;
+	t_coin	*gc;
+	
+	int		   coin_value;
+
+	conn = game->data_mlx->connect;
+	wnd = game->data_mlx->window;
+	coin_value = game->coin->coin_pos;
+	gc = game->coin;
+	if (coin_value >= 6 || coin_value <= 0)
+        coin_value = 0;
+	if (coin_value == 0)
+		mlx_put_image_to_window(conn, wnd, gc->c_imgs[0], width, height);
+	if (coin_value == 1)
+		mlx_put_image_to_window(conn, wnd, gc->c_imgs[1], width, height);
+	if (coin_value == 2)
+		mlx_put_image_to_window(conn, wnd, gc->c_imgs[2], width, height);
+	if (coin_value == 3)
+		mlx_put_image_to_window(conn, wnd, gc->c_imgs[3], width, height);
+	if (coin_value == 4)
+		mlx_put_image_to_window(conn, wnd, gc->c_imgs[4], width, height);
+	if (coin_value == 5)
+		mlx_put_image_to_window(conn, wnd, gc->c_imgs[5], width, height);
 }
