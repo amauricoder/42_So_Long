@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:27:56 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/16 18:09:58 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/16 22:42:58 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	game_init(t_game *game)
 	game_get_playerimg(game);
 	game_get_coinimg(game);
 	game_drawmap(game);
+	ft_printf("QT COLLECT %i \n", game->map->qt_collect);
 }
 //Initialize the structures for the game
 //except for the main struct and the map struct.
@@ -52,6 +53,8 @@ t_game	*game_structs_init(t_game *game)
 	game->player = player;
 	game->player->pl_x = 0;
 	game->player->pl_y = 0;
+	game->player->pl_lstep = 0;
+	game->player->pl_rstep = 0;
 	game->coin = coin;
 	game->coin->coin_pos = 0;
 	game->coin->coin_loop = 0;
