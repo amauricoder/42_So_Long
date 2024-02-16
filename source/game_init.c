@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:27:56 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/13 13:38:01 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/16 18:09:58 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ t_game	*game_structs_init(t_game *game)
 	}
 	game->data_mlx = data_mlx;
 	game->player = player;
+	game->player->pl_x = 0;
+	game->player->pl_y = 0;
 	game->coin = coin;
 	game->coin->coin_pos = 0;
 	game->coin->coin_loop = 0;

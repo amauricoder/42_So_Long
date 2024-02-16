@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:24 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/13 18:33:44 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/16 20:21:05 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 # define KB_A 97
 # define KB_D 100
 # define KB_ESC 65307
-# define KB_AUP 65362
-# define KB_ADOWN 65364
-# define KB_ALEFT 65361
-# define KB_ARIGHT 65363
+# define KB_UP 65362
+# define KB_DOWN 65364
+# define KB_LEFT 65361
+# define KB_RIGHT 65363
 
 /* ********************************** */
 /*              SPRITES               */
@@ -116,6 +116,8 @@ typedef struct s_player
 	void	*img_wleft2;
 	void	*img_wright;
 	void	*img_wright2;
+	int		pl_x;
+	int		pl_y;
 }	t_player;
 
 //For Collectable (Coin)
@@ -205,7 +207,7 @@ void 	draw_mapwallbottom(t_game *game);
 void	draw_mapwall_left(t_game *game);
 void	draw_mapwall_right(t_game *game);
 void	draw_mapcenter(t_game *game);
-void	render_element(t_game *game, void *img, int width, int height);
+void	render_elmt(t_game *game, void *img, int width, int height);
 void	render_coin(t_game *game, int width, int height);
 void	draw_mapcoins(t_game *game);
 
@@ -214,8 +216,11 @@ void	draw_mapcoins(t_game *game);
 /*        source/game_commands.c      */
 /* ********************************** */
 int		game_commands(t_game *game);
-int		game_keypress(int keypressed, t_game *game);
-
+int		game_keypressed(int keypressed, t_game *game);
+void	key_up_pressed(t_game *game);
+void	key_down_pressed(t_game *game);
+void	key_left_pressed(t_game *game);
+void	key_right_pressed(t_game *game);
 /* ********************************** */
 /*            GAME COMMANDS           */
 /*        source/game_commands.c      */
