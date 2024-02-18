@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:24 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/18 13:15:21 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/18 17:59:06 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,15 @@
 # define COIN4 "assets/sheets/coin/c4.xpm"
 # define COIN5 "assets/sheets/coin/c5.xpm"
 # define COIN6 "assets/sheets/coin/c6.xpm"
+//Exit (UFO)
+#define EXIT1 "assets/sheets/exit/e_a1.xpm"
+#define EXIT2 "assets/sheets/exit/e_a2.xpm"
+#define EXIT3 "assets/sheets/exit/e_a3.xpm"
+#define EXIT4 "assets/sheets/exit/e_a4.xpm"
+#define EXIT5 "assets/sheets/exit/e_a5.xpm"
+#define EXIT6 "assets/sheets/exit/e1.xpm"
+#define EXIT7 "assets/sheets/exit/e2.xpm"
+#define EXIT8 "assets/sheets/exit/e3.xpm"
 
 /* ********************************** */
 /*           EXTERNAL LIBS            */
@@ -136,6 +145,15 @@ typedef struct s_coin
 	int		coin_loop;
 }	t_coin;
 
+//For Exit (UFO)
+typedef struct s_exit
+{
+	void	*e_imgs[8];
+	int		exit_pos;
+	int		exit_loop;
+	int		exit_yes;
+}	t_exit;
+
 //For Mlx
 typedef struct s_mlx_data
 {
@@ -150,6 +168,7 @@ typedef struct s_game
 	t_mlx_data	*data_mlx;
 	t_player	*player;
 	t_coin		*coin;
+	t_exit		*exit;
 	int			img_h;
 	int			img_w;
 }	t_game;
@@ -195,6 +214,7 @@ t_game	*game_structs_init(t_game *game);
 void	game_get_mapimg(t_game *game);
 void	game_get_playerimg(t_game *game);
 void	game_get_coinimg(t_game *game);
+void	game_get_exitimg(t_game *game);
 
 /* ********************************** */
 /*              GAME UTILS            */
@@ -202,7 +222,7 @@ void	game_get_coinimg(t_game *game);
 /* ********************************** */
 int		game_close(t_game *game);
 void	check_nullvalues_pc(t_game *game, char pointers);
-void	check_nullvalues_m(t_game *game, char pointers);
+void	check_nullvalues_me(t_game *game, char pointers);
 
 /* ********************************** */
 /*             GAME DRAW 1            */
@@ -221,6 +241,7 @@ void	draw_mapwall_left(t_game *game);
 void	draw_mapwall_right(t_game *game);
 void	draw_mapcenter(t_game *game);
 void	draw_mapcoins(t_game *game);
+void	draw_exit(t_game *game);
 
 /* ********************************** */
 /*             GAME RENDER            */
@@ -228,6 +249,7 @@ void	draw_mapcoins(t_game *game);
 /* ********************************** */
 void	render_elmt(t_game *game, void *img, int width, int height);
 void	render_coin(t_game *game, int width, int height);
+void	render_exit(t_game *game, int width, int height);
 
 /* ********************************** */
 /*            GAME COMMANDS           */
@@ -245,6 +267,7 @@ void	take_coin(t_game *game, char keypressed);
 /*       source/game_animation.c      */
 /* ********************************** */
 int		coin_animation(t_game *game);
+int		exit_animation(t_game *game);
 
 /* ********************************** */
 /*            FREE FUNCTIONS          */
@@ -255,5 +278,6 @@ void	free_game_struct(t_game *game);
 void	free_map_imgptr(t_game *game);
 void	free_player_imgptr(t_game *game);
 void	free_coin_imgptr(t_game *game);
+void	free_exit_imgptr(t_game *game);
 
 #endif

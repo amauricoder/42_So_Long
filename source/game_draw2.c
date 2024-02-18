@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 13:04:35 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/18 13:06:36 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/18 18:18:42 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,28 @@ void	draw_mapcoins(t_game *game)
 		{
 			if (game->map->map_skeleton[i][j] == 'C' && j < qt_chars)
 				render_coin(game, 32 * j, 32 * i);
+		}
+	}
+}
+
+//Check pos for the exit
+void	draw_exit(t_game *game)
+{
+	int qt_chars;
+	int i;
+	int j;
+
+	qt_chars = game->map->qt_chars_lines - 1;
+	i = 0;
+	while (game->map->map_skeleton[++i])
+	{
+		j = 0;
+		while (game->map->map_skeleton[i][++j] != '\0' 
+			&& i < game->map->qt_lines - 1)
+		{
+			if (game->map->map_skeleton[i][j] == 'E' && j < qt_chars)
+				render_exit(game, 32 * j, 32 * i);
+				
 		}
 	}
 }

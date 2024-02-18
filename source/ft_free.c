@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 08:52:12 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/13 13:31:34 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/18 17:22:51 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,19 @@ void free_coin_imgptr(t_game *game)
 	mlx_destroy_image(connect, game->coin->c_imgs[3]);
 	mlx_destroy_image(connect, game->coin->c_imgs[4]);
 	mlx_destroy_image(connect, game->coin->c_imgs[5]);
+}
+
+void free_exit_imgptr(t_game *game)
+{
+	t_mlx_data *connect;
+
+	connect = game->data_mlx->connect;
+	mlx_destroy_image(connect, game->exit->e_imgs[0]);
+	mlx_destroy_image(connect, game->exit->e_imgs[1]);
+	mlx_destroy_image(connect, game->exit->e_imgs[2]);
+	mlx_destroy_image(connect, game->exit->e_imgs[3]);
+	mlx_destroy_image(connect, game->exit->e_imgs[4]);
+	mlx_destroy_image(connect, game->exit->e_imgs[5]);
+	mlx_destroy_image(connect, game->exit->e_imgs[6]);
+	mlx_destroy_image(connect, game->exit->e_imgs[7]);
 }

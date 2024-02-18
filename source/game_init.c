@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:27:56 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/18 13:10:07 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/18 18:03:54 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	game_init(t_game *game)
 	game_get_mapimg(game);
 	game_get_playerimg(game);
 	game_get_coinimg(game);
+	game_get_exitimg(game);
 	game_drawmap(game);
-	ft_printf("QT COLLECT %i \n", game->map->qt_collect);
 }
 //Initialize the structures for the game
 //except for the main struct and the map struct.
@@ -40,17 +40,20 @@ t_game	*game_structs_init(t_game *game)
 	t_mlx_data *data_mlx;
 	t_player	*player;
 	t_coin		*coin;
-	
+	t_exit		*exit;
+
 	data_mlx = malloc(sizeof(t_mlx_data));
 	player = malloc(sizeof(t_player));
 	coin = malloc(sizeof(t_coin));
-	if (!data_mlx || !player || !coin)
+	exit = malloc(sizeof(t_exit));
+	if (!data_mlx || !player || !coin || !exit)
 	{
 		error_message(11);
 		return (NULL);
 	}
 	game->data_mlx = data_mlx;
 	game->player = player;
+	game->exit = exit;
 	game->player->pl_x = 0;
 	game->player->pl_y = 0;
 	game->player->pl_lstep = 0;
@@ -58,6 +61,9 @@ t_game	*game_structs_init(t_game *game)
 	game->coin = coin;
 	game->coin->coin_pos = 0;
 	game->coin->coin_loop = 0;
+	game->exit->exit_pos = 0;
+	game->exit->exit_loop = 0;
+	game->exit->exit_yes = FALSE;
 	return (game);
 }
 //Get the xpm images to the void pointers into he map structure
@@ -83,7 +89,7 @@ void	game_get_mapimg(t_game *game)
 	mp->img_wallmr = mlx_xpm_file_to_image(conn, WALL_MR, &gih, &giw);
 	mp->img_wallr = mlx_xpm_file_to_image(conn, WALL_R, &gih, &giw);
 	mp->img_wallbc = mlx_xpm_file_to_image(conn, WALL_BC, &gih, &giw);
-	check_nullvalues_m(game, 'm');
+	check_nullvalues_me(game, 'm');
 }
 
 //Get the xpm images to the void pointers into the player structure
@@ -135,4 +141,27 @@ void	game_get_coinimg(t_game *game)
 	coin->c_imgs[5] = mlx_xpm_file_to_image(conn, COIN6, &h, &w);
 
 	check_nullvalues_pc(game, 'c');
+}
+
+void	game_get_exitimg(t_game *game)
+{
+	t_mlx_data 	*conn;
+	t_exit		*exit;
+	int			h;
+	int			w;
+
+	conn = game->data_mlx->connect;
+	exit = game->exit;
+	h = game->img_h;
+	w = game->img_w;
+	
+	exit->e_imgs[0] = mlx_xpm_file_to_image(conn, EXIT1, &h, &w);
+	exit->e_imgs[1] = mlx_xpm_file_to_image(conn, EXIT2, &h, &w);
+	exit->e_imgs[2] = mlx_xpm_file_to_image(conn, EXIT3, &h, &w);
+	exit->e_imgs[3] = mlx_xpm_file_to_image(conn, EXIT4, &h, &w);
+	exit->e_imgs[4] = mlx_xpm_file_to_image(conn, EXIT5, &h, &w);
+	exit->e_imgs[5] = mlx_xpm_file_to_image(conn, EXIT6, &h, &w);
+	exit->e_imgs[6] = mlx_xpm_file_to_image(conn, EXIT7, &h, &w);
+	exit->e_imgs[7] = mlx_xpm_file_to_image(conn, EXIT8, &h, &w);
+	check_nullvalues_me(game, 'e');
 }

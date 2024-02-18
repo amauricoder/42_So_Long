@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 09:43:32 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/18 13:06:41 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/18 18:22:32 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,35 @@ void	render_coin(t_game *game, int width, int height)
 		mlx_put_image_to_window(conn, wnd, gc->c_imgs[4], width, height);		
 	if (coin_value == 5)
 		mlx_put_image_to_window(conn, wnd, gc->c_imgs[5], width, height);
+}
+
+void	render_exit(t_game *game, int width, int height)
+{
+	t_mlx_data 	*conn;
+	t_mlx_data 	*wnd;
+	t_exit		*ge;
+	int			exit_value;
+	
+	conn = game->data_mlx->connect;
+	wnd = game->data_mlx->window;
+	ge = game->exit;
+	exit_value = game->exit->exit_pos;
+	if (exit_value > 5)
+        exit_value = 0;
+	//ft_printf("EXIT VALUE render_exit() %i\n", exit_value);
+	if (ge->exit_yes == FALSE)
+		mlx_put_image_to_window(conn, wnd, game->map->img_floor, width, height);
+	if (exit_value == 0 && ge->exit_yes == TRUE)
+		mlx_put_image_to_window(conn, wnd, ge->e_imgs[5], width, height);
+	if (exit_value == 1 && ge->exit_yes == TRUE)
+		mlx_put_image_to_window(conn, wnd, ge->e_imgs[6], width, height);
+	if (exit_value == 2 && ge->exit_yes == TRUE)
+		mlx_put_image_to_window(conn, wnd, ge->e_imgs[5], width, height);
+	if (exit_value == 3 && ge->exit_yes == TRUE)
+		mlx_put_image_to_window(conn, wnd, ge->e_imgs[7], width, height);
+	if (exit_value == 4 && ge->exit_yes == TRUE)
+		mlx_put_image_to_window(conn, wnd, ge->e_imgs[5], width, height);
+	if (exit_value == 5 && ge->exit_yes == TRUE)
+		mlx_put_image_to_window(conn, wnd, ge->e_imgs[6], width, height);
 }
 

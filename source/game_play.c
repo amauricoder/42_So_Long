@@ -22,6 +22,9 @@ int	game_play(t_game *game)
     mlx_key_hook(window, game_keypressed, game);
 	mlx_hook(window, 17, 1L << 17, game_close, game);
 	mlx_loop_hook(conn, coin_animation, game);
+	ft_printf("Quatity collect game_play() %i\n", game->map->qt_collect);
+	/* if (game->map->qt_collect == 0)
+		mlx_loop_hook(conn, exit_animation, game); */
     return (0);
 }
 
@@ -195,5 +198,11 @@ void	take_coin(t_game *game, char keypressed)
 		pl->pl_y --;
 		render_elmt(game, game->map->img_floor, 32 * pl->pl_x, 32 * (pl->pl_y + 1));
 		render_elmt(game, pl->img_wback, 32 * pl->pl_x, 32 * pl->pl_y);
+	}
+
+	if (game->map->qt_collect == 0)
+	{
+		game->exit->exit_yes = TRUE;
+		mlx_loop_hook(game->data_mlx->connect, exit_animation, game);
 	}
 }

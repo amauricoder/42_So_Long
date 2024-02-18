@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 10:27:46 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/18 13:10:29 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/18 17:23:08 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@ int	game_close(t_game *game)
 	free_map_imgptr(game);
 	free_player_imgptr(game);
 	free_coin_imgptr(game);
+	free_exit_imgptr(game);
 	mlx_destroy_window(game->data_mlx->connect, game->data_mlx->window);
 	mlx_destroy_display(game->data_mlx->connect);
 	free(game->map);
 	free(game->player);
 	free(game->coin);
+	free(game->exit);
 	free(game->data_mlx->connect);
 	free(game->data_mlx);
 	free(game);
@@ -50,24 +52,26 @@ void	check_nullvalues_pc(t_game *game, char pointers)
 			|| gp->img_wright == NULL || gp->img_wright2 == NULL)
 		ft_printf("ERROR AT GAME_GET_PLAYERIMG\n");
 	}
-	 if (pointers == 'c')
-	 {
+	if (pointers == 'c')
+	{
 		if (game->coin->c_imgs[5] == NULL)
 		{
 			ft_printf("ERROR AT GAME_GET_COINIMG\n");
 		}
-	 }
+	}
 	 //	ft_printf("c pointers are not being checked\n");
 }
 
 //check for image null values on the map structure
 //function just for debug, because if there is something NULL
 //It will lead to seg fault
-void	check_nullvalues_m(t_game *game, char pointers)
+void	check_nullvalues_me(t_game *game, char pointers)
 {
 	t_map *map;
+	t_exit *ex;
 
 	map = game->map;
+	ex = game->exit;
 	if (pointers == 'm')
 	{
 		if(map->img_floor == NULL || map->img_murr == NULL 
@@ -76,5 +80,12 @@ void	check_nullvalues_m(t_game *game, char pointers)
 			|| map->img_wallml == NULL || map->img_wallmr == NULL 
 			|| map->img_wallr == NULL || game->map->img_wallbc == NULL)
 		ft_printf("ERROR AT GAME_GET_MAPIMG\n");		
+	}
+	if (pointers == 'e')
+	{
+		if(!ex->e_imgs[0] || !ex->e_imgs[1] || !ex->e_imgs[2]
+			|| !ex->e_imgs[3] || !ex->e_imgs[4] || !ex->e_imgs[5]
+			|| !ex->e_imgs[6] || !ex->e_imgs[7])
+		ft_printf("ERROR AT GAME_GET_EXITIMG\n");		
 	}
 }
