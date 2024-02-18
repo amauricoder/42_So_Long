@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:21 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/16 18:09:07 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/18 13:15:21 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(int argc, char **argv)
 		if (map_valid_allrequisites(game->map))
 		{
 			game_init(game);
-			game_commands(game);
+			game_play(game);
 			mlx_loop(game->data_mlx->connect);
 		}
 		free_game_struct(game);

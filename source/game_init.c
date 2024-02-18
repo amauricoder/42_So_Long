@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:27:56 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/18 12:28:59 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/18 13:10:07 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,52 +135,4 @@ void	game_get_coinimg(t_game *game)
 	coin->c_imgs[5] = mlx_xpm_file_to_image(conn, COIN6, &h, &w);
 
 	check_nullvalues_pc(game, 'c');
-}
-//check for image null values on the player and coin structures
-//function just for debug, because if there is something NULL
-//It will lead to seg fault
-void	check_nullvalues_pc(t_game *game, char pointers)
-{
-	t_player *gp;
-	//t_coin	*clb;
-	
-	gp = game->player;
-	//clb = game->coin;
-	if (pointers == 'p')
-	{
-		if (gp->img_sback == NULL || gp->img_sfront == NULL 
-			|| gp->img_sleft == NULL || gp->img_sright == NULL
-			|| gp->img_wback == NULL || gp->img_wback2 == NULL
-			|| gp->img_wfront == NULL || gp->img_wfront2 == NULL
-			|| gp->img_wleft == NULL || gp->img_wleft2 == NULL
-			|| gp->img_wright == NULL || gp->img_wright2 == NULL)
-		ft_printf("ERROR AT GAME_GET_PLAYERIMG\n");
-	}
-	 if (pointers == 'c')
-	 {
-		if (game->coin->c_imgs[5] == NULL)
-		{
-			ft_printf("ERROR AT GAME_GET_COINIMG\n");
-		}
-	 }
-	 //	ft_printf("c pointers are not being checked\n");
-}
-
-//check for image null values on the map structure
-//function just for debug, because if there is something NULL
-//It will lead to seg fault
-void	check_nullvalues_m(t_game *game, char pointers)
-{
-	t_map *map;
-
-	map = game->map;
-	if (pointers == 'm')
-	{
-		if(map->img_floor == NULL || map->img_murr == NULL 
-			|| map->img_wallbl == NULL || map->img_wallbr == NULL
-			|| map->img_wallc == NULL || map->img_walll == NULL
-			|| map->img_wallml == NULL || map->img_wallmr == NULL 
-			|| map->img_wallr == NULL || game->map->img_wallbc == NULL)
-		ft_printf("ERROR AT GAME_GET_MAPIMG\n");		
-	}
 }

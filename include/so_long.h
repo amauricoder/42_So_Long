@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:24 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/18 12:41:53 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/18 13:15:21 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,35 +195,45 @@ t_game	*game_structs_init(t_game *game);
 void	game_get_mapimg(t_game *game);
 void	game_get_playerimg(t_game *game);
 void	game_get_coinimg(t_game *game);
-void	check_nullvalues_pc(t_game *game, char pointers);
-void	check_nullvalues_m(t_game *game, char pointers);
 
 /* ********************************** */
 /*              GAME UTILS            */
 /*          source/game_utils.c       */
 /* ********************************** */
 int		game_close(t_game *game);
+void	check_nullvalues_pc(t_game *game, char pointers);
+void	check_nullvalues_m(t_game *game, char pointers);
 
 /* ********************************** */
-/*             GAME RENDER            */
-/*         source/game_render.c       */
+/*             GAME DRAW 1            */
+/*           source/game_draw.c       */
 /* ********************************** */
 int 	game_drawmap(t_game *game);
 void 	draw_mapcorners(t_game *game);
 void 	draw_mapwallup(t_game *game);
 void 	draw_mapwallbottom(t_game *game);
+
+/* ********************************** */
+/*             GAME DRAW 2            */
+/*           source/game_draw2.c      */
+/* ********************************** */
 void	draw_mapwall_left(t_game *game);
 void	draw_mapwall_right(t_game *game);
 void	draw_mapcenter(t_game *game);
-void	render_elmt(t_game *game, void *img, int width, int height);
-void	render_coin(t_game *game, int width, int height);
 void	draw_mapcoins(t_game *game);
 
 /* ********************************** */
-/*            GAME COMMANDS           */
-/*        source/game_commands.c      */
+/*             GAME RENDER            */
+/*         source/game_render.c       */
 /* ********************************** */
-int		game_commands(t_game *game);
+void	render_elmt(t_game *game, void *img, int width, int height);
+void	render_coin(t_game *game, int width, int height);
+
+/* ********************************** */
+/*            GAME COMMANDS           */
+/*        source/game_play.c      */
+/* ********************************** */
+int		game_play(t_game *game);
 int		game_keypressed(int keypressed, t_game *game);
 void	key_up_pressed(t_game *game);
 void	key_down_pressed(t_game *game);
@@ -231,8 +241,8 @@ void	key_left_pressed(t_game *game);
 void	key_right_pressed(t_game *game);
 void	take_coin(t_game *game, char keypressed);
 /* ********************************** */
-/*            GAME COMMANDS           */
-/*        source/game_commands.c      */
+/*            GAME ANIMATION          */
+/*       source/game_animation.c      */
 /* ********************************** */
 int		coin_animation(t_game *game);
 

@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_commands.c                                    :+:      :+:    :+:   */
+/*   game_play.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 12:39:09 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/18 12:43:53 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/18 12:54:53 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-
-int	game_commands(t_game *game)
+int	game_play(t_game *game)
 {
 	t_mlx_data *conn;
 	t_mlx_data *window;
@@ -41,28 +40,28 @@ int	game_keypressed(int keypressed, t_game *game)
 	ft_printf("Key pressed number game_keypressed() %i\n", keypressed);
 	return (0);
 }
-//Function to make the player go up one
+//Make the player go up one tile.
 //W and UP Arrow are up keys.
-//-1 is for render player on the y -1 position of map
+//Magic -1 is for render player on the y -1 position of map
 void	key_up_pressed(t_game *game)
 {
 	t_player *pl;
 	t_map *mp;
-	char **map_skeleton;
+	char **map_sk;
 
 	pl = game->player;
 	mp = game->map;
-	map_skeleton = game->map->map_skeleton;
-	if (map_skeleton[pl->pl_y - 1][pl->pl_x] == 'C')
+	map_sk = game->map->map_skeleton;
+	if (map_sk[pl->pl_y - 1][pl->pl_x] == 'C')
 		take_coin(game, 'u');
-	else if (map_skeleton[pl->pl_y - 1][pl->pl_x] != '1' && pl->pl_lstep == FALSE)
+	else if (map_sk[pl->pl_y - 1][pl->pl_x] != '1' && pl->pl_lstep == FALSE)
 	{
 		game->player->pl_y --;
 		render_elmt(game, mp->img_floor, 32 * pl->pl_x, 32 * (pl->pl_y + 1));
 		render_elmt(game, pl->img_wback, 32 * pl->pl_x, 32 * pl->pl_y);
 		pl->pl_lstep = TRUE;
 	}
-	else if (map_skeleton[pl->pl_y - 1][pl->pl_x] != '1' && pl->pl_lstep == TRUE)
+	else if (map_sk[pl->pl_y - 1][pl->pl_x] != '1' && pl->pl_lstep == TRUE)
 	{
 		game->player->pl_y --;
 		render_elmt(game, mp->img_floor, 32 * pl->pl_x, 32 * (pl->pl_y + 1));
@@ -76,21 +75,21 @@ void	key_down_pressed(t_game *game)
 {
 	t_player *pl;
 	t_map *mp;
-	char **map_skeleton;
+	char **map_sk;
 
 	pl = game->player;
 	mp = game->map;
-	map_skeleton = game->map->map_skeleton;
-	if (map_skeleton[pl->pl_y + 1][pl->pl_x] == 'C')
+	map_sk = game->map->map_skeleton;
+	if (map_sk[pl->pl_y + 1][pl->pl_x] == 'C')
 		take_coin(game, 'd');
-	else if (map_skeleton[pl->pl_y + 1][pl->pl_x] != '1' && pl->pl_lstep == FALSE)
+	else if (map_sk[pl->pl_y + 1][pl->pl_x] != '1' && pl->pl_lstep == FALSE)
 	{
 		game->player->pl_y ++;
 		render_elmt(game, mp->img_floor, 32 * pl->pl_x, 32 * (pl->pl_y - 1));
 		render_elmt(game, pl->img_wfront, 32 * pl->pl_x, 32 * pl->pl_y);
 		pl->pl_lstep = TRUE;
 	}
-	else if (map_skeleton[pl->pl_y + 1][pl->pl_x] != '1' && pl->pl_lstep == TRUE)
+	else if (map_sk[pl->pl_y + 1][pl->pl_x] != '1' && pl->pl_lstep == TRUE)
 	{
 		game->player->pl_y ++;
 		render_elmt(game, mp->img_floor, 32 * pl->pl_x, 32 * (pl->pl_y - 1));
@@ -105,21 +104,21 @@ void	key_left_pressed(t_game *game)
 {
 	t_player *pl;
 	t_map *mp;
-	char **map_skeleton;
+	char **map_sk;
 
 	pl = game->player;
 	mp = game->map;
-	map_skeleton = game->map->map_skeleton;
-	if (map_skeleton[pl->pl_y][pl->pl_x - 1] == 'C')
+	map_sk = game->map->map_skeleton;
+	if (map_sk[pl->pl_y][pl->pl_x - 1] == 'C')
 		take_coin(game, 'l');
-	else if (map_skeleton[pl->pl_y][pl->pl_x - 1] != '1' && pl->pl_lstep == FALSE)
+	else if (map_sk[pl->pl_y][pl->pl_x - 1] != '1' && pl->pl_lstep == FALSE)
 	{
 		game->player->pl_x --;
 		render_elmt(game, mp->img_floor, 32 * (pl->pl_x + 1), 32 * pl->pl_y);
 		render_elmt(game, pl->img_wleft, 32 * pl->pl_x, 32 * pl->pl_y);
 		pl->pl_lstep = TRUE;
 	}
-	else if (map_skeleton[pl->pl_y][pl->pl_x - 1] != '1' && pl->pl_lstep == TRUE)
+	else if (map_sk[pl->pl_y][pl->pl_x - 1] != '1' && pl->pl_lstep == TRUE)
 	{
 		game->player->pl_x --;
 		render_elmt(game, mp->img_floor, 32 * (pl->pl_x + 1), 32 * pl->pl_y);
@@ -134,21 +133,21 @@ void	key_right_pressed(t_game *game)
 {
 	t_player *pl;
 	t_map *mp;
-	char **map_skeleton;
+	char **map_sk;
 
 	pl = game->player;
 	mp = game->map;
-	map_skeleton = game->map->map_skeleton;
-	if (map_skeleton[pl->pl_y][pl->pl_x + 1] == 'C')
+	map_sk = game->map->map_skeleton;
+	if (map_sk[pl->pl_y][pl->pl_x + 1] == 'C')
 		take_coin(game, 'r');
-	else if (map_skeleton[pl->pl_y][pl->pl_x + 1] != '1' && pl->pl_lstep == FALSE)
+	else if (map_sk[pl->pl_y][pl->pl_x + 1] != '1' && pl->pl_lstep == FALSE)
 	{
 		game->player->pl_x ++;
 		render_elmt(game, mp->img_floor, 32 * (pl->pl_x - 1), 32 * pl->pl_y);
 		render_elmt(game, pl->img_wright, 32 * pl->pl_x, 32 * pl->pl_y);
 		pl->pl_lstep = TRUE;
 	}
-	else if (map_skeleton[pl->pl_y][pl->pl_x + 1] != '1' && pl->pl_lstep == TRUE)
+	else if (map_sk[pl->pl_y][pl->pl_x + 1] != '1' && pl->pl_lstep == TRUE)
 	{
 		game->player->pl_x ++;
 		render_elmt(game, mp->img_floor, 32 * (pl->pl_x - 1), 32 * pl->pl_y);
@@ -157,7 +156,7 @@ void	key_right_pressed(t_game *game)
 	}
 	
 }
-
+//Update Coin value when player pass by.
 void	take_coin(t_game *game, char keypressed)
 {
 	char** map_skeleton;
@@ -165,7 +164,6 @@ void	take_coin(t_game *game, char keypressed)
 	
 	pl = game->player;
 	map_skeleton = game->map->map_skeleton;
-	
 	if (map_skeleton[pl->pl_y][pl->pl_x + 1] == 'C' && keypressed == 'r')
 	{
 		map_skeleton[pl->pl_y][pl->pl_x + 1] = '0';
