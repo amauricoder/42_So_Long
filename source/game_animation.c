@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 10:48:49 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/13 13:24:29 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/18 11:59:51 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	coin_animation(t_game *game)
 		return (0);
 	}
 	game->coin->coin_loop = 0;
-
     if (game->coin->coin_pos >= 6 || game->coin->coin_pos <= 0) {
         game->coin->coin_pos = 0;
     }

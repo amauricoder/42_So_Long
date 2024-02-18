@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:24 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/16 23:25:59 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/18 12:41:53 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,7 +229,7 @@ void	key_up_pressed(t_game *game);
 void	key_down_pressed(t_game *game);
 void	key_left_pressed(t_game *game);
 void	key_right_pressed(t_game *game);
-void	take_coin(t_game *game);
+void	take_coin(t_game *game, char keypressed);
 /* ********************************** */
 /*            GAME COMMANDS           */
 /*        source/game_commands.c      */
