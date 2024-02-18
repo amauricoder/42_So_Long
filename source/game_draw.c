@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 12:54:13 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/18 16:58:49 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/18 19:45:24 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 //right place. Magic 32 value inside the functions is related to img size.
 int game_drawmap(t_game *game)
 {
-	ft_printf("Entrou em game_drawmap\n");
-	//ft_printf("number of coins %i\n", game->map->qt_collect);
 	draw_mapcorners(game);
 	draw_mapwallup(game);
 	draw_mapwallbottom(game);

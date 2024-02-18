@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:24 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/18 17:59:06 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/18 19:49:12 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,8 @@ typedef struct s_exit
 	int		exit_pos;
 	int		exit_loop;
 	int		exit_yes;
+	int		exit_y;
+	int		exit_x;
 }	t_exit;
 
 //For Mlx
@@ -171,6 +173,7 @@ typedef struct s_game
 	t_exit		*exit;
 	int			img_h;
 	int			img_w;
+	int			qt_mov;
 }	t_game;
 
 /* ********************************** */

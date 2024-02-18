@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:27:56 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/18 18:03:54 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/18 19:49:12 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ t_game	*game_structs_init(t_game *game)
 	game->data_mlx = data_mlx;
 	game->player = player;
 	game->exit = exit;
+	game->exit->exit_y = 0;
+	game->exit->exit_x = 0;
+	game->qt_mov = 0;
 	game->player->pl_x = 0;
 	game->player->pl_y = 0;
 	game->player->pl_lstep = 0;

@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 13:04:35 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/18 18:18:42 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/18 19:49:12 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,8 +124,11 @@ void	draw_exit(t_game *game)
 			&& i < game->map->qt_lines - 1)
 		{
 			if (game->map->map_skeleton[i][j] == 'E' && j < qt_chars)
+			{
 				render_exit(game, 32 * j, 32 * i);
-				
+				game->exit->exit_y = i;
+				game->exit->exit_x = j;
+			}
 		}
 	}
 }
