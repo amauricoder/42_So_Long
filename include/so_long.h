@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com     +#+  +:+       +#+        */
+/*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:24 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/20 12:54:25 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/02/20 18:19:56 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@
 # define EXIT6 "assets/sheets/exit/e1.xpm"
 # define EXIT7 "assets/sheets/exit/e2.xpm"
 # define EXIT8 "assets/sheets/exit/e3.xpm"
+# define EXIT9 "assets/sheets/exit/e4.xpm"
+# define EXIT10 "assets/sheets/exit/e5.xpm"
 
 /* ********************************** */
 /*           EXTERNAL LIBS            */
@@ -148,7 +150,7 @@ typedef struct s_coin
 //For Exit (UFO)
 typedef struct s_exit
 {
-	void	*e_imgs[8];
+	void	*e_imgs[10];
 	int		exit_pos;
 	int		exit_loop;
 	int		exit_yes;

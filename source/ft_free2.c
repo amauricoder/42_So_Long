@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com     +#+  +:+       +#+        */
+/*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 11:45:38 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/20 11:47:34 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/02/20 18:21:00 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ void	free_exit_imgptr(t_game *game)
 
 	i = 0;
 	connect = game->data_mlx->connect;
-	while (i <= 7)
+	while (i <= 9)
 		mlx_destroy_image(connect, game->exit->e_imgs[i++]);
 }

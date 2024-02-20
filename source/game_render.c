@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_render.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com     +#+  +:+       +#+        */
+/*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 09:43:32 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/20 13:14:07 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/02/20 18:27:27 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,11 @@ void	render_exit(t_game *game, int width, int height)
 	if (exit_value == 1 && ge->exit_yes == TRUE)
 		mlx_put_image_to_window(conn, wnd, ge->e_imgs[6], width, height);
 	if (exit_value == 2 && ge->exit_yes == TRUE)
-		mlx_put_image_to_window(conn, wnd, ge->e_imgs[5], width, height);
+		mlx_put_image_to_window(conn, wnd, ge->e_imgs[7], width, height);
 	if (exit_value == 3 && ge->exit_yes == TRUE)
 		mlx_put_image_to_window(conn, wnd, ge->e_imgs[7], width, height);
 	if (exit_value == 4 && ge->exit_yes == TRUE)
-		mlx_put_image_to_window(conn, wnd, ge->e_imgs[5], width, height);
+		mlx_put_image_to_window(conn, wnd, ge->e_imgs[8], width, height);
 	if (exit_value == 5 && ge->exit_yes == TRUE)
-		mlx_put_image_to_window(conn, wnd, ge->e_imgs[6], width, height);
+		mlx_put_image_to_window(conn, wnd, ge->e_imgs[9], width, height);
 }
