@@ -51,6 +51,9 @@ int	game_keypressed(int keypressed, t_game *game)
 	}
 	ft_printf("Key pressed number game_keypressed() %i\n", keypressed);
 	ft_printf("Quantity of moves %i\n", game->qt_mov);
+	
+	//mlx_string_put(game->data_mlx->connect, game->data_mlx->window, 50, 50, 0xFFFFFF, "Quantity of mov");
+	//mlx_string_put(game->data_mlx->connect, game->data_mlx->window, 50, 150, 0xFFFFFF, ft_itoa(game->qt_mov));
 	return (0);
 }
 //Make the player go up one tile.

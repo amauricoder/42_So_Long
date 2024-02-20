@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:27:56 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/18 19:49:12 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/18 23:03:13 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	game_init(t_game *game)
 	int wnd_w;
 	t_mlx_data *conn;
 	
-	wnd_h = (game->map->qt_lines) * 32;
+	wnd_h = ((game->map->qt_lines) * 32) + 32;
 	wnd_w = (game->map->qt_chars_lines) * 32;
 	game = game_structs_init(game);
 	game->data_mlx->connect = mlx_init();
