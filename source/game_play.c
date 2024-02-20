@@ -41,6 +41,9 @@ int	game_keypressed(int keypressed, t_game *game)
 		&& game->exit->exit_y == game->player->pl_y
 		&& game->exit->exit_yes == TRUE)
 	{
+		//mlx_clear_window(game->data_mlx->connect, game->data_mlx->window);
+		//mlx_string_put(game->data_mlx->connect, game->data_mlx->window, 32, 16, 0xFFFFFF, "YOU WIN!!");
+		//AQUI eu preciso fazer com que uma imagem vencedora apareca e nao feche a janela
 		ft_printf("YOU WIN\n");
 		game_close(game);
 	}
