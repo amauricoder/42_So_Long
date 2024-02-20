@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 10:27:46 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/18 17:23:08 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/20 13:22:36 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ int	game_close(t_game *game)
 //It will lead to seg fault
 void	check_nullvalues_pc(t_game *game, char pointers)
 {
-	t_player *gp;
-	//t_coin	*clb;
-	
+	t_player	*gp;
+	int			i;
+
+	i = 0;
 	gp = game->player;
-	//clb = game->coin;
 	if (pointers == 'p')
 	{
 		if (gp->img_sback == NULL || gp->img_sfront == NULL 
@@ -50,16 +50,17 @@ void	check_nullvalues_pc(t_game *game, char pointers)
 			|| gp->img_wfront == NULL || gp->img_wfront2 == NULL
 			|| gp->img_wleft == NULL || gp->img_wleft2 == NULL
 			|| gp->img_wright == NULL || gp->img_wright2 == NULL)
-		ft_printf("ERROR AT GAME_GET_PLAYERIMG\n");
+			ft_printf("ERROR AT GAME_GET_PLAYERIMG\n");
 	}
 	if (pointers == 'c')
 	{
-		if (game->coin->c_imgs[5] == NULL)
+		while (i <= 5)
 		{
-			ft_printf("ERROR AT GAME_GET_COINIMG\n");
+			if (game->coin->c_imgs[i] == NULL)
+				ft_printf("ERROR AT GAME_GET_COINIMG\n");
+			i ++;
 		}
 	}
-	 //	ft_printf("c pointers are not being checked\n");
 }
 
 //check for image null values on the map structure
@@ -67,25 +68,25 @@ void	check_nullvalues_pc(t_game *game, char pointers)
 //It will lead to seg fault
 void	check_nullvalues_me(t_game *game, char pointers)
 {
-	t_map *map;
-	t_exit *ex;
+	t_map	*map;
+	t_exit	*ex;
 
 	map = game->map;
 	ex = game->exit;
 	if (pointers == 'm')
 	{
-		if(map->img_floor == NULL || map->img_murr == NULL 
+		if (map->img_floor == NULL || map->img_murr == NULL 
 			|| map->img_wallbl == NULL || map->img_wallbr == NULL
 			|| map->img_wallc == NULL || map->img_walll == NULL
 			|| map->img_wallml == NULL || map->img_wallmr == NULL 
 			|| map->img_wallr == NULL || game->map->img_wallbc == NULL)
-		ft_printf("ERROR AT GAME_GET_MAPIMG\n");		
+			ft_printf("ERROR AT GAME_GET_MAPIMG\n");
 	}
 	if (pointers == 'e')
 	{
-		if(!ex->e_imgs[0] || !ex->e_imgs[1] || !ex->e_imgs[2]
+		if (!ex->e_imgs[0] || !ex->e_imgs[1] || !ex->e_imgs[2]
 			|| !ex->e_imgs[3] || !ex->e_imgs[4] || !ex->e_imgs[5]
 			|| !ex->e_imgs[6] || !ex->e_imgs[7])
-		ft_printf("ERROR AT GAME_GET_EXITIMG\n");		
+			ft_printf("ERROR AT GAME_GET_EXITIMG\n");
 	}
 }

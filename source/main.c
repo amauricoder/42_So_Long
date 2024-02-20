@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:21 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/18 22:54:54 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/20 13:24:37 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_game *game;
+	t_game	*game;
 
 	if (argc == 2 && ft_check_extention(argv[1]) == 1)
 	{
 		game = map_init(argv[1]);
 		if (map_valid_allrequisites(game->map))
 		{
-			game_init(game);
+			game_init_master(game);
 			game_play(game);
 			mlx_loop(game->data_mlx->connect);
 		}

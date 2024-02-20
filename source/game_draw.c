@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_draw.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 12:54:13 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/18 19:45:24 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/20 11:53:34 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 //Call all the functions to make a mapping of the positions of
 //the tiles and render(using render functions) the specific tile on the
 //right place. Magic 32 value inside the functions is related to img size.
-int game_drawmap(t_game *game)
+int	game_drawmap(t_game *game)
 {
 	draw_mapcorners(game);
 	draw_mapwallup(game);
@@ -27,13 +27,14 @@ int game_drawmap(t_game *game)
 	draw_exit(game);
 	return (0);
 }
+
 //Draw the corners tiles of the map
 //-1 on renders is because the map skeleton has \n and lines count '\0'.
-void draw_mapcorners(t_game *game)
+void	draw_mapcorners(t_game *game)
 {
-	int render_w;
-	int render_h;
-	t_map *mp;
+	int		render_w;
+	int		render_h;
+	t_map	*mp;
 
 	mp = game->map;
 	render_h = (game->map->qt_lines - 1) * 32;
@@ -43,13 +44,14 @@ void draw_mapcorners(t_game *game)
 	render_elmt(game, mp->img_wallbl, 0, render_h);
 	render_elmt(game, mp->img_wallbr, render_w, render_h);
 }
+
 //Draw the center tiles from the upside (expect the corners).
-void draw_mapwallup(t_game *game)
+void	draw_mapwallup(t_game *game)
 {
-	char **map_skeleton;
-	int	i;
-	int render_pos;
-	int tiles_width;
+	char	**map_skeleton;
+	int		i;
+	int		render_pos;
+	int		tiles_width;
 
 	tiles_width = game->map->qt_chars_lines;
 	map_skeleton = game->map->map_skeleton;
@@ -65,13 +67,14 @@ void draw_mapwallup(t_game *game)
 		i ++;
 	}
 }
+
 //Draw the center tiles from the bottomside (expect the corners).
-void draw_mapwallbottom(t_game *game)
+void	draw_mapwallbottom(t_game *game)
 {
-	char **map_skeleton;
-	int	i;
-	int render_pos;
-	int render_h;
+	char	**map_skeleton;
+	int		i;
+	int		render_pos;
+	int		render_h;
 
 	map_skeleton = game->map->map_skeleton;
 	render_pos = 32;

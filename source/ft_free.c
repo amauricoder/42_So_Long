@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 08:52:12 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/18 17:22:51 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/20 11:47:17 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
 
 void	free_dp_char(char **dp_char)
 {
@@ -68,31 +67,15 @@ void	free_player_imgptr(t_game *game)
 	mlx_destroy_image(game->data_mlx->connect, game->player->img_wleft2);
 }
 
-void free_coin_imgptr(t_game *game)
+void	free_coin_imgptr(t_game *game)
 {
-	t_mlx_data *connect;
+	t_mlx_data	*connect;
 
 	connect = game->data_mlx->connect;
-	
 	mlx_destroy_image(connect, game->coin->c_imgs[0]);
 	mlx_destroy_image(connect, game->coin->c_imgs[1]);
 	mlx_destroy_image(connect, game->coin->c_imgs[2]);
 	mlx_destroy_image(connect, game->coin->c_imgs[3]);
 	mlx_destroy_image(connect, game->coin->c_imgs[4]);
 	mlx_destroy_image(connect, game->coin->c_imgs[5]);
-}
-
-void free_exit_imgptr(t_game *game)
-{
-	t_mlx_data *connect;
-
-	connect = game->data_mlx->connect;
-	mlx_destroy_image(connect, game->exit->e_imgs[0]);
-	mlx_destroy_image(connect, game->exit->e_imgs[1]);
-	mlx_destroy_image(connect, game->exit->e_imgs[2]);
-	mlx_destroy_image(connect, game->exit->e_imgs[3]);
-	mlx_destroy_image(connect, game->exit->e_imgs[4]);
-	mlx_destroy_image(connect, game->exit->e_imgs[5]);
-	mlx_destroy_image(connect, game->exit->e_imgs[6]);
-	mlx_destroy_image(connect, game->exit->e_imgs[7]);
 }

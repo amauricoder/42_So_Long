@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_render.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 09:43:32 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/18 18:22:32 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/20 13:14:07 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 //Render the elements tiles
 void	render_elmt(t_game *game, void *img, int width, int height)
 {
-	t_mlx_data *conn;
-	t_mlx_data *wnd;
-	
+	t_mlx_data	*conn;
+	t_mlx_data	*wnd;
+
 	conn = game->data_mlx->connect;
 	wnd = game->data_mlx->window;
 	mlx_put_image_to_window(conn, wnd, img, width, height);
@@ -28,8 +28,8 @@ void	render_elmt(t_game *game, void *img, int width, int height)
 //it has animation
 void	render_coin(t_game *game, int width, int height)
 {
-	t_mlx_data 	*conn;
-	t_mlx_data 	*wnd;
+	t_mlx_data	*conn;
+	t_mlx_data	*wnd;
 	t_coin		*gc;
 	int			coin_value;
 
@@ -38,7 +38,7 @@ void	render_coin(t_game *game, int width, int height)
 	coin_value = game->coin->coin_pos;
 	gc = game->coin;
 	if (coin_value >= 6 || coin_value <= 0)
-        coin_value = 0;
+		coin_value = 0;
 	if (coin_value == 0)
 		mlx_put_image_to_window(conn, wnd, gc->c_imgs[0], width, height);
 	if (coin_value == 1)
@@ -48,25 +48,24 @@ void	render_coin(t_game *game, int width, int height)
 	if (coin_value == 3)
 		mlx_put_image_to_window(conn, wnd, gc->c_imgs[3], width, height);
 	if (coin_value == 4)
-		mlx_put_image_to_window(conn, wnd, gc->c_imgs[4], width, height);		
+		mlx_put_image_to_window(conn, wnd, gc->c_imgs[4], width, height);
 	if (coin_value == 5)
 		mlx_put_image_to_window(conn, wnd, gc->c_imgs[5], width, height);
 }
 
 void	render_exit(t_game *game, int width, int height)
 {
-	t_mlx_data 	*conn;
-	t_mlx_data 	*wnd;
+	t_mlx_data	*conn;
+	t_mlx_data	*wnd;
 	t_exit		*ge;
 	int			exit_value;
-	
+
 	conn = game->data_mlx->connect;
 	wnd = game->data_mlx->window;
 	ge = game->exit;
 	exit_value = game->exit->exit_pos;
 	if (exit_value > 5)
-        exit_value = 0;
-	//ft_printf("EXIT VALUE render_exit() %i\n", exit_value);
+		exit_value = 0;
 	if (ge->exit_yes == FALSE)
 		mlx_put_image_to_window(conn, wnd, game->map->img_floor, width, height);
 	if (exit_value == 0 && ge->exit_yes == TRUE)
@@ -82,4 +81,3 @@ void	render_exit(t_game *game, int width, int height)
 	if (exit_value == 5 && ge->exit_yes == TRUE)
 		mlx_put_image_to_window(conn, wnd, ge->e_imgs[6], width, height);
 }
-

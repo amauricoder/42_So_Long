@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_draw2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 13:04:35 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/18 19:49:12 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/20 11:55:44 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 //Draw the left walls of the map.
 void	draw_mapwall_left(t_game *game)
 {
-	int i;
-	int render_height;
+	int		i;
+	int		render_height;
 	char	**map_skeleton;
 
 	map_skeleton = game->map->map_skeleton;
 	i = 0;
 	render_height = 32;
-	while(map_skeleton[i])
+	while (map_skeleton[i])
 	{
 		if (i == game->map->qt_lines - 2)
-			break;
+			break ;
 		if (map_skeleton[i][0] == '1')
 			render_elmt(game, game->map->img_wallml, 0, render_height);
 		render_height = render_height + 32;
@@ -36,16 +36,16 @@ void	draw_mapwall_left(t_game *game)
 //Draw the right walls of the map
 void	draw_mapwall_right(t_game *game)
 {
-	int i;
-	int render_height;
-	int line_width;
+	int		i;
+	int		render_height;
+	int		line_width;
 	char	**map_skeleton;
 
 	map_skeleton = game->map->map_skeleton;
 	line_width = game->map->qt_chars_lines - 1;
 	render_height = 32;
 	i = 0;
-	while(map_skeleton[i])
+	while (map_skeleton[i])
 	{
 		if (map_skeleton[i][line_width] == '1')
 		{
@@ -53,19 +53,20 @@ void	draw_mapwall_right(t_game *game)
 				line_width * 32, render_height);
 		}
 		if (i == game->map->qt_lines - 3)
-			break;
+			break ;
 		render_height = render_height + 32;
 		i ++;
 	}
 }
+
 //draw the center tiles of the map
 //init player position from t_player struct
 void	draw_mapcenter(t_game *game)
 {
-	int qt_chars;
-	int i;
-	int j;
-	
+	int	qt_chars;
+	int	i;
+	int	j;
+
 	qt_chars = game->map->qt_chars_lines - 1;
 	i = 0;
 	while (game->map->map_skeleton[++i])
@@ -87,12 +88,13 @@ void	draw_mapcenter(t_game *game)
 		}
 	}
 }
+
 //Check position of the coins.
 void	draw_mapcoins(t_game *game)
 {
-	int qt_chars;
-	int i;
-	int j;
+	int	qt_chars;
+	int	i;
+	int	j;
 
 	qt_chars = game->map->qt_chars_lines - 1;
 	i = 0;
@@ -111,9 +113,9 @@ void	draw_mapcoins(t_game *game)
 //Check pos for the exit
 void	draw_exit(t_game *game)
 {
-	int qt_chars;
-	int i;
-	int j;
+	int	qt_chars;
+	int	i;
+	int	j;
 
 	qt_chars = game->map->qt_chars_lines - 1;
 	i = 0;

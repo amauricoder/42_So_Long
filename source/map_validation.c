@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 09:00:53 by aconceic          #+#    #+#             */
-/*   Updated: 2024/01/31 15:20:36 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/02/20 13:33:13 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@ int	map_valid_allrequisites(t_map *map)
 {
 	if (map_valid_characters(map) && map_valid_isclosed(map)
 		&& map_valid_mustchar(map) && map_valid_minsize(map))
-			return (1);
+		return (1);
 	else
 		return (error_message(2), 0);
 }
+
 //Check to see if there is some invalid char in the map
 //return 1 if there is only valid chars and 0 if not
 int	map_valid_characters(t_map *map)

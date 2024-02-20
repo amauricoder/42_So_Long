@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 09:21:48 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/12 10:19:25 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/20 11:48:44 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,8 @@ int	ft_check_extention(char *file_name)
 		close(fd);
 		return (0);
 	}
-
 	if (ft_strncmp(file_name + ft_strlen(file_name) - 4, ".ber", 4) != 0)
 		return (0);
-
 	close(fd);
 	return (1);
 }
@@ -38,7 +36,7 @@ int	ft_check_extention(char *file_name)
 //returns an INT with the number of char counted
 int	ft_countchar(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] != '\0' && str[i] != '\n')

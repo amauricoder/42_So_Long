@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:24 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/18 19:49:12 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/20 12:54:25 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,23 +67,23 @@
 # define COIN5 "assets/sheets/coin/c5.xpm"
 # define COIN6 "assets/sheets/coin/c6.xpm"
 //Exit (UFO)
-#define EXIT1 "assets/sheets/exit/e_a1.xpm"
-#define EXIT2 "assets/sheets/exit/e_a2.xpm"
-#define EXIT3 "assets/sheets/exit/e_a3.xpm"
-#define EXIT4 "assets/sheets/exit/e_a4.xpm"
-#define EXIT5 "assets/sheets/exit/e_a5.xpm"
-#define EXIT6 "assets/sheets/exit/e1.xpm"
-#define EXIT7 "assets/sheets/exit/e2.xpm"
-#define EXIT8 "assets/sheets/exit/e3.xpm"
+# define EXIT2 "assets/sheets/exit/e_a2.xpm"
+# define EXIT1 "assets/sheets/exit/e_a1.xpm"
+# define EXIT3 "assets/sheets/exit/e_a3.xpm"
+# define EXIT4 "assets/sheets/exit/e_a4.xpm"
+# define EXIT5 "assets/sheets/exit/e_a5.xpm"
+# define EXIT6 "assets/sheets/exit/e1.xpm"
+# define EXIT7 "assets/sheets/exit/e2.xpm"
+# define EXIT8 "assets/sheets/exit/e3.xpm"
 
 /* ********************************** */
 /*           EXTERNAL LIBS            */
 /* ********************************** */
-#include <stdlib.h> //malloc(), free(), exit()
-#include <fcntl.h> //open()
-#include <unistd.h> //read(), write()
-#include <stdio.h> //perror()
-#include <string.h> //strerror()
+# include <stdlib.h> //malloc(), free(), exit()
+# include <fcntl.h> //open()
+# include <unistd.h> //read(), write()
+# include <stdio.h> //perror()
+# include <string.h> //strerror()
 
 /* ********************************** */
 /*           IMPORTED FILES           */
@@ -98,7 +98,7 @@
 //For Map
 typedef struct s_map
 {
-	char 	**map_skeleton;
+	char	**map_skeleton;
 	int		qt_lines;
 	int		qt_chars_lines;
 	int		qt_player;
@@ -114,7 +114,7 @@ typedef struct s_map
 	void	*img_wallmr;
 	void	*img_wallr;
 	void	*img_wallbc;
-}   t_map;
+}	t_map;
 
 //For Player
 typedef struct s_player
@@ -159,9 +159,9 @@ typedef struct s_exit
 //For Mlx
 typedef struct s_mlx_data
 {
-	void    *connect;
-	void    *window;
-}   t_mlx_data;
+	void	*connect;
+	void	*window;
+}	t_mlx_data;
 
 //Game main structure
 typedef struct s_game
@@ -205,19 +205,25 @@ int		map_valid_minsize(t_map *map);
 /*               FT UTILS             */
 /*           source/ft_utils.c        */
 /* ********************************** */
-int 	ft_check_extention(char *file_name);
+int		ft_check_extention(char *file_name);
 int		ft_countchar(char *str);
 
 /* ********************************** */
 /*              GAME INIT             */
 /*          source/game_init.c        */
 /* ********************************** */
-void	game_init(t_game *game);
-t_game	*game_structs_init(t_game *game);
-void	game_get_mapimg(t_game *game);
-void	game_get_playerimg(t_game *game);
-void	game_get_coinimg(t_game *game);
-void	game_get_exitimg(t_game *game);
+void	game_init_master(t_game *game);
+t_game	*game_init_structs(t_game *game);
+void	game_init_values(t_game *game);
+
+/* ********************************** */
+/*             GET_IMAGES             */
+/*         source/get_images.c        */
+/* ********************************** */
+void	get_mapimg(t_game *game);
+void	get_playerimg(t_game *game);
+void	get_coinimg(t_game *game);
+void	get_exitimg(t_game *game);
 
 /* ********************************** */
 /*              GAME UTILS            */
@@ -231,10 +237,10 @@ void	check_nullvalues_me(t_game *game, char pointers);
 /*             GAME DRAW 1            */
 /*           source/game_draw.c       */
 /* ********************************** */
-int 	game_drawmap(t_game *game);
-void 	draw_mapcorners(t_game *game);
-void 	draw_mapwallup(t_game *game);
-void 	draw_mapwallbottom(t_game *game);
+int		game_drawmap(t_game *game);
+void	draw_mapcorners(t_game *game);
+void	draw_mapwallup(t_game *game);
+void	draw_mapwallbottom(t_game *game);
 
 /* ********************************** */
 /*             GAME DRAW 2            */
@@ -265,6 +271,7 @@ void	key_down_pressed(t_game *game);
 void	key_left_pressed(t_game *game);
 void	key_right_pressed(t_game *game);
 void	take_coin(t_game *game, char keypressed);
+void	ft_printmovs(t_game *game);
 /* ********************************** */
 /*            GAME ANIMATION          */
 /*       source/game_animation.c      */
@@ -281,6 +288,11 @@ void	free_game_struct(t_game *game);
 void	free_map_imgptr(t_game *game);
 void	free_player_imgptr(t_game *game);
 void	free_coin_imgptr(t_game *game);
+
+/* ********************************** */
+/*            FREE FUNCTIONS 2        */
+/*           source/ft_free2.c        */
+/* ********************************** */
 void	free_exit_imgptr(t_game *game);
 
 #endif
