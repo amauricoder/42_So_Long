@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com     +#+  +:+       +#+        */
+/*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:21 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/20 13:24:37 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:32:31 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int	main(int argc, char **argv)
 			game_play(game);
 			mlx_loop(game->data_mlx->connect);
 		}
-		free_game_struct(game);
+		free_dp_char(game->map->map_skeleton);
+		free(game->map);
 		free(game);
 	}
 	else
@@ -48,13 +49,13 @@ void	error_message(int flag)
 	if (flag == 5)
 		write(2, "Error\nInvalid Map - invalid char on map.\n", 38);
 	if (flag == 6)
-		write(2, "Error\nInvalid Map - Map not closed.\n", 37);
+		write(2, "Map not closed.\n", 17);
 	if (flag == 7)
-		write(2, "Error\nInvalid Map - No collectables.\n", 37);
+		write(2, "No collectables.\n", 18);
 	if (flag == 8)
-		write(2, "Error\nInvalid Map - Only 1 Player/Exit.\n", 41);
+		write(2, "Only 1 Player/Exit.\n", 21);
 	if (flag == 9)
-		write(2, "Error\nInvalid Map - Invalid Map Size\n", 38);
+		write(2, "Invalid Map Size\n", 18);
 	if (flag == 10)
 		write(2, "Error\nError importing map image\n", 33);
 	if (flag == 11)

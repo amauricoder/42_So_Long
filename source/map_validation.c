@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com     +#+  +:+       +#+        */
+/*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 09:00:53 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/20 13:33:13 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/02/21 21:24:51 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@
 int	map_valid_allrequisites(t_map *map)
 {
 	if (map_valid_characters(map) && map_valid_isclosed(map)
-		&& map_valid_mustchar(map) && map_valid_minsize(map))
+		&& map_valid_mustchar(map) && map_valid_minsize(map)
+		&& map_isvalid_path(map))
+	{
 		return (1);
+	}
 	else
 		return (error_message(2), 0);
 }
@@ -112,4 +115,44 @@ int	map_valid_minsize(t_map *map)
 	if (map->qt_lines + map->qt_chars_lines < 8)
 		return (error_message(9), 0);
 	return (1);
+}
+
+int	map_isvalid_path(t_map *map)
+{
+	int i;
+	int j;
+	char **lines;
+	
+	i = -1;
+	lines = map->map_skeleton;
+	while (lines[++i] != NULL)
+	{
+		j = 0;
+		while (lines[i][j] != '\0')
+		{
+			if (lines[i][j] == 'P')
+			{
+				return (ft_printf("flood result %i\n", flood_fill(map, i, j)));
+			}
+			j ++;
+		}
+	}
+	return (1);
+}
+
+//row = x, collmun = y
+int flood_fill(t_map *map, int y, int x) 
+{
+	char **ms = map->map_skeleton;
+
+	if (ms[y][x] == '1' || ms[y][x] == 'X')
+		return 0;
+	if (ms[y][x] == 'E')
+		return 1;
+	if (ms[y][x] == 'C' || ms[y][x] == '0')
+		ms[y][x] = 'X';
+	if (flood_fill(map, y + 1, x) || flood_fill(map, y, x + 1) ||
+				 flood_fill(map, y - 1, x) || flood_fill(map, y, x - 1))
+		return 1;
+	return 0; // No path found
 }
