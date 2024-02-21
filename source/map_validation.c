@@ -6,23 +6,30 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 09:00:53 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/21 21:24:51 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/21 22:00:22 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 //Valid all the requisites for a valid map
 //return 1 for a valid map and error_message(), 0 for invalid
-int	map_valid_allrequisites(t_map *map)
+int	map_valid_allrequisites(t_map *map, char *file_path)
 {
+	char **map_copy = map_read(file_path);
+
+	//ft_printf("value %i\n", map_isvalid_path(map, map_copy));
 	if (map_valid_characters(map) && map_valid_isclosed(map)
 		&& map_valid_mustchar(map) && map_valid_minsize(map)
-		&& map_isvalid_path(map))
+		&& map_isvalid_path(map, map_copy))
 	{
+		free_dp_char(map_copy);
 		return (1);
 	}
 	else
+	{
+		free_dp_char(map_copy);
 		return (error_message(2), 0);
+	}
 }
 
 //Check to see if there is some invalid char in the map
@@ -117,42 +124,40 @@ int	map_valid_minsize(t_map *map)
 	return (1);
 }
 
-int	map_isvalid_path(t_map *map)
+int	map_isvalid_path(t_map *map, char **map_copy)
 {
 	int i;
 	int j;
+	int valid;
 	char **lines;
 	
 	i = -1;
 	lines = map->map_skeleton;
+	valid = 0;
 	while (lines[++i] != NULL)
 	{
 		j = 0;
 		while (lines[i][j] != '\0')
 		{
 			if (lines[i][j] == 'P')
-			{
-				return (ft_printf("flood result %i\n", flood_fill(map, i, j)));
-			}
+				valid = flood_fill(map_copy, i, j);
 			j ++;
 		}
 	}
-	return (1);
+	return (valid);
 }
 
 //row = x, collmun = y
-int flood_fill(t_map *map, int y, int x) 
+int flood_fill(char **map, int y, int x) 
 {
-	char **ms = map->map_skeleton;
-
-	if (ms[y][x] == '1' || ms[y][x] == 'X')
-		return 0;
-	if (ms[y][x] == 'E')
-		return 1;
-	if (ms[y][x] == 'C' || ms[y][x] == '0')
-		ms[y][x] = 'X';
+	if (map[y][x] == '1' || map[y][x] == 'X')
+		return (0);
+	if (map[y][x] == 'E')
+		return (1);
+	if (map[y][x] == 'C' || map[y][x] == '0')
+		map[y][x] = 'X';
 	if (flood_fill(map, y + 1, x) || flood_fill(map, y, x + 1) ||
 				 flood_fill(map, y - 1, x) || flood_fill(map, y, x - 1))
-		return 1;
-	return 0; // No path found
+		return (1);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:24 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/21 19:32:04 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/21 21:50:52 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,13 +197,13 @@ int		map_char_counter(char *file_path);
 /*            MAP VALIDATION          */
 /*         source/map_validation.c    */
 /* ********************************** */
-int		map_valid_allrequisites(t_map *map);
+int		map_valid_allrequisites(t_map *map, char *file_path);
 int		map_valid_characters(t_map *map);
 int		map_valid_isclosed(t_map *map);
 int		map_valid_mustchar(t_map *map);
 int		map_valid_minsize(t_map *map);
-int		map_isvalid_path(t_map *map);
-int		flood_fill(t_map *map, int x, int y);
+int		map_isvalid_path(t_map *map, char **map_copy);
+int 	flood_fill(char **map, int y, int x);
 
 /* ********************************** */
 /*               FT UTILS             */

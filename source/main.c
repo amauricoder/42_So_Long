@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:21 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/21 18:32:31 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/21 21:51:27 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 	if (argc == 2 && ft_check_extention(argv[1]) == 1)
 	{
 		game = map_init(argv[1]);
-		if (map_valid_allrequisites(game->map))
+		if (map_valid_allrequisites(game->map, argv[1]))
 		{
 			game_init_master(game);
 			game_play(game);
