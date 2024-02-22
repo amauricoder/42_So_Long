@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:21 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/21 21:51:27 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/22 10:02:34 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	error_message(int flag)
 	if (flag == 1)
 		write(2, "Error\nCouldn't open map file.\n", 30);
 	if (flag == 2)
-		write(2, "Error\nInvalid Map.\n", 19);
+		write(2, "Invalid Map.\n", 14);
 	if (flag == 3)
 		write(2, "Error\nInvalid Map init.\n", 24);
 	if (flag == 4)
@@ -49,13 +49,13 @@ void	error_message(int flag)
 	if (flag == 5)
 		write(2, "Error\nInvalid Map - invalid char on map.\n", 38);
 	if (flag == 6)
-		write(2, "Map not closed.\n", 17);
+		write(2, "Error\nMap not closed.\n", 23);
 	if (flag == 7)
-		write(2, "No collectables.\n", 18);
+		write(2, "Error\nNo collectables.\n", 23);
 	if (flag == 8)
-		write(2, "Only 1 Player/Exit.\n", 21);
+		write(2, "Error\nOnly 1 Player/Exit.\n", 26);
 	if (flag == 9)
-		write(2, "Invalid Map Size\n", 18);
+		write(2, "Error\nInvalid Map Size\n", 18);
 	if (flag == 10)
 		write(2, "Error\nError importing map image\n", 33);
 	if (flag == 11)
