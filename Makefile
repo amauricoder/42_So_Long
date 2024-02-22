@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aconceic <aconceic@student.42porto.com     +#+  +:+       +#+         #
+#    By: murilo <murilo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/24 16:10:12 by aconceic          #+#    #+#              #
-#    Updated: 2024/02/20 12:45:48 by aconceic         ###   ########.fr        #
+#    Updated: 2024/02/22 10:58:21 by murilo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,15 @@ SRC = 	map_validation.c ft_utils.c game_utils.c \
 		game_init.c game_play.c ft_free.c map_init.c \
 		game_render.c game_animation.c game_draw.c game_draw2.c\
 		ft_free2.c get_images.c \
+
+##############################################
+#            BONUS => SOURCES/OBJS           #
+##############################################
+BONUS_OBJ_DIR = bonus/bonus_obj/
+BONUS_NAME = so_long_bonus
+
+BONUS_SRC = bonus/main_bonus.c
+BONUS_OBJ = $(addprefix $(BONUS_OBJ_DIR), $(BONUS_SRC:bonus/%.c=%.o))
 
 ##############################################
 #                  MiniLibX                  #
@@ -106,6 +115,29 @@ fclean :
 
 re : fclean all
 	@echo "$(GREEN)[✔]$(RESET) $(MAGENTA)Refresh Ok!$(RESET) "
+
+##############################################
+#                                            #
+#                   RULES                    #
+#               BONUS PROJECT                #
+##############################################
+bonus : $(BONUS_NAME)
+
+$(BONUS_OBJ_DIR) :
+	@echo "$(YELLOW)[!] $(RESET)CREATING DIRECTORY FOR BONUS OBJECTS"
+	@mkdir $@
+	@echo "$(GREEN)[✔]$(RESET) CREATED $@ DIRECTORY"
+
+# Rule to compile bonus objects
+$(BONUS_OBJ_DIR)%.o : bonus/%.c | $(BONUS_OBJ_DIR)
+	@echo "$(YELLOW)[!] $(RESET)COMPILING $< "
+	$(CC) $(CFLAGS) -c $< -o $@
+	@echo "$(GREEN)[✔]$(RESET) COMPILED $<"
+
+$(BONUS_NAME) : $(BONUS_OBJ_DIR) $(BONUS_OBJ) $(OBJ) $(LIBFT_LIB)
+	@echo "$(YELLOW)[!] $(RESET)COMPILING BONUS "
+	$(CC) $(CFLAGS) $(BONUS_OBJ) $(OBJ) $(LIBFT_LIB) $(GNL_LIB) $(MLXFLAGS) -o $(BONUS_NAME)
+	@echo "$(GREEN)[✔]$(RESET) $(BLUE)OK$(RESET)"
 
 .SILENT:
 .PHONY: all clean fclean re mlx_compile 

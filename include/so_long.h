@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:24 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/21 21:50:52 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/22 10:37:35 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,7 +182,6 @@ typedef struct s_game
 /*               MAIN                 */
 /* ********************************** */
 int		main(int argv, char **argc);
-void	error_message(int flag);
 
 /* ********************************** */
 /*              MAP INIT              */
@@ -211,6 +210,7 @@ int 	flood_fill(char **map, int y, int x);
 /* ********************************** */
 int		ft_check_extention(char *file_name);
 int		ft_countchar(char *str);
+void	error_message(int flag);
 
 /* ********************************** */
 /*              GAME INIT             */
