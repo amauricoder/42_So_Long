@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:24 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/22 18:21:00 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/23 20:27:56 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,7 @@ typedef struct s_player
 	int		pl_y;
 	int		pl_lstep;
 	int		pl_rstep;
+	int		pl_isonexit;
 }	t_player;
 
 //For Collectable (Coin)

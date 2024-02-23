@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:27:18 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/23 19:42:49 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/23 20:25:27 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,15 @@ t_enemy	*game_init_bonus(t_game *game)
 	get_coinimg(game);
 	get_exitimg(game);
 	enemy = bonus_init_enemystruct(game);
-	game_drawmap_bonus(enemy->bonus);
-	enemy->ht_x = game->exit->exit_x;
-	enemy->ht_y = game->exit->exit_y;
-	render_elmt(game, enemy->ht_img[0], game->exit->exit_x * 32, game->exit->exit_y * 32);
-	ft_printmovs(enemy->bonus);
+	game_drawmap_bonus(enemy->game_main);
+	game_draw_fenemy(enemy);
+	ft_printmovs(enemy->game_main);
 	return (enemy);
 }
 
 //h for HOSTILE.
+//Funtion to init the t_enemy struct
+//with initial values
 t_enemy *bonus_init_enemystruct(t_game *game)
 {
 	t_enemy *h;
@@ -50,7 +50,7 @@ t_enemy *bonus_init_enemystruct(t_game *game)
 	if (!h)
 		return NULL;
 	get_enemyimg(h, game);
-	h->bonus = game;
+	h->game_main = game;
 	h->ht_x = 0;
 	h->ht_y = 0;
 	h->ht_loop = 0;

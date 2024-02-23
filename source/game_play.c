@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 12:39:09 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/23 19:21:42 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/23 20:40:44 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,25 +29,27 @@ int	game_keypressed(int keypressed, t_game *game)
 {
 	if (keypressed == KB_ESC)
 		game_close(game);
-	else if (keypressed == KB_W || keypressed == KB_UP)
+	else if ((keypressed == KB_W || keypressed == KB_UP) 
+		&& game->player->pl_isonexit == FALSE)
 		key_up_pressed(game);
-	else if (keypressed == KB_S || keypressed == KB_DOWN)
+	else if ((keypressed == KB_S || keypressed == KB_DOWN) 
+		&& game->player->pl_isonexit == FALSE)
 		key_down_pressed(game);
-	else if (keypressed == KB_A || keypressed == KB_LEFT)
+	else if ((keypressed == KB_A || keypressed == KB_LEFT) 
+		&& game->player->pl_isonexit == FALSE)
 		key_left_pressed(game);
-	else if (keypressed == KB_D || keypressed == KB_RIGHT)
+	else if ((keypressed == KB_D || keypressed == KB_RIGHT) 
+		&& game->player->pl_isonexit == FALSE)
 		key_right_pressed(game);
 	if (game->exit->exit_x == game->player->pl_x 
 		&& game->exit->exit_y == game->player->pl_y
-		&& game->exit->exit_yes == TRUE)
+		&& game->exit->exit_yes == TRUE && game->player->pl_isonexit == FALSE)
 	{
-		//mlx_clear_window(game->data_mlx->connect, game->data_mlx->window);
-		//mlx_string_put(game->data_mlx->connect, game->data_mlx->window, 32, 16, 0xFFFFFF, "YOU WIN!!");
-		//AQUI eu preciso fazer com que uma imagem vencedora apareca e nao feche a janela
+		game->player->pl_isonexit = TRUE;
 		ft_printf("YOU WIN\n");
-		game_close(game);
 	}
-	ft_printf("Quantity of moves %i\n", game->qt_mov);
+	if (game->player->pl_isonexit == FALSE)
+		ft_printf("Quantity of moves %i\n", game->qt_mov);
 	ft_printmovs(game);
 	return (0);
 }

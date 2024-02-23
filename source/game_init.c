@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com     +#+  +:+       +#+        */
+/*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:27:56 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/20 12:56:55 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/02/23 20:29:25 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	game_init_values(t_game *game)
 	game->player->pl_y = 0;
 	game->player->pl_lstep = 0;
 	game->player->pl_rstep = 0;
+	game->player->pl_isonexit = FALSE;
 	game->coin->coin_pos = 0;
 	game->coin->coin_loop = 0;
 	game->exit->exit_pos = 0;

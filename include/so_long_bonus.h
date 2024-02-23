@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:29:11 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/23 19:43:23 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/23 20:25:13 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_enemy
 	int		ht_x;
 	int		ht_loop;
 	int		pl2_lstep;
-	t_game	*bonus;
+	t_game	*game_main;
 }   t_enemy;
 
 /* ********************************** */
@@ -61,7 +61,7 @@ t_enemy *bonus_init_enemystruct(t_game *game);
 /*         bonus/game_draw_bonus.c    */
 /* ********************************** */
 int			game_drawmap_bonus(t_game *game);
-
+int			game_draw_fenemy(t_enemy *bonus);
 /* ********************************** */
 /*            GET IMG BONUS           */
 /*         bonus/get_img_bonus.c.c    */
