@@ -6,7 +6,7 @@
 #    By: murilo <murilo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/24 16:10:12 by aconceic          #+#    #+#              #
-#    Updated: 2024/02/22 10:58:21 by murilo           ###   ########.fr        #
+#    Updated: 2024/02/22 16:39:39 by murilo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 SRC_DIR = ./source/
 SRC = 	map_validation.c ft_utils.c game_utils.c \
 		game_init.c game_play.c ft_free.c map_init.c \
-		game_render.c game_animation.c game_draw.c game_draw2.c\
+		game_render.c game_animation.c game_draw.c game_draw2.c \
 		ft_free2.c get_images.c \
 
 ##############################################
@@ -51,7 +51,9 @@ SRC = 	map_validation.c ft_utils.c game_utils.c \
 BONUS_OBJ_DIR = bonus/bonus_obj/
 BONUS_NAME = so_long_bonus
 
-BONUS_SRC = bonus/main_bonus.c
+BONUS_SRC = bonus/main_bonus.c bonus/game_init_bonus.c bonus/get_img_bonus.c \
+			bonus/game_draw_bonus.c bonus/game_play_bonus.c \
+
 BONUS_OBJ = $(addprefix $(BONUS_OBJ_DIR), $(BONUS_SRC:bonus/%.c=%.o))
 
 ##############################################
@@ -102,6 +104,7 @@ $(LIBFT_LIB) : $(LIBFT_DIR)
 clean :
 	@echo "$(ORANGE)[!]$(RESET) Executing cleaning ..."
 	$(RM) $(OBJ_DIR)
+	$(RM) $(BONUS_OBJ_DIR)
 	$(MAKECLEANC) $(LIBFT_DIR)
 	$(MAKECLEANC) $(MLX_DIR)
 	@echo "$(GREEN)[✔]$(RESET) $(BLUE)Cleaning Ok!$(RESET) "
@@ -109,11 +112,12 @@ clean :
 fclean :
 	@echo "$(ORANGE)[!]$(RESET) Executing full cleaning..."
 	$(RM) $(NAME) $(OBJ_DIR)
+	$(RM) $(BONUS_NAME) $(BONUS_OBJ_DIR)
 	make fclean -C $(LIBFT_DIR)
 	$(MAKECLEANC) $(MLX_DIR)
 	@echo "$(GREEN)[✔]$(RESET) $(BLUE)full cleaning!$(RESET) "
 
-re : fclean all
+re : fclean all bonus
 	@echo "$(GREEN)[✔]$(RESET) $(MAGENTA)Refresh Ok!$(RESET) "
 
 ##############################################

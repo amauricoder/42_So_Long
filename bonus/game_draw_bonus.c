@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_bonus.c                                       :+:      :+:    :+:   */
+/*   game_draw_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 10:09:42 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/23 13:45:48 by murilo           ###   ########.fr       */
+/*   Created: 2024/02/18 12:54:13 by murilo            #+#    #+#             */
+/*   Updated: 2024/02/23 13:38:50 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long_bonus.h"
 
-int	main(int argc, char **argv)
+int	game_drawmap_bonus(t_game *game)
 {
-    ft_printf("ESTAMOS NO BONUS!\n");
-	t_game	*game;
-	t_enemy *bonus;
-	
-	if (argc == 2 && ft_check_extention(argv[1]) == 1)
-	{
-		game = map_init(argv[1]);
-		if (map_valid_allrequisites(game->map, argv[1]))
-		{
-			bonus = game_init_bonus(game);
-			game_play_bonus(bonus);
-			mlx_loop(game->data_mlx->connect);
-		}
-		free_dp_char(game->map->map_skeleton);
-		free(game->map);
-		free(game);
-	}
-	else
-		error_message(1);
+    ft_printf("game draw bonus\n");
+	draw_mapcorners(game);
+	draw_mapwallup(game);
+	draw_mapwallbottom(game);
+	draw_mapwall_left(game);
+	draw_mapwall_right(game);
+	draw_mapcenter(game);
+	draw_mapcoins(game);
+	draw_exit(game);
 	return (0);
 }
+
+

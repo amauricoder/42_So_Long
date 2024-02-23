@@ -5,6 +5,7 @@
         "so_long.h": "c",
         "mlx_int.h": "c",
         "mlx.h": "c",
-        "get_next_line.h": "c"
+        "get_next_line.h": "c",
+        "so_long_bonus.h": "c"
     }
 }
