@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:29:11 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/23 13:39:42 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/23 19:43:23 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_enemy
 	int		ht_y;
 	int		ht_x;
 	int		ht_loop;
+	int		pl2_lstep;
 	t_game	*bonus;
 }   t_enemy;
 
@@ -60,7 +61,6 @@ t_enemy *bonus_init_enemystruct(t_game *game);
 /*         bonus/game_draw_bonus.c    */
 /* ********************************** */
 int			game_drawmap_bonus(t_game *game);
-int			draw_enemy_bonus(t_enemy *bonus);
 
 /* ********************************** */
 /*            GET IMG BONUS           */
@@ -73,4 +73,16 @@ void        get_enemyimg(t_enemy *h, t_game *game);
 /*         bonus/game_play_bonus.c    */
 /* ********************************** */
 int	game_play_bonus(t_enemy *bonus);
+int	game_keypressed_bonus(int keypressed, t_enemy *bonus);
+int	p1_keypressed(t_enemy *bonus, int keypressed);
+int	p2_keypressed(t_enemy *bonus, int keypressed);
+
+/* ********************************** */
+/*            GAME PLAY2 BONUS         */
+/*         bonus/game_play2_bonus.c    */
+/* ********************************** */
+void	p2key_up_pressed(t_enemy *bn, t_game *game, char **map_sk);
+void	p2key_down_pressed(t_enemy *bn, t_game *game, char **map_sk);
+void	p2key_left_pressed(t_enemy *bn, t_game *game, char **map_sk);
+void	p2key_right_pressed(t_enemy *bn, t_game *game, char **map_sk);
 #endif

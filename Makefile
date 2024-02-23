@@ -6,7 +6,7 @@
 #    By: murilo <murilo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/24 16:10:12 by aconceic          #+#    #+#              #
-#    Updated: 2024/02/22 16:39:39 by murilo           ###   ########.fr        #
+#    Updated: 2024/02/23 15:57:06 by murilo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ BONUS_OBJ_DIR = bonus/bonus_obj/
 BONUS_NAME = so_long_bonus
 
 BONUS_SRC = bonus/main_bonus.c bonus/game_init_bonus.c bonus/get_img_bonus.c \
-			bonus/game_draw_bonus.c bonus/game_play_bonus.c \
+			bonus/game_draw_bonus.c bonus/game_play_bonus.c bonus/game_play2_bonus.c \
 
 BONUS_OBJ = $(addprefix $(BONUS_OBJ_DIR), $(BONUS_SRC:bonus/%.c=%.o))
 

@@ -6,12 +6,13 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:27:18 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/22 18:30:22 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/23 19:42:49 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long_bonus.h"
-
+//enemy->ht_x e enemy->ht_y defined in the middle of the function, 
+//but I need to fix this.
 t_enemy	*game_init_bonus(t_game *game)
 {
 	ft_printf("Game init bonus\n");
@@ -33,6 +34,9 @@ t_enemy	*game_init_bonus(t_game *game)
 	get_exitimg(game);
 	enemy = bonus_init_enemystruct(game);
 	game_drawmap_bonus(enemy->bonus);
+	enemy->ht_x = game->exit->exit_x;
+	enemy->ht_y = game->exit->exit_y;
+	render_elmt(game, enemy->ht_img[0], game->exit->exit_x * 32, game->exit->exit_y * 32);
 	ft_printmovs(enemy->bonus);
 	return (enemy);
 }
@@ -50,5 +54,6 @@ t_enemy *bonus_init_enemystruct(t_game *game)
 	h->ht_x = 0;
 	h->ht_y = 0;
 	h->ht_loop = 0;
+	h->pl2_lstep = 0;
 	return (h);
 }

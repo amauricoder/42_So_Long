@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 12:54:13 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/23 13:38:50 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/23 19:43:44 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	game_drawmap_bonus(t_game *game)
 {
-    ft_printf("game draw bonus\n");
 	draw_mapcorners(game);
 	draw_mapwallup(game);
 	draw_mapwallbottom(game);
@@ -25,5 +24,4 @@ int	game_drawmap_bonus(t_game *game)
 	draw_exit(game);
 	return (0);
 }
-
 
