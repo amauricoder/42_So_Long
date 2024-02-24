@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 12:39:09 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/23 21:19:37 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/24 12:14:01 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	game_play_bonus(t_enemy *bonus)
 	conn = game->data_mlx->connect;
 	window = game->data_mlx->window;
 	mlx_key_hook(window, game_keypressed_bonus, bonus);
-	mlx_hook(window, 17, 1L << 17, game_close, game);
+	mlx_hook(window, 17, 1L << 17, game_close_bonus, game);
 	mlx_loop_hook(conn, coin_animation, game);
 	return (0);
 }
@@ -33,7 +33,7 @@ int	game_keypressed_bonus(int keypressed, t_enemy *bonus)
 
 	game = bonus->game_main;
 	if (keypressed == KB_ESC)
-		game_close(game);
+		game_close_bonus(bonus);
 	p1_keypressed(bonus, keypressed);
 	p2_keypressed(bonus, keypressed);
 	if (game->exit->exit_x == game->player->pl_x 

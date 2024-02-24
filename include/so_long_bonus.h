@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:29:11 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/23 21:16:21 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/24 12:11:55 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,12 @@ void	p2key_up_pressed(t_enemy *bn, t_game *game, char **map_sk);
 void	p2key_down_pressed(t_enemy *bn, t_game *game, char **map_sk);
 void	p2key_left_pressed(t_enemy *bn, t_game *game, char **map_sk);
 void	p2key_right_pressed(t_enemy *bn, t_game *game, char **map_sk);
+
+/* ********************************** */
+/*              FREE BONUS            */
+/*          bonus/free_bonus.c        */
+/* ********************************** */
+int		game_close_bonus(t_enemy *bonus);
+void    free_enemy_imgptr(t_enemy *bonus);
+
 #endif

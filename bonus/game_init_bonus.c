@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:27:18 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/23 20:25:27 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/24 12:11:01 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 //but I need to fix this.
 t_enemy	*game_init_bonus(t_game *game)
 {
-	ft_printf("Game init bonus\n");
 	int			wnd_h;
 	int			wnd_w;
 	t_mlx_data	*conn;
