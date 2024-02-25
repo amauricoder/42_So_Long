@@ -6,19 +6,19 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:27:18 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/24 12:11:01 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/25 12:56:07 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long_bonus.h"
 //enemy->ht_x e enemy->ht_y defined in the middle of the function, 
 //but I need to fix this.
-t_enemy	*game_init_bonus(t_game *game)
+t_gmbonus	*game_init_bonus(t_game *game)
 {
-	int			wnd_h;
-	int			wnd_w;
-	t_mlx_data	*conn;
-	t_enemy		*enemy;
+	int				wnd_h;
+	int				wnd_w;
+	t_mlx_data		*conn;
+	t_gmbonus		*enemy;
 
 	wnd_h = ((game->map->qt_lines) * 32);
 	wnd_w = (game->map->qt_chars_lines) * 32;
@@ -39,15 +39,15 @@ t_enemy	*game_init_bonus(t_game *game)
 }
 
 //h for HOSTILE.
-//Funtion to init the t_enemy struct
+//Funtion to init the t_gmbonus struct
 //with initial values
-t_enemy *bonus_init_enemystruct(t_game *game)
+t_gmbonus	*bonus_init_enemystruct(t_game *game)
 {
-	t_enemy *h;
+	t_gmbonus	*h;
 
-	h = malloc(sizeof(t_enemy));
+	h = malloc(sizeof(t_gmbonus));
 	if (!h)
-		return NULL;
+		return (NULL);
 	get_enemyimg(h, game);
 	h->game_main = game;
 	h->ht_x = 0;

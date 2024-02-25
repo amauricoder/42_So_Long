@@ -6,7 +6,7 @@
 #    By: murilo <murilo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/24 16:10:12 by aconceic          #+#    #+#              #
-#    Updated: 2024/02/24 11:52:23 by murilo           ###   ########.fr        #
+#    Updated: 2024/02/25 11:54:35 by murilo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ SRC_DIR = ./source/
 SRC = 	map_validation.c ft_utils.c game_utils.c \
 		game_init.c game_play.c ft_free.c map_init.c \
 		game_render.c game_animation.c game_draw.c game_draw2.c \
-		ft_free2.c get_images.c \
+		ft_free2.c get_images.c map_validation2.c game_keypressed.c \
 
 ##############################################
 #            BONUS => SOURCES/OBJS           #

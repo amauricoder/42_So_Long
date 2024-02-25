@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:09:42 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/24 12:13:30 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/25 12:57:49 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 int	main(int argc, char **argv)
 {
-    ft_printf("ESTAMOS NO BONUS!\n");
-	t_game	*game;
-	t_enemy *bonus;
-	
+	t_game		*game;
+	t_gmbonus	*bonus;
+
 	if (argc == 2 && ft_check_extention(argv[1]) == 1)
 	{
+		//DONT FORGET TO FIX THE HEADESRS
 		game = map_init(argv[1]);
 		if (map_valid_allrequisites(game->map, argv[1]))
 		{

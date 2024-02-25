@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:24 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/23 20:27:56 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/25 12:35:18 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,12 +198,17 @@ int		map_char_counter(char *file_path);
 /*         source/map_validation.c    */
 /* ********************************** */
 int		map_valid_allrequisites(t_map *map, char *file_path);
-int		map_valid_characters(t_map *map);
+int		map_valid_havecharacters(t_map *map);
 int		map_valid_isclosed(t_map *map);
-int		map_valid_mustchar(t_map *map);
-int		map_valid_minsize(t_map *map);
-int		map_isvalid_path(t_map *map, char **map_copy);
-int 	flood_fill(char **map, int y, int x);
+int		map_valid_havemustchar(t_map *map);
+int		map_valid_haveminsize(t_map *map);
+
+/* ********************************** */
+/*            MAP VALIDATION 2        */
+/*         source/map_validation2.c   */
+/* ********************************** */
+int		map_valid_havepath(t_map *map, char **map_copy);
+int		flood_fill(char **map, int y, int x);
 
 /* ********************************** */
 /*               FT UTILS             */
@@ -212,6 +217,7 @@ int 	flood_fill(char **map, int y, int x);
 int		ft_check_extention(char *file_name);
 int		ft_countchar(char *str);
 void	error_message(int flag);
+void	ft_printmovs(t_game *game);
 
 /* ********************************** */
 /*              GAME INIT             */
@@ -266,17 +272,25 @@ void	render_coin(t_game *game, int width, int height);
 void	render_exit(t_game *game, int width, int height);
 
 /* ********************************** */
-/*            GAME COMMANDS           */
-/*        source/game_play.c      */
+/*            GAME PLAY               */
+/*        source/game_play.c          */
 /* ********************************** */
 int		game_play(t_game *game);
+void	take_coin(t_game *game, char keypressed);
+void	take_coin_lr(t_game *game, int keypressed);
+void	take_coin_du(t_game *game, int keypressed);
+void	update_tookcoinvalues(t_game *game, int y, int x);
+
+/* ********************************** */
+/*            GAME KEYPRESSED         */
+/*        source/game_keypressed.c    */
+/* ********************************** */
 int		game_keypressed(int keypressed, t_game *game);
 void	key_up_pressed(t_game *game);
 void	key_down_pressed(t_game *game);
 void	key_left_pressed(t_game *game);
 void	key_right_pressed(t_game *game);
-void	take_coin(t_game *game, char keypressed);
-void	ft_printmovs(t_game *game);
+
 /* ********************************** */
 /*            GAME ANIMATION          */
 /*       source/game_animation.c      */

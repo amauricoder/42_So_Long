@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com     +#+  +:+       +#+        */
+/*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 10:27:46 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/20 13:22:36 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/02/25 11:16:09 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	check_nullvalues_pc(t_game *game, char pointers)
 	gp = game->player;
 	if (pointers == 'p')
 	{
-		if (gp->img_sback == NULL || gp->img_sfront == NULL 
+		if (gp->img_sback == NULL || gp->img_sfront == NULL
 			|| gp->img_sleft == NULL || gp->img_sright == NULL
 			|| gp->img_wback == NULL || gp->img_wback2 == NULL
 			|| gp->img_wfront == NULL || gp->img_wfront2 == NULL
@@ -75,10 +75,10 @@ void	check_nullvalues_me(t_game *game, char pointers)
 	ex = game->exit;
 	if (pointers == 'm')
 	{
-		if (map->img_floor == NULL || map->img_murr == NULL 
+		if (map->img_floor == NULL || map->img_murr == NULL
 			|| map->img_wallbl == NULL || map->img_wallbr == NULL
 			|| map->img_wallc == NULL || map->img_walll == NULL
-			|| map->img_wallml == NULL || map->img_wallmr == NULL 
+			|| map->img_wallml == NULL || map->img_wallmr == NULL
 			|| map->img_wallr == NULL || game->map->img_wallbc == NULL)
 			ft_printf("ERROR AT GAME_GET_MAPIMG\n");
 	}

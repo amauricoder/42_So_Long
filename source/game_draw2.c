@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_draw2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com     +#+  +:+       +#+        */
+/*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 13:04:35 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/20 11:55:44 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/02/25 11:13:50 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	draw_mapwall_right(t_game *game)
 	{
 		if (map_skeleton[i][line_width] == '1')
 		{
-			render_elmt(game, game->map->img_wallmr, 
+			render_elmt(game, game->map->img_wallmr,
 				line_width * 32, render_height);
 		}
 		if (i == game->map->qt_lines - 3)
@@ -72,7 +72,7 @@ void	draw_mapcenter(t_game *game)
 	while (game->map->map_skeleton[++i])
 	{
 		j = 0;
-		while (game->map->map_skeleton[i][++j] != '\0' 
+		while (game->map->map_skeleton[i][++j] != '\0'
 			&& i < game->map->qt_lines - 1)
 		{
 			if (game->map->map_skeleton[i][j] == '0' && j < qt_chars)
@@ -101,7 +101,7 @@ void	draw_mapcoins(t_game *game)
 	while (game->map->map_skeleton[++i])
 	{
 		j = 0;
-		while (game->map->map_skeleton[i][++j] != '\0' 
+		while (game->map->map_skeleton[i][++j] != '\0'
 			&& i < game->map->qt_lines - 1)
 		{
 			if (game->map->map_skeleton[i][j] == 'C' && j < qt_chars)
@@ -122,7 +122,7 @@ void	draw_exit(t_game *game)
 	while (game->map->map_skeleton[++i])
 	{
 		j = 0;
-		while (game->map->map_skeleton[i][++j] != '\0' 
+		while (game->map->map_skeleton[i][++j] != '\0'
 			&& i < game->map->qt_lines - 1)
 		{
 			if (game->map->map_skeleton[i][j] == 'E' && j < qt_chars)

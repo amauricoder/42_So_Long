@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 12:45:29 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/20 18:26:28 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/25 11:16:32 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,5 @@ void	get_exitimg(t_game *game)
 	exit->e_imgs[7] = mlx_xpm_file_to_image(conn, EXIT8, &h, &w);
 	exit->e_imgs[8] = mlx_xpm_file_to_image(conn, EXIT9, &h, &w);
 	exit->e_imgs[9] = mlx_xpm_file_to_image(conn, EXIT10, &h, &w);
-
 	check_nullvalues_me(game, 'e');
 }

@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 09:00:53 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/21 22:00:22 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/25 11:40:02 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 //return 1 for a valid map and error_message(), 0 for invalid
 int	map_valid_allrequisites(t_map *map, char *file_path)
 {
-	char **map_copy = map_read(file_path);
+	char	**map_copy;
 
-	//ft_printf("value %i\n", map_isvalid_path(map, map_copy));
-	if (map_valid_characters(map) && map_valid_isclosed(map)
-		&& map_valid_mustchar(map) && map_valid_minsize(map)
-		&& map_isvalid_path(map, map_copy))
+	map_copy = map_read(file_path);
+	if (map_valid_havecharacters(map) && map_valid_isclosed(map)
+		&& map_valid_havemustchar(map) && map_valid_haveminsize(map)
+		&& map_valid_havepath(map, map_copy))
 	{
 		free_dp_char(map_copy);
 		return (1);
@@ -34,7 +34,7 @@ int	map_valid_allrequisites(t_map *map, char *file_path)
 
 //Check to see if there is some invalid char in the map
 //return 1 if there is only valid chars and 0 if not
-int	map_valid_characters(t_map *map)
+int	map_valid_havecharacters(t_map *map)
 {
 	char	**line;
 	int		i;
@@ -70,14 +70,14 @@ int	map_valid_isclosed(t_map *map)
 	i = -1;
 	while (++i <= map->qt_chars_lines)
 	{
-		if ((lines[0][i] != '1' && lines[0][i] != '\n') 
+		if ((lines[0][i] != '1' && lines[0][i] != '\n')
 			|| (last[i] != '1' && last[i] != '\n' && last[i] != '\0'))
 			return (error_message(6), 0);
 	}
 	i = 0;
 	while (lines[++i] != NULL)
 	{
-		if (lines[i][0] != '1' || lines[i][map->qt_chars_lines - 1] != '1') 
+		if (lines[i][0] != '1' || lines[i][map->qt_chars_lines - 1] != '1')
 			return (error_message(6), 0);
 	}
 	return (1);
@@ -85,7 +85,7 @@ int	map_valid_isclosed(t_map *map)
 
 //Validate if there is at least 1C, ONLY 1E and ONLY 1P.
 //Returns error_messa(), 0 for not valid and 1 for valid.
-int	map_valid_mustchar(t_map *map)
+int	map_valid_havemustchar(t_map *map)
 {
 	char	**lines;
 	int		i;
@@ -117,47 +117,9 @@ int	map_valid_mustchar(t_map *map)
 //Validate the minimun size of the map.
 //The minimun size acceptable is if the sum of the sizes if smaller than 8.
 //Return error_message(), 0 for invalid map, and 1 for valid map.
-int	map_valid_minsize(t_map *map)
+int	map_valid_haveminsize(t_map *map)
 {
 	if (map->qt_lines + map->qt_chars_lines < 8)
 		return (error_message(9), 0);
 	return (1);
-}
-
-int	map_isvalid_path(t_map *map, char **map_copy)
-{
-	int i;
-	int j;
-	int valid;
-	char **lines;
-	
-	i = -1;
-	lines = map->map_skeleton;
-	valid = 0;
-	while (lines[++i] != NULL)
-	{
-		j = 0;
-		while (lines[i][j] != '\0')
-		{
-			if (lines[i][j] == 'P')
-				valid = flood_fill(map_copy, i, j);
-			j ++;
-		}
-	}
-	return (valid);
-}
-
-//row = x, collmun = y
-int flood_fill(char **map, int y, int x) 
-{
-	if (map[y][x] == '1' || map[y][x] == 'X')
-		return (0);
-	if (map[y][x] == 'E')
-		return (1);
-	if (map[y][x] == 'C' || map[y][x] == '0')
-		map[y][x] = 'X';
-	if (flood_fill(map, y + 1, x) || flood_fill(map, y, x + 1) ||
-				 flood_fill(map, y - 1, x) || flood_fill(map, y, x - 1))
-		return (1);
-	return (0);
 }

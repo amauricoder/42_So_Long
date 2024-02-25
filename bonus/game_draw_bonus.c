@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 12:54:13 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/23 20:08:12 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/25 12:55:37 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,14 @@ int	game_drawmap_bonus(t_game *game)
 //Set values of the enemy as the exit and do the first render
 //This means that the enemy will aways spawn
 //in the same place as the exit
-int	game_draw_fenemy(t_enemy *bonus)
+int	game_draw_fenemy(t_gmbonus *bonus)
 {
-	t_game *game;
+	t_game	*game;
 
 	game = bonus->game_main;
 	bonus->ht_x = bonus->game_main->exit->exit_x;
 	bonus->ht_y = bonus->game_main->exit->exit_y;
-	render_elmt(game, bonus->ht_img[0], 
+	render_elmt(game, bonus->ht_img[0],
 		bonus->ht_x * 32, bonus->ht_y * 32);
 	return (0);
 }
-

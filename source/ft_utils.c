@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 09:21:48 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/22 10:37:58 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/25 11:56:17 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	ft_countchar(char *str)
 		i ++;
 	return (i);
 }
+
+//For personalizated error messages
 void	error_message(int flag)
 {
 	if (flag == 0)
@@ -69,4 +71,23 @@ void	error_message(int flag)
 		write(2, "Error\nError importing map image\n", 33);
 	if (flag == 11)
 		write(2, "Error\nError Initializing Structs\n", 33);
+}
+
+//print the quantity of movements on the screen
+void	ft_printmovs(t_game *game)
+{
+	char		*qt_movs;
+	t_mlx_data	*conn;
+	t_mlx_data	*wnd;
+
+	qt_movs = ft_itoa(game->qt_mov);
+	conn = game->data_mlx->connect;
+	wnd = game->data_mlx->window;
+	mlx_string_put(conn, wnd, 32, 16, 0xFFFFFF, "Moviments");
+	if (game->qt_mov >= 0)
+	{
+		render_elmt(game, game->map->img_wallc, 96, 0);
+		mlx_string_put(conn, wnd, 96, 16, 0xFFFFFF, qt_movs);
+	}
+	free(qt_movs);
 }

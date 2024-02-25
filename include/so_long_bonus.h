@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:29:11 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/24 12:11:55 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/25 12:55:37 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,19 @@
 # define H_WRIGHT "assets/sheets/enemy/wright.xpm"
 # define H_WRIGHT2 "assets/sheets/enemy/wright2.xpm"
 
-
 /* ********************************** */
 /*             STRUCT BONUS           */
 /* ********************************** */
 //for enemy **ht is for HOSTILE
-typedef struct s_enemy
+typedef struct s_bonus
 {
-	void    *ht_img[9];
+	void	*ht_img[9];
 	int		ht_y;
 	int		ht_x;
 	int		ht_loop;
 	int		pl2_lstep;
 	t_game	*game_main;
-}   t_enemy;
+}			t_gmbonus;
 
 /* ********************************** */
 /*             MAIN BONUS             */
@@ -53,44 +52,44 @@ int		main(int argv, char **argc);
 /*            GAME INIT BONUS         */
 /*         bonus/game_init_bonus.c    */
 /* ********************************** */
-t_enemy	*game_init_bonus(t_game *game);
-t_enemy *bonus_init_enemystruct(t_game *game);
+t_gmbonus	*game_init_bonus(t_game *game);
+t_gmbonus	*bonus_init_enemystruct(t_game *game);
 
 /* ********************************** */
 /*            GAME DRAW BONUS         */
 /*         bonus/game_draw_bonus.c    */
 /* ********************************** */
-int			game_drawmap_bonus(t_game *game);
-int			game_draw_fenemy(t_enemy *bonus);
+int		game_drawmap_bonus(t_game *game);
+int		game_draw_fenemy(t_gmbonus *bonus);
 /* ********************************** */
 /*            GET IMG BONUS           */
 /*         bonus/get_img_bonus.c.c    */
 /* ********************************** */
-void        get_enemyimg(t_enemy *h, t_game *game);
+void	get_enemyimg(t_gmbonus *h, t_game *game);
 
 /* ********************************** */
 /*            GAME PLAY BONUS         */
 /*         bonus/game_play_bonus.c    */
 /* ********************************** */
-int	game_play_bonus(t_enemy *bonus);
-int	game_keypressed_bonus(int keypressed, t_enemy *bonus);
-int	p1_keypressed(t_enemy *bonus, int keypressed);
-int	p2_keypressed(t_enemy *bonus, int keypressed);
+int		game_play_bonus(t_gmbonus *bonus);
+int		game_keypressed_bonus(int keypressed, t_gmbonus *bonus);
+int		p1_keypressed(t_gmbonus *bonus, int keypressed);
+int		p2_keypressed(t_gmbonus *bonus, int keypressed);
 
 /* ********************************** */
 /*            GAME PLAY2 BONUS         */
 /*         bonus/game_play2_bonus.c    */
 /* ********************************** */
-void	p2key_up_pressed(t_enemy *bn, t_game *game, char **map_sk);
-void	p2key_down_pressed(t_enemy *bn, t_game *game, char **map_sk);
-void	p2key_left_pressed(t_enemy *bn, t_game *game, char **map_sk);
-void	p2key_right_pressed(t_enemy *bn, t_game *game, char **map_sk);
+void	p2key_up_pressed(t_gmbonus *bn, t_game *game, char **map_sk);
+void	p2key_down_pressed(t_gmbonus *bn, t_game *game, char **map_sk);
+void	p2key_left_pressed(t_gmbonus *bn, t_game *game, char **map_sk);
+void	p2key_right_pressed(t_gmbonus *bn, t_game *game, char **map_sk);
 
 /* ********************************** */
 /*              FREE BONUS            */
 /*          bonus/free_bonus.c        */
 /* ********************************** */
-int		game_close_bonus(t_enemy *bonus);
-void    free_enemy_imgptr(t_enemy *bonus);
+int		game_close_bonus(t_gmbonus *bonus);
+void	free_enemy_imgptr(t_gmbonus *bonus);
 
 #endif
