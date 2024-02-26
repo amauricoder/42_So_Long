@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 12:39:09 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/25 12:33:56 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/26 19:25:38 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	take_coin_lr(t_game *game, int keypressed)
 	}
 	if (map_skeleton[pl->pl_y][pl->pl_x - 1] == 'C' && keypressed == 'l')
 	{
-		update_tookcoinvalues(game, pl->pl_y, pl->pl_x + 1);
+		update_tookcoinvalues(game, pl->pl_y, pl->pl_x - 1);
 		pl->pl_x --;
 		render_elmt(game, game->map->img_floor,
 			32 * (pl->pl_x + 1), 32 * pl->pl_y);
