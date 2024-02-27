@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 12:39:09 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/25 12:55:37 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/26 20:21:11 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	game_play_bonus(t_gmbonus *bonus)
 	window = game->data_mlx->window;
 	mlx_key_hook(window, game_keypressed_bonus, bonus);
 	mlx_hook(window, 17, 1L << 17, game_close_bonus, game);
-	mlx_loop_hook(conn, coin_animation, game);
+	mlx_loop_hook(conn, coin_animation_bonus, bonus);
 	return (0);
 }
 

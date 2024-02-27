@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:29:11 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/25 12:55:37 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/26 22:58:23 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ typedef struct s_bonus
 	int		ht_x;
 	int		ht_loop;
 	int		pl2_lstep;
+	int		ht_isoncoin;
+	int		hpos_x;
+	int		hpos_y;
+	char	chprevious;
 	t_game	*game_main;
 }			t_gmbonus;
 
@@ -92,4 +96,12 @@ void	p2key_right_pressed(t_gmbonus *bn, t_game *game, char **map_sk);
 int		game_close_bonus(t_gmbonus *bonus);
 void	free_enemy_imgptr(t_gmbonus *bonus);
 
+/* ********************************** */
+/*           ANIMATION BONUS          */
+/*       bonus/animation_bonus.c      */
+/* ********************************** */
+int	coin_animation_bonus(t_gmbonus *bonus);
+void	draw_mapcoins_bonus(t_gmbonus *bonus);
+void	draw_enemy_isoncoin(t_gmbonus *bonus);
+void	turnh_toc(t_gmbonus *bonus);
 #endif

@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:27:18 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/25 12:56:07 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/26 22:58:39 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,9 @@ t_gmbonus	*bonus_init_enemystruct(t_game *game)
 	h->ht_y = 0;
 	h->ht_loop = 0;
 	h->pl2_lstep = 0;
+	h->ht_isoncoin = 0;
+	h->hpos_x = 0;
+	h->hpos_y = 0;
+	h->chprevious = '0';
 	return (h);
 }
