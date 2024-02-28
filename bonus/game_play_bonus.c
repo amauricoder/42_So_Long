@@ -24,7 +24,7 @@ int	game_play_bonus(t_gmbonus *bonus)
 	conn = game->data_mlx->connect;
 	window = game->data_mlx->window;
 	mlx_key_hook(window, game_keypressed_bonus, bonus);
-	mlx_hook(window, 17, 1L << 17, game_close_bonus, game);
+	mlx_hook(window, 17, 1L << 17, game_close_bonus, bonus);
 	mlx_loop_hook(conn, coin_animation_bonus, bonus);
 	return (0);
 }

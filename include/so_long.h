@@ -209,6 +209,7 @@ int		map_valid_haveminsize(t_map *map);
 /* ********************************** */
 int		map_valid_havepath(t_map *map, char **map_copy);
 int		flood_fill(char **map, int y, int x);
+int		map_valid_havemaxsize(t_map *map);
 
 /* ********************************** */
 /*               FT UTILS             */

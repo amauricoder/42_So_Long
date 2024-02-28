@@ -66,7 +66,7 @@ void	error_message(int flag)
 	if (flag == 8)
 		write(2, "Error\nOnly 1 Player/Exit.\n", 26);
 	if (flag == 9)
-		write(2, "Error\nInvalid Map Size\n", 18);
+		write(2, "Error\nInvalid Map Size\n", 23);
 	if (flag == 10)
 		write(2, "Error\nError importing map image\n", 33);
 	if (flag == 11)

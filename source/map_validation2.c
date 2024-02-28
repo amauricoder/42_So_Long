@@ -52,3 +52,11 @@ int	flood_fill(char **map, int y, int x)
 		return (1);
 	return (0);
 }
+
+int	map_valid_havemaxsize(t_map *map)
+{
+	if (map->qt_chars_lines > 60 
+		|| map->qt_lines > 30)
+		return (error_message(9), 0);
+	return (1);
+}
