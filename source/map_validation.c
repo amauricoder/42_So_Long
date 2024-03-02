@@ -20,7 +20,7 @@ int	map_valid_allrequisites(t_map *map, char *file_path)
 	map_copy = map_read(file_path);
 	if (map_valid_havecharacters(map) && map_valid_isclosed(map)
 		&& map_valid_havemustchar(map) && map_valid_haveminsize(map)
-		&& map_valid_havepath(map, map_copy))
+		&& map_valid_havepath(map, map_copy) && map_valid_havemaxsize(map))
 	{
 		free_dp_char(map_copy);
 		return (1);
