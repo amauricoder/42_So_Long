@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 15:56:44 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/26 22:06:05 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/27 16:31:26 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	p2key_up_pressed(t_gmbonus *bn, t_game *game, char **map_sk)
 	t_map		*mp;
 
 	mp = game->map;
-	//draw_enemy_isoncoin(bn);
 	if (map_sk[bn->ht_y - 1][bn->ht_x] != '1' && bn->pl2_lstep == FALSE)
 	{
 		bn->ht_y --;
@@ -39,7 +38,6 @@ void	p2key_down_pressed(t_gmbonus *bn, t_game *game, char **map_sk)
 	t_map		*mp;
 
 	mp = game->map;
-	//draw_enemy_isoncoin(bn);
 	if (map_sk[bn->ht_y + 1][bn->ht_x] != '1' && bn->pl2_lstep == FALSE)
 	{
 		bn->ht_y ++;
@@ -61,7 +59,6 @@ void	p2key_left_pressed(t_gmbonus *bn, t_game *game, char **map_sk)
 	t_map		*mp;
 
 	mp = game->map;
-	//draw_enemy_isoncoin(bn);
 	if (map_sk[bn->ht_y][bn->ht_x - 1] != '1' && bn->pl2_lstep == FALSE)
 	{
 		bn->ht_x --;
@@ -83,7 +80,6 @@ void	p2key_right_pressed(t_gmbonus *bn, t_game *game, char **map_sk)
 	t_map		*mp;
 
 	mp = game->map;
-	//draw_enemy_isoncoin(bn);
 	if (map_sk[bn->ht_y][bn->ht_x + 1] != '1' && bn->pl2_lstep == FALSE)
 	{
 		bn->ht_x ++;

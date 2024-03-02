@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 09:00:53 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/25 11:40:02 by murilo           ###   ########.fr       */
+/*   Updated: 2024/03/02 20:17:30 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int	map_valid_havemustchar(t_map *map)
 //Return error_message(), 0 for invalid map, and 1 for valid map.
 int	map_valid_haveminsize(t_map *map)
 {
-	if (map->qt_lines + map->qt_chars_lines < 8)
+	if (map->qt_lines + map->qt_chars_lines < 9)
 		return (error_message(9), 0);
 	return (1);
 }

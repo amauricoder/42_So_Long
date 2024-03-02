@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:30:48 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/27 16:20:02 by murilo           ###   ########.fr       */
+/*   Updated: 2024/02/27 16:33:10 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	coin_animation_bonus(t_gmbonus *bonus)
 {
-	t_game *game;
+	t_game	*game;
 
-	game = bonus->game_main; 
+	game = bonus->game_main;
 	if (game->coin->coin_loop < 1000)
 	{
 		game->coin->coin_loop++;
@@ -33,10 +33,10 @@ int	coin_animation_bonus(t_gmbonus *bonus)
 
 void	draw_mapcoins_bonus(t_gmbonus *bonus)
 {
-	t_game *game;
-	int	qt_chars;
-	int	i;
-	int	j;
+	t_game	*game;
+	int		qt_chars;
+	int		i;
+	int		j;
 
 	game = bonus->game_main;
 	qt_chars = game->map->qt_chars_lines - 1;
@@ -55,11 +55,9 @@ void	draw_mapcoins_bonus(t_gmbonus *bonus)
 
 void	draw_enemy_isoncoin(t_gmbonus *bonus)
 {
-	t_game *game;
-	char	**map_cpy;
+	t_game	*game;
 
 	game = bonus->game_main;
-	map_cpy = game->map->map_skeleton;
 	if (game->map->map_skeleton[bonus->ht_y][bonus->ht_x] == 'C')
 	{
 		game->map->map_skeleton[bonus->ht_y][bonus->ht_x] = 'H';
@@ -67,28 +65,12 @@ void	draw_enemy_isoncoin(t_gmbonus *bonus)
 		bonus->hpos_y = bonus->ht_y;
 		bonus->chprevious = 'C';
 	}
-	
-	/* if (game->map->map_skeleton[bonus->hpos_y][bonus->hpos_x] == 'H'
-	&& (bonus->ht_x != bonus->hpos_x || bonus->ht_y != bonus->hpos_y))
-	{
-		ft_printf("H pos x %i\n", bonus->hpos_x);
-		ft_printf("H pos y %i\n", bonus->hpos_y);
-		ft_printf("ENEMY pos x %i\n", bonus->ht_x);
-		ft_printf("ENEMY pos y %i\n", bonus->ht_y);
-		game->map->map_skeleton[bonus->hpos_y][bonus->hpos_x] = 'C';
-		bonus->chprevious = 'H';
-	} */
 	turnh_toc(bonus);
-	ft_printf("%c\n", bonus->chprevious);
-	(void)map_cpy;
-//	turnh_toc(bonus);
-	//ft_printf("%c\n", game->map->map_skeleton[bonus->ht_y][bonus->ht_x]);
-	//ft_printf("TERMINOU A FUNCAO\n");
 }
 
 void	turnh_toc(t_gmbonus *bonus)
 {
-	char **map;
+	char	**map;
 
 	map = bonus->game_main->map->map_skeleton;
 	if (map[bonus->ht_y][bonus->ht_x - 1] == 'H')

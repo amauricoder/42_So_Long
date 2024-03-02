@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:27:56 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/23 20:29:25 by murilo           ###   ########.fr       */
+/*   Updated: 2024/03/02 19:13:22 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	game_init_master(t_game *game)
 	get_coinimg(game);
 	get_exitimg(game);
 	game_drawmap(game);
-	ft_printmovs(game);
 }
 
 //Initialize the structures for the game

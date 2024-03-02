@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 12:39:09 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/26 20:21:11 by murilo           ###   ########.fr       */
+/*   Updated: 2024/03/02 20:13:30 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,10 @@ int	game_keypressed_bonus(int keypressed, t_gmbonus *bonus)
 		&& game->exit->exit_yes == TRUE && game->player->pl_isonexit == FALSE)
 	{
 		game->player->pl_isonexit = TRUE;
-		ft_printf("PLAYER 1 VICTORYYYYYYYYY\n");
+		render_message(bonus, 1);
 	}
-	if (game->player->pl_isonexit == FALSE)
-		ft_printf("Quantity of moves %i\n", game->qt_mov);
-	ft_printmovs(game);
+	else if (game->player->pl_isonexit == FALSE)
+		ft_printmovs(game);
 	return (0);
 }
 
@@ -72,7 +71,7 @@ int	p1_keypressed(t_gmbonus *bonus, int keypressed)
 		&& game->player->pl_isonexit == FALSE)
 	{
 		game->player->pl_isonexit = TRUE;
-		ft_printf("Player 1 has died\n");
+		render_message(bonus, 2);
 	}
 	return (0);
 }
@@ -103,7 +102,30 @@ int	p2_keypressed(t_gmbonus *bonus, int keypressed)
 		&& game->player->pl_isonexit == FALSE)
 	{
 		game->player->pl_isonexit = TRUE;
-		ft_printf("Player 1 has died\n");
+		render_message(bonus, 2);
 	}
 	return (0);
+}
+
+void	render_message(t_gmbonus *bonus, int flag)
+{
+	t_game *game;
+
+	game = bonus->game_main;
+	if (flag == 1)
+	{
+		render_elmt(game, game->map->img_wallc, 32, 0);
+		render_elmt(game, game->map->img_wallc, 64, 0);
+		render_elmt(game, game->map->img_wallc, 96, 0);
+		mlx_string_put(game->data_mlx->connect, 
+			game->data_mlx->window, 32, 16, 0xFFFFFF, "Player 1 Victory");
+	}
+	if (flag == 2)
+	{
+		render_elmt(game, game->map->img_wallc, 32, 0);
+		render_elmt(game, game->map->img_wallc, 64, 0);
+		render_elmt(game, game->map->img_wallc, 96, 0);
+		mlx_string_put(game->data_mlx->connect, 
+			game->data_mlx->window, 32, 16, 0xFFFFFF, "Player 1 has died");
+	}
 }

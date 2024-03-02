@@ -6,12 +6,16 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 12:39:09 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/26 19:25:38 by murilo           ###   ########.fr       */
+/*   Updated: 2024/03/02 19:31:26 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
+//Main function for the game
+//Handle the event of keypress and animations
+//for the main game, I am using mlx_hook() to maintain the keypressed.
+//for bonus, mlx_key_hook*()
 int	game_play(t_game *game)
 {
 	t_mlx_data	*conn;
@@ -19,7 +23,7 @@ int	game_play(t_game *game)
 
 	conn = game->data_mlx->connect;
 	window = game->data_mlx->window;
-	mlx_key_hook(window, game_keypressed, game);
+	mlx_hook(window, KeyPress, KeyPressMask, game_keypressed, game);
 	mlx_hook(window, 17, 1L << 17, game_close, game);
 	mlx_loop_hook(conn, coin_animation, game);
 	return (0);

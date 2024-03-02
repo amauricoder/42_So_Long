@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 11:52:57 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/25 11:56:31 by murilo           ###   ########.fr       */
+/*   Updated: 2024/03/02 19:07:21 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	game_keypressed(int keypressed, t_game *game)
 	}
 	if (game->player->pl_isonexit == FALSE)
 		ft_printf("Quantity of moves %i\n", game->qt_mov);
-	ft_printmovs(game);
 	return (0);
 }
 
