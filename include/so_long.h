@@ -6,7 +6,7 @@
 /*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:24 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/25 12:35:18 by murilo           ###   ########.fr       */
+/*   Updated: 2024/03/08 11:27:27 by murilo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,8 +209,10 @@ int		map_valid_haveminsize(t_map *map);
 /* ********************************** */
 int		map_valid_havepath(t_map *map, char **map_copy);
 int		flood_fill(char **map, int y, int x);
+int		flood_fill_c(char **map, int y, int x);
 int		map_valid_havemaxsize(t_map *map);
-
+int		map_print(t_map *map, char **map_copy);
+char	**matrix_dup(t_map *map, char **map_todup);
 /* ********************************** */
 /*               FT UTILS             */
 /*           source/ft_utils.c        */
