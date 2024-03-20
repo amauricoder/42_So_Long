@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animation_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/26 19:30:48 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/27 16:33:10 by murilo           ###   ########.fr       */
+/*   Created: 2024/02/26 19:30:48 by aconceic          #+#    #+#             */
+/*   Updated: 2024/03/20 14:33:28 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	coin_animation_bonus(t_gmbonus *bonus)
 	t_game	*game;
 
 	game = bonus->game_main;
-	if (game->coin->coin_loop < 1000)
+	if (game->coin->coin_loop < 7000)
 	{
 		game->coin->coin_loop++;
 		return (0);

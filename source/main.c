@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:08:21 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/25 12:57:24 by murilo           ###   ########.fr       */
+/*   Updated: 2024/03/20 14:32:01 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	main(int argc, char **argv)
 
 	if (argc == 2 && ft_check_extention(argv[1]) == 1)
 	{
-		//DONT FORGET TO FIX THE HEADERS
 		game = map_init(argv[1]);
 		if (map_valid_allrequisites(game->map, argv[1]))
 		{

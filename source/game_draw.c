@@ -3,14 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   game_draw.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com     +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/18 12:54:13 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/20 11:53:34 by aconceic         ###   ########.fr       */
+/*   Created: 2024/02/18 12:54:13 by aconceic          #+#    #+#             */
+/*   Updated: 2024/03/20 14:31:42 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "../include/so_long.h"
 
 //Call all the functions to make a mapping of the positions of
 //the tiles and render(using render functions) the specific tile on the

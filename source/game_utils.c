@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 10:27:46 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/25 11:16:09 by murilo           ###   ########.fr       */
+/*   Updated: 2024/03/20 14:30:56 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,27 @@ void	check_nullvalues_me(t_game *game, char pointers)
 			|| !ex->e_imgs[6] || !ex->e_imgs[7])
 			ft_printf("ERROR AT GAME_GET_EXITIMG\n");
 	}
+}
+
+//Function that print the map skeleton on the terminal.
+//return 1. 
+int	map_print(t_map *map, char **map_copy)
+{
+	int		i;
+	int		j;
+	char	**lines;
+
+	i = -1;
+	lines = map_copy;
+	while (lines[++i] != NULL)
+	{
+		j = 0;
+		while (lines[i][j] != '\0')
+		{
+			ft_printf("%c", lines[i][j]);
+			j ++;
+		}
+	}
+	(void)map;
+	return (1);
 }

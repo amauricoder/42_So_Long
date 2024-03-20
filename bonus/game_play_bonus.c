@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_play_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/07 12:39:09 by murilo            #+#    #+#             */
-/*   Updated: 2024/03/02 20:13:30 by murilo           ###   ########.fr       */
+/*   Created: 2024/02/07 12:39:09 by aconceic          #+#    #+#             */
+/*   Updated: 2024/03/20 14:34:11 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int	p2_keypressed(t_gmbonus *bonus, int keypressed)
 
 void	render_message(t_gmbonus *bonus, int flag)
 {
-	t_game *game;
+	t_game	*game;
 
 	game = bonus->game_main;
 	if (flag == 1)
@@ -117,7 +117,7 @@ void	render_message(t_gmbonus *bonus, int flag)
 		render_elmt(game, game->map->img_wallc, 32, 0);
 		render_elmt(game, game->map->img_wallc, 64, 0);
 		render_elmt(game, game->map->img_wallc, 96, 0);
-		mlx_string_put(game->data_mlx->connect, 
+		mlx_string_put(game->data_mlx->connect,
 			game->data_mlx->window, 32, 16, 0xFFFFFF, "Player 1 Victory");
 	}
 	if (flag == 2)
@@ -125,7 +125,7 @@ void	render_message(t_gmbonus *bonus, int flag)
 		render_elmt(game, game->map->img_wallc, 32, 0);
 		render_elmt(game, game->map->img_wallc, 64, 0);
 		render_elmt(game, game->map->img_wallc, 96, 0);
-		mlx_string_put(game->data_mlx->connect, 
+		mlx_string_put(game->data_mlx->connect,
 			game->data_mlx->window, 32, 16, 0xFFFFFF, "Player 1 has died");
 	}
 }

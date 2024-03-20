@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_animation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/13 10:48:49 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/20 18:28:41 by murilo           ###   ########.fr       */
+/*   Created: 2024/02/13 10:48:49 by aconceic          #+#    #+#             */
+/*   Updated: 2024/03/20 14:29:04 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	coin_animation(t_game *game)
 {
-	if (game->coin->coin_loop < 1000)
+	if (game->coin->coin_loop < 7000)
 	{
 		game->coin->coin_loop++;
 		return (0);
@@ -29,7 +29,7 @@ int	coin_animation(t_game *game)
 
 int	exit_animation(t_game *game)
 {
-	if (game->exit->exit_loop < 1700)
+	if (game->exit->exit_loop < 7000)
 	{
 		game->exit->exit_loop++;
 		return (0);

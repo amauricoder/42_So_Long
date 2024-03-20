@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 10:09:42 by murilo            #+#    #+#             */
-/*   Updated: 2024/02/25 12:57:49 by murilo           ###   ########.fr       */
+/*   Created: 2024/02/22 10:09:42 by aconceic          #+#    #+#             */
+/*   Updated: 2024/03/20 14:35:16 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	main(int argc, char **argv)
 
 	if (argc == 2 && ft_check_extention(argv[1]) == 1)
 	{
-		//DONT FORGET TO FIX THE HEADESRS
 		game = map_init(argv[1]);
 		if (map_valid_allrequisites(game->map, argv[1]))
 		{
