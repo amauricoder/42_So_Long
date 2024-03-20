@@ -6,9 +6,11 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 12:54:13 by aconceic          #+#    #+#             */
-/*   Updated: 2024/03/20 14:31:42 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/03/20 17:20:09 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../include/so_long.h"
 
 //Call all the functions to make a mapping of the positions of
 //the tiles and render(using render functions) the specific tile on the
