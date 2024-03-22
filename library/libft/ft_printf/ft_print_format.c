@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_format.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 16:19:11 by aconceic          #+#    #+#             */
-/*   Updated: 2023/10/29 18:21:11 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/03/20 15:57:21 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_print_format(char specifier, va_list ap)
 	else if (specifier == 's')
 		count += ft_putstr(va_arg(ap, char *));
 	else if (specifier == 'p')
-		count += ft_putpointer(va_arg(ap, unsigned long)); 
+		count += ft_putpointer(va_arg(ap, unsigned long));
 	else if (specifier == 'i' || specifier == 'd')
 		count += ft_putnbr(va_arg(ap, int));
 	else if (specifier == 'u')

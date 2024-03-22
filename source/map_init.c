@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42porto.com     +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:12:30 by aconceic          #+#    #+#             */
-/*   Updated: 2024/02/20 13:32:21 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/03/21 10:48:59 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,11 @@ int	map_char_counter(char *file_path)
 
 	map = map_read(file_path);
 	first_line_size = ft_countchar(map[0]);
+	if (first_line_size == 0)
+	{
+		free_dp_char(map);
+		return (-1);
+	}
 	i = 1;
 	while (map[i] != NULL)
 	{
@@ -110,14 +115,19 @@ t_game	*map_init(char *file_path)
 	game = malloc(sizeof(t_game));
 	map = malloc(sizeof(t_map));
 	if (!game || !map)
-	{
-		error_message(3);
-		return (NULL);
-	}
+		return (error_message(3), NULL);
 	game->map = map;
 	game->map->map_skeleton = map_read(file_path);
 	game->map->qt_lines = map_lines_counter(file_path);
 	game->map->qt_chars_lines = map_char_counter(file_path);
+	if (game->map->qt_chars_lines == -1)
+	{
+		error_message(3);
+		free_dp_char(game->map->map_skeleton);
+		free(map);
+		free(game);
+		exit(EXIT_FAILURE);
+	}
 	game->map->qt_player = 0;
 	game->map->qt_collect = 0;
 	game->map->qt_exit = 0;

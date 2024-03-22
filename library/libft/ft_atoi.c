@@ -6,7 +6,7 @@
 /*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 15:03:48 by aconceic          #+#    #+#             */
-/*   Updated: 2024/01/29 14:20:55 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/03/20 15:56:47 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_atoi(const char *nptr)
 	number *= signal;
 	return (number);
 }
- 
+
 //Function Description
 //Convert ascii to integer
 /* # include <stdio.h>

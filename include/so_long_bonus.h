@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: murilo <murilo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:29:11 by murilo            #+#    #+#             */
-/*   Updated: 2024/03/02 20:44:48 by murilo           ###   ########.fr       */
+/*   Updated: 2024/03/21 11:10:15 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,11 @@ int			coin_animation_bonus(t_gmbonus *bonus);
 void		draw_mapcoins_bonus(t_gmbonus *bonus);
 void		draw_enemy_isoncoin(t_gmbonus *bonus);
 void		turnh_toc(t_gmbonus *bonus);
+
+/* ********************************** */
+/*        MAP VALIDATION BONUS        */
+/*     bonus/map_validation_bonus.c   */
+/* ********************************** */
+int			map_valid_allrequisites_bn(t_map *map, char *file_path);
 
 #endif

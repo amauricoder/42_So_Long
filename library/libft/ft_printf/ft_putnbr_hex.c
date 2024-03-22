@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_hex.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aconceic <aconceic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:05:03 by amaurilisbo       #+#    #+#             */
-/*   Updated: 2023/10/30 11:48:56 by aconceic         ###   ########.fr       */
+/*   Updated: 2024/03/20 15:57:58 by aconceic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,10 @@ int	main(void)
 	
 	//hex_count_digits tests => this function counter the hex digits
 	printf("Hex count\n");
-	printf("must return 2 because FF is 2 => %d\n", hex_count_digits(zero_test));
-	printf("must return 4 because FFFF is 4 => %d\n", hex_count_digits(three_test));
+	printf("must return 2 because FF is 2 => %d\n", 
+			hex_count_digits(zero_test));
+	printf("must return 4 because FFFF is 4 => %d\n", 
+			hex_count_digits(three_test));
 	//hex conververtion
 	printf("Hex convertion\n");
 	printf("must return ff => %s\n", ft_putnbr_hex(zero_test));

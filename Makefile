@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: murilo <murilo@student.42.fr>              +#+  +:+       +#+         #
+#    By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/24 16:10:12 by aconceic          #+#    #+#              #
-#    Updated: 2024/02/26 19:31:23 by murilo           ###   ########.fr        #
+#    Updated: 2024/03/21 11:01:35 by aconceic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ BONUS_NAME = so_long_bonus
 
 BONUS_SRC = bonus/main_bonus.c bonus/game_init_bonus.c bonus/get_img_bonus.c \
 			bonus/game_draw_bonus.c bonus/game_play_bonus.c bonus/game_play2_bonus.c \
-			bonus/free_bonus.c bonus/animation_bonus.c \
+			bonus/free_bonus.c bonus/animation_bonus.c bonus/map_validation_bonus.c \
 
 BONUS_OBJ = $(addprefix $(BONUS_OBJ_DIR), $(BONUS_SRC:bonus/%.c=%.o))
 
@@ -75,7 +75,7 @@ CFLAGS = -Wall -Wextra -Werror
 #                   RULES                    #
 #                MAIN PROJECT                #
 ##############################################
-all : mlx_compile $(NAME)
+all : download mlx_compile $(NAME)
 
 mlx_compile :
 	@echo "$(ORANGE)[!]$(RESET) Working on MiniLibX ..."
@@ -114,19 +114,24 @@ fclean :
 	@echo "$(ORANGE)[!]$(RESET) Executing full cleaning..."
 	$(RM) $(NAME) $(OBJ_DIR)
 	$(RM) $(BONUS_NAME) $(BONUS_OBJ_DIR)
+	$(RM) library/minilibx-linux
 	make fclean -C $(LIBFT_DIR)
-	$(MAKECLEANC) $(MLX_DIR)
 	@echo "$(GREEN)[✔]$(RESET) $(BLUE)full cleaning!$(RESET) "
 
-re : fclean all bonus
+re : fclean download all bonus
 	@echo "$(GREEN)[✔]$(RESET) $(MAGENTA)Refresh Ok!$(RESET) "
+
+download:
+	@wget https://cdn.intra.42.fr/document/document/21300/minilibx-linux.tgz
+	@tar -xzf minilibx-linux.tgz -C library
+	@rm minilibx-linux.tgz
 
 ##############################################
 #                                            #
 #                   RULES                    #
 #               BONUS PROJECT                #
 ##############################################
-bonus : $(BONUS_NAME)
+bonus : download mlx_compile $(BONUS_NAME)
 
 $(BONUS_OBJ_DIR) :
 	@echo "$(YELLOW)[!] $(RESET)CREATING DIRECTORY FOR BONUS OBJECTS"
@@ -141,7 +146,7 @@ $(BONUS_OBJ_DIR)%.o : bonus/%.c | $(BONUS_OBJ_DIR)
 
 $(BONUS_NAME) : $(BONUS_OBJ_DIR) $(BONUS_OBJ) $(OBJ) $(LIBFT_LIB)
 	@echo "$(YELLOW)[!] $(RESET)COMPILING BONUS "
-	$(CC) $(CFLAGS) $(BONUS_OBJ) $(OBJ) $(LIBFT_LIB) $(GNL_LIB) $(MLXFLAGS) -o $(BONUS_NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(BONUS_OBJ) $(LIBFT_LIB) $(GNL_LIB) $(MLXFLAGS) -o $(BONUS_NAME)
 	@echo "$(GREEN)[✔]$(RESET) $(BLUE)OK$(RESET)"
 
 .SILENT:
