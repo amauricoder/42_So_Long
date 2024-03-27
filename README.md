@@ -1,4 +1,5 @@
-# So_long - THIS REPOSITORY IS UNDER CONSTRUCTION! PLEASE BE AWARE
+# So_long
+## THIS REPOSITORY IS UNDER CONSTRUCTION! PLEASE BE AWARE
 ![Banner](so_long.png "so_long banner")
 
 "The goal of this project is to code a 2D game using the MiniLibx."
@@ -8,7 +9,7 @@
 - [Usage](#usage)
 - [Bonus](#bonus)
 - [Makefile Overview](#makefile-overview)
-- [License and Thoughtful Advice](#license-and-thoughtful-advice)
+- [License and Sincere Advice](#license-and-sincere-advice)
 
 ## Introduction
 
@@ -74,6 +75,13 @@ In this project, the Makefile offers the following essential rules:
 - **make fclean**: Completely cleans the directory by deleting all `.o` files and the executable `so_long`.
 - **make re**: Refreshes the executable `so_long` by recompiling everything.
 
+## License and Sincere Advice
+[View License](LICENSE)
+
+This is a complex project.
+Try to use this project as a model for you if you want. 
+But, if you got to this point of the course, you are already able to create this project from your own.
+Believe, believe!
 <!--
 ```mermaid
 ---
