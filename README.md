@@ -1,11 +1,12 @@
 # So_long
-## THIS REPOSITORY IS UNDER CONSTRUCTION! PLEASE BE AWARE
+## ⚠️⚠️⚠️ 👷‍♂️🚧🦺 Repository under construction! Stay tuned for updates! 🦺🚧👷‍♂️ ⚠️
 ![Banner](so_long.png "so_long banner")
 
 "The goal of this project is to code a 2D game using the MiniLibx."
 
 ## Table of contents
 - [Introduction](#introduction)
+- [Main Game Overview](#main-game-overview)
 - [Usage](#usage)
 - [Bonus](#bonus)
 - [Makefile Overview](#makefile-overview)
@@ -22,6 +23,14 @@ this endeavor provides a structured platform for navigating tasks such as window
 This project emphasizes rigor in C programming, application of fundamental algorithms, and research proficiency. 
 It offers an opportunity to engage methodically with graphical programming concepts, fostering incremental skill development and reinforcing core principles in software engineering.
 >The code was written according to the 42 norm guidelines(norminette).
+
+## Main game overview
+![Main Overview](main.gif "main game gameplay")
+<!--
+| Ground | Wall | Player | Exit | Coin |
+|-----------------|-----------------|-----------------|-----------------|-----------------|
+| Ground Img    | Wall Img   | Player Img  | Exit Img | Coin Img |
+-->
 
 ## Usage
 **Important!** <br>
@@ -42,6 +51,9 @@ This will download the external library and generate a so_long file in the root 
 ./so_long maps/lady.ber
 ```
 4. This will open the window of the main game. Use the keys A,S,D,W or Arrows to move your character. The goal is to take all coins and go to the UFO.
+
+## Bonus game overview
+![Bonus Overview](bonus.gif "bonus game gameplay")
 
 ## BONUS
 The Bonus section of this project was developed in compliance with the subject requirements, 
