@@ -1,6 +1,6 @@
 # So_long
 ## ⚠️⚠️⚠️ 👷‍♂️🚧🦺 Repository under construction! Stay tuned for updates! 🦺🚧👷‍♂️ ⚠️⚠️⚠️
-![Banner](so_long.png "so_long banner")
+![Banner](git_imgs/so_long.png "so_long banner")
 
 "The goal of this project is to code a 2D game using the MiniLibx."
 
@@ -25,7 +25,7 @@ It offers an opportunity to engage methodically with graphical programming conce
 >The code was written according to the 42 norm guidelines(norminette). <br>
 [View Norm](42_norm/en.norm.pdf)
 ## Main game overview
-![Main Overview](main.gif "main game gameplay")
+![Main Overview](git_imgs/main.gif "main game gameplay")
 <!--
 | Ground | Wall | Player | Exit | Coin |
 |-----------------|-----------------|-----------------|-----------------|-----------------|
@@ -53,7 +53,7 @@ This will download the external library and generate a so_long file in the root 
 4. This will open the window of the main game. Use the keys A,S,D,W or Arrows to move your character. The goal is to take all coins and go to the UFO.
 
 ## Bonus game overview
-![Bonus Overview](bonus.gif "bonus game gameplay")
+![Bonus Overview](git_imgs/bonus.gif "bonus game gameplay")
 
 ## BONUS
 The Bonus section of this project was developed in compliance with the subject requirements, 
