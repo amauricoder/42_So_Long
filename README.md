@@ -1,5 +1,5 @@
 # So_long
-## ⚠️⚠️⚠️ 👷‍♂️🚧🦺 Repository under construction! Stay tuned for updates! 🦺🚧👷‍♂️ ⚠️⚠️⚠️
+<!-- ## ⚠️⚠️⚠️ 👷‍♂️🚧🦺 Repository under construction! Stay tuned for updates! 🦺🚧👷‍♂️ ⚠️⚠️⚠️ -->
 ![Banner](git_imgs/so_long.png "so_long banner")
 
 "The goal of this project is to code a 2D game using the MiniLibx."
