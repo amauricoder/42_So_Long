@@ -22,8 +22,8 @@ this endeavor provides a structured platform for navigating tasks such as window
 
 This project emphasizes rigor in C programming, application of fundamental algorithms, and research proficiency. 
 It offers an opportunity to engage methodically with graphical programming concepts, fostering incremental skill development and reinforcing core principles in software engineering.
->The code was written according to the 42 norm guidelines(norminette).
-
+>The code was written according to the 42 norm guidelines(norminette). <br>
+[View Norm](42_norm/en.norm.pdf)
 ## Main game overview
 ![Main Overview](main.gif "main game gameplay")
 <!--
