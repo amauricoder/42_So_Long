@@ -6,7 +6,7 @@
 
 ## Table of contents
 - [Introduction](#introduction)
-- [Main Game Overview](#main-game-overview)
+- [Main Game](#main-game)
 - [Usage](#usage)
 - [Bonus](#bonus)
 - [Makefile Overview](#makefile-overview)
@@ -24,7 +24,7 @@ This project emphasizes rigor in C programming, application of fundamental algor
 It offers an opportunity to engage methodically with graphical programming concepts, fostering incremental skill development and reinforcing core principles in software engineering.
 >The code was written according to the 42 norm guidelines(norminette). <br>
 [View Norm](42_norm/en.norm.pdf)
-## Main game overview
+## Main game
 ![Main Overview](git_imgs/main.gif "main game gameplay")
 <!--
 | Ground | Wall | Player | Exit | Coin |
@@ -52,13 +52,11 @@ This will download the external library and generate a so_long file in the root 
 ```
 4. This will open the window of the main game. Use the keys A,S,D,W or Arrows to move your character. The goal is to take all coins and go to the UFO.
 
-## Bonus game overview
-![Bonus Overview](git_imgs/bonus.gif "bonus game gameplay")
-
 ## BONUS
 The Bonus section of this project was developed in compliance with the subject requirements, 
 which stipulated the inclusion of animations, text strings on the screen, and the introduction of an enemy character.
-This is a more "open" project, so I've decided to to a little "multiplayer" experience with my project.
+This is a more "open" project, so I've decided to to a little "multiplayer" experience with my project. <br>
+![Bonus Overview](git_imgs/bonus.gif "bonus game gameplay")
 ### Bonus Usage
 1. Clone the repository
 ```bash
