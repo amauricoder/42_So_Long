@@ -6,7 +6,7 @@
 #    By: aconceic <aconceic@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/24 16:10:12 by aconceic          #+#    #+#              #
-#    Updated: 2024/03/21 11:01:35 by aconceic         ###   ########.fr        #
+#    Updated: 2024/08/19 10:47:25 by aconceic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -122,7 +122,7 @@ re : fclean download all bonus
 	@echo "$(GREEN)[✔]$(RESET) $(MAGENTA)Refresh Ok!$(RESET) "
 
 download:
-	@wget https://cdn.intra.42.fr/document/document/21300/minilibx-linux.tgz
+	@wget https://cdn.intra.42.fr/document/document/27195/minilibx-linux.tgz
 	@tar -xzf minilibx-linux.tgz -C library
 	@rm minilibx-linux.tgz
 
